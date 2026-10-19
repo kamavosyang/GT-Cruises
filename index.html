@@ -3,38 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Azure Voyages — Luxury cruise journeys beyond the horizon. Discover extraordinary destinations and unforgettable experiences at sea.">
-    <title>Azure Voyages — Beyond the Horizon</title>
+    <meta name="description" content="GT CRUISE — Your Journey. Your World. A premium Mediterranean cruise experience across Barcelona, Marseille, Genoa, Naples, Valletta, Santorini, and Athens.">
+    <title>GT CRUISE — Your Journey. Your World.</title>
 
-    <!-- Google Fonts: Playfair Display (editorial headings) + Manrope (body/UI) -->
+    <!-- Google Fonts: Cormorant Garamond (editorial serif) + Manrope (modern sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         /* =========================================================
-           1. DESIGN TOKENS — brand colors, typography, spacing
+           1. DESIGN TOKENS
            ========================================================= */
         :root {
-            /* Brand palette */
-            --color-midnight: #071B2C;
-            --color-navy: #102A43;
-            --color-navy-soft: #1a3a5c;
-            --color-teal: #2A7F85;
-            --color-teal-soft: #3a9aa1;
-            --color-ivory: #F8F6F0;
-            --color-sand: #E7DCCB;
-            --color-gold: #C6A56B;
-            --color-gold-soft: #d4b880;
-            --color-white: #FFFFFF;
-            --color-ink: #0d1f30;
-            --color-muted: #6b7a8a;
+            --navy: #102B3F;
+            --navy-deep: #0a1d2c;
+            --med-blue: #2D6478;
+            --med-blue-soft: #3d7a8f;
+            --ivory: #F8F5EF;
+            --gold: #D6B879;
+            --gold-soft: #e4cc94;
+            --sand: #DCCDB8;
+            --white: #FFFFFF;
+            --ink: #1a2f40;
+            --muted: #6b7a85;
 
-            /* Typography */
-            --font-display: 'Playfair Display', Georgia, serif;
-            --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Manrope', -apple-system, sans-serif;
 
-            /* Spacing scale */
             --space-xs: 0.5rem;
             --space-sm: 1rem;
             --space-md: 1.5rem;
@@ -43,71 +39,38 @@
             --space-2xl: 6rem;
             --space-3xl: 8rem;
 
-            /* Layout */
-            --container-max: 1320px;
-            --container-pad: clamp(1.25rem, 4vw, 3rem);
+            --container: 1320px;
+            --pad: clamp(1.25rem, 4vw, 3rem);
 
-            /* Transitions */
-            --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-            --duration: 0.5s;
-
-            /* Shadows */
-            --shadow-soft: 0 10px 40px -10px rgba(7, 27, 44, 0.15);
-            --shadow-hover: 0 20px 60px -15px rgba(7, 27, 44, 0.25);
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+            --dur: 0.6s;
         }
 
         /* =========================================================
-           2. RESET & BASE STYLES
+           2. RESET & BASE
            ========================================================= */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 90px;
-        }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
         body {
             font-family: var(--font-body);
             font-weight: 400;
             font-size: 1rem;
             line-height: 1.7;
-            color: var(--color-ink);
-            background-color: var(--color-ivory);
+            color: var(--ink);
+            background: var(--ivory);
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
+        img { max-width: 100%; height: auto; display: block; }
+        a { color: inherit; text-decoration: none; transition: color var(--dur) var(--ease); }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; }
+        ul { list-style: none; }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-            transition: color var(--duration) var(--ease-out);
-        }
+        :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
-        button {
-            font-family: inherit;
-            cursor: pointer;
-            border: none;
-            background: none;
-        }
-
-        /* Accessible focus ring for keyboard users */
-        :focus-visible {
-            outline: 2px solid var(--color-gold);
-            outline-offset: 3px;
-        }
-
-        /* Reduced motion support */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -116,1054 +79,1156 @@
             }
         }
 
+        .gt-container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding-left: var(--pad);
+            padding-right: var(--pad);
+        }
+
         /* =========================================================
            3. TYPOGRAPHY UTILITIES
            ========================================================= */
-        .azure-eyebrow {
-            display: inline-block;
+        .gt-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.85rem;
             font-family: var(--font-body);
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 600;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
-            color: var(--color-gold);
+            color: var(--gold);
             margin-bottom: var(--space-md);
         }
 
-        .azure-eyebrow::before {
+        .gt-eyebrow::before {
             content: '';
-            display: inline-block;
-            width: 32px;
+            width: 36px;
             height: 1px;
-            background: var(--color-gold);
-            vertical-align: middle;
-            margin-right: 0.75rem;
+            background: var(--gold);
         }
 
-        .azure-display {
+        .gt-display {
             font-family: var(--font-display);
             font-weight: 500;
-            line-height: 1.1;
+            line-height: 1.08;
             letter-spacing: -0.01em;
         }
 
-        .azure-container {
-            max-width: var(--container-max);
-            margin: 0 auto;
-            padding-left: var(--container-pad);
-            padding-right: var(--container-pad);
+        .gt-display em {
+            font-style: italic;
+            font-weight: 400;
         }
 
         /* =========================================================
-           4. HEADER & NAVIGATION
-           Transparent header over the hero
+           4. HEADER
            ========================================================= */
-        .azure-header {
+        .gt-header {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 100;
-            padding: 1.5rem 0;
-            background: linear-gradient(to bottom, rgba(7, 27, 44, 0.5), transparent);
-            transition: background var(--duration) var(--ease-out), padding var(--duration) var(--ease-out);
+            padding: 1.25rem 0;
+            background: linear-gradient(to bottom, rgba(10, 29, 44, 0.55), rgba(10, 29, 44, 0.15) 70%, transparent);
+            transition: background var(--dur) var(--ease), padding var(--dur) var(--ease);
         }
 
-        .azure-header__inner {
+        .gt-header__inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: var(--space-md);
         }
 
-        .azure-logo {
+        /* Typographic logo */
+        .gt-logo {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.55rem;
+            color: var(--white);
             font-family: var(--font-display);
-            font-size: 1.35rem;
             font-weight: 600;
-            letter-spacing: 0.15em;
-            color: var(--color-white);
-            text-transform: uppercase;
-            white-space: nowrap;
-        }
-
-        .azure-logo span {
-            color: var(--color-gold);
-            font-style: italic;
-            letter-spacing: 0.05em;
-            margin-left: 0.25rem;
-            text-transform: none;
-        }
-
-        .azure-nav {
-            display: flex;
-            align-items: center;
-            gap: var(--space-lg);
-        }
-
-        .azure-nav__list {
-            display: flex;
-            list-style: none;
-            gap: var(--space-lg);
-        }
-
-        .azure-nav__link {
-            position: relative;
-            font-size: 0.85rem;
-            font-weight: 500;
             letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--color-white);
-            padding: 0.5rem 0;
+            line-height: 1;
         }
 
-        /* Animated underline on hover */
-        .azure-nav__link::after {
+        .gt-logo__mark {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            position: relative;
+        }
+
+        .gt-logo__mark::after {
             content: '';
             position: absolute;
+            bottom: -4px;
             left: 0;
-            bottom: 0;
-            width: 0;
+            right: 0;
             height: 1px;
-            background: var(--color-gold);
-            transition: width var(--duration) var(--ease-out);
+            background: var(--gold);
         }
 
-        .azure-nav__link:hover,
-        .azure-nav__link:focus-visible {
-            color: var(--color-gold);
-        }
-
-        .azure-nav__link:hover::after,
-        .azure-nav__link:focus-visible::after {
-            width: 100%;
-        }
-
-        .azure-nav__cta {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
+        .gt-logo__word {
+            font-size: 1.35rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: var(--color-white);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 2px;
-            transition: all var(--duration) var(--ease-out);
         }
 
-        .azure-nav__cta:hover,
-        .azure-nav__cta:focus-visible {
-            background: var(--color-gold);
-            border-color: var(--color-gold);
-            color: var(--color-midnight);
+        .gt-nav { display: flex; align-items: center; gap: var(--space-lg); }
+
+        .gt-nav__list { display: flex; gap: 2rem; }
+
+        .gt-nav__link {
+            position: relative;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--white);
+            padding: 0.4rem 0;
         }
 
-        /* CSS-only mobile menu using checkbox hack */
-        .azure-menu-toggle {
+        .gt-nav__link::after {
+            content: '';
             position: absolute;
-            opacity: 0;
-            pointer-events: none;
+            left: 0; bottom: 0;
+            width: 0; height: 1px;
+            background: var(--gold);
+            transition: width var(--dur) var(--ease);
         }
 
-        .azure-menu-btn {
+        .gt-nav__link:hover,
+        .gt-nav__link:focus-visible { color: var(--gold); }
+        .gt-nav__link:hover::after,
+        .gt-nav__link:focus-visible::after { width: 100%; }
+
+        .gt-nav__cta {
+            display: inline-block;
+            padding: 0.7rem 1.4rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 2px;
+            transition: all var(--dur) var(--ease);
+        }
+
+        .gt-nav__cta:hover,
+        .gt-nav__cta:focus-visible {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
+        }
+
+        /* CSS-only mobile menu */
+        .gt-menu-toggle { position: absolute; opacity: 0; pointer-events: none; }
+
+        .gt-menu-btn {
             display: none;
-            width: 44px;
-            height: 44px;
-            align-items: center;
-            justify-content: center;
+            width: 44px; height: 44px;
+            align-items: center; justify-content: center;
             cursor: pointer;
             position: relative;
             z-index: 110;
         }
 
-        .azure-menu-btn__lines {
+        .gt-menu-btn__lines {
             position: relative;
-            width: 26px;
-            height: 2px;
-            background: var(--color-white);
-            transition: background var(--duration) var(--ease-out);
+            width: 26px; height: 2px;
+            background: var(--white);
+            transition: background var(--dur) var(--ease);
         }
 
-        .azure-menu-btn__lines::before,
-        .azure-menu-btn__lines::after {
+        .gt-menu-btn__lines::before,
+        .gt-menu-btn__lines::after {
             content: '';
             position: absolute;
             left: 0;
-            width: 26px;
-            height: 2px;
-            background: var(--color-white);
-            transition: transform var(--duration) var(--ease-out), top var(--duration) var(--ease-out);
+            width: 26px; height: 2px;
+            background: var(--white);
+            transition: transform var(--dur) var(--ease), top var(--dur) var(--ease);
         }
+        .gt-menu-btn__lines::before { top: -8px; }
+        .gt-menu-btn__lines::after { top: 8px; }
 
-        .azure-menu-btn__lines::before { top: -8px; }
-        .azure-menu-btn__lines::after { top: 8px; }
-
-        /* Transform hamburger to X when open */
-        .azure-menu-toggle:checked ~ .azure-menu-btn .azure-menu-btn__lines {
-            background: transparent;
-        }
-        .azure-menu-toggle:checked ~ .azure-menu-btn .azure-menu-btn__lines::before {
-            top: 0;
-            transform: rotate(45deg);
-        }
-        .azure-menu-toggle:checked ~ .azure-menu-btn .azure-menu-btn__lines::after {
-            top: 0;
-            transform: rotate(-45deg);
-        }
+        .gt-menu-toggle:checked ~ .gt-menu-btn .gt-menu-btn__lines { background: transparent; }
+        .gt-menu-toggle:checked ~ .gt-menu-btn .gt-menu-btn__lines::before { top: 0; transform: rotate(45deg); }
+        .gt-menu-toggle:checked ~ .gt-menu-btn .gt-menu-btn__lines::after { top: 0; transform: rotate(-45deg); }
 
         /* =========================================================
-           5. HERO SECTION
-           Full-viewport cinematic hero with overlay
+           5. HERO
            ========================================================= */
-        .azure-hero {
+        .gt-hero {
             position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
-            color: var(--color-white);
+            color: var(--white);
             overflow: hidden;
             isolation: isolate;
         }
 
-        .azure-hero__bg {
+        .gt-hero__bg {
             position: absolute;
             inset: 0;
             z-index: -2;
-            background-image: url('https://images.unsplash.com/photo-1548572314-9817ae1f0666?auto=format&fit=crop&w=2000&q=80');
+            background-color: var(--navy);
+            background-image: url('https://images.unsplash.com/photo-1599640842225-85d111c60e6b?auto=format&fit=crop&w=2000&q=80');
             background-size: cover;
-            background-position: center;
+            background-position: center 40%;
         }
 
-        /* Dark gradient overlay for text readability */
-        .azure-hero__bg::after {
+        .gt-hero__bg::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(
-                135deg,
-                rgba(7, 27, 44, 0.75) 0%,
-                rgba(16, 42, 67, 0.55) 50%,
-                rgba(7, 27, 44, 0.4) 100%
-            );
+            background:
+                linear-gradient(180deg, rgba(10, 29, 44, 0.55) 0%, rgba(10, 29, 44, 0.25) 40%, rgba(10, 29, 44, 0.75) 100%),
+                linear-gradient(90deg, rgba(10, 29, 44, 0.5) 0%, transparent 60%);
         }
 
-        .azure-hero__content {
-            padding-top: 8rem;
+        .gt-hero__content {
+            padding-top: 9rem;
             padding-bottom: var(--space-3xl);
             max-width: 820px;
         }
 
-        .azure-hero__eyebrow {
-            color: var(--color-gold);
-            margin-bottom: var(--space-lg);
-            font-size: 0.8rem;
-            letter-spacing: 0.3em;
+        .gt-hero__logo {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.7rem;
+            margin-bottom: var(--space-xl);
+            color: var(--white);
+            font-family: var(--font-display);
+            line-height: 1;
+        }
+
+        .gt-hero__logo-mark {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            position: relative;
+        }
+
+        .gt-hero__logo-mark::after {
+            content: '';
+            position: absolute;
+            bottom: -6px; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .gt-hero__logo-word {
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
             font-weight: 500;
+            letter-spacing: 0.28em;
             text-transform: uppercase;
-            opacity: 0.95;
         }
 
-        .azure-hero__eyebrow::before {
-            width: 48px;
-            background: var(--color-gold);
-        }
-
-        .azure-hero__title {
-            font-size: clamp(2.75rem, 7vw, 5.5rem);
+        .gt-hero__eyebrow {
+            color: var(--gold);
             margin-bottom: var(--space-lg);
-            font-weight: 500;
-            line-height: 1.02;
         }
 
-        .azure-hero__title em {
+        .gt-hero__eyebrow::before { background: var(--gold); width: 48px; }
+
+        .gt-hero__title {
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            margin-bottom: var(--space-lg);
+            line-height: 1;
+        }
+
+        .gt-hero__title em {
             font-style: italic;
             font-weight: 400;
-            color: var(--color-gold-soft);
+            color: var(--gold-soft);
         }
 
-        .azure-hero__subtitle {
-            font-size: clamp(1rem, 1.4vw, 1.2rem);
+        .gt-hero__subtitle {
+            font-size: clamp(1rem, 1.3vw, 1.15rem);
             font-weight: 300;
-            line-height: 1.7;
+            line-height: 1.75;
             max-width: 560px;
             margin-bottom: var(--space-xl);
             opacity: 0.92;
         }
 
-        .azure-hero__actions {
+        .gt-hero__actions {
             display: flex;
             flex-wrap: wrap;
             gap: var(--space-sm);
         }
 
-        /* Buttons */
-        .azure-btn {
+        .gt-btn {
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
             padding: 1.1rem 2.25rem;
             font-family: var(--font-body);
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 600;
-            letter-spacing: 0.18em;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
             border-radius: 2px;
-            transition: all var(--duration) var(--ease-out);
-            cursor: pointer;
+            transition: all var(--dur) var(--ease);
         }
 
-        .azure-btn--primary {
-            background: var(--color-gold);
-            color: var(--color-midnight);
-            border: 1px solid var(--color-gold);
+        .gt-btn--primary {
+            background: var(--gold);
+            color: var(--navy);
+            border: 1px solid var(--gold);
         }
 
-        .azure-btn--primary:hover,
-        .azure-btn--primary:focus-visible {
-            background: var(--color-white);
-            border-color: var(--color-white);
+        .gt-btn--primary:hover,
+        .gt-btn--primary:focus-visible {
+            background: var(--white);
+            border-color: var(--white);
             transform: translateY(-2px);
         }
 
-        .azure-btn--ghost {
+        .gt-btn--ghost {
             background: transparent;
-            color: var(--color-white);
+            color: var(--white);
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
-        .azure-btn--ghost:hover,
-        .azure-btn--ghost:focus-visible {
-            background: var(--color-white);
-            color: var(--color-midnight);
-            border-color: var(--color-white);
+        .gt-btn--ghost:hover,
+        .gt-btn--ghost:focus-visible {
+            background: var(--white);
+            color: var(--navy);
+            border-color: var(--white);
         }
 
-        .azure-btn--dark {
-            background: var(--color-navy);
-            color: var(--color-white);
-            border: 1px solid var(--color-navy);
+        .gt-btn--dark {
+            background: var(--navy);
+            color: var(--white);
+            border: 1px solid var(--navy);
         }
 
-        .azure-btn--dark:hover,
-        .azure-btn--dark:focus-visible {
-            background: var(--color-midnight);
-            border-color: var(--color-midnight);
+        .gt-btn--dark:hover,
+        .gt-btn--dark:focus-visible {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
         }
 
-        .azure-btn__arrow {
-            transition: transform var(--duration) var(--ease-out);
+        .gt-btn__arrow {
+            transition: transform var(--dur) var(--ease);
         }
-
-        .azure-btn:hover .azure-btn__arrow {
-            transform: translateX(4px);
-        }
+        .gt-btn:hover .gt-btn__arrow { transform: translateX(4px); }
 
         /* Scroll indicator */
-        .azure-hero__scroll {
+        .gt-hero__scroll {
             position: absolute;
-            bottom: 2.5rem;
+            bottom: 2rem;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 0.75rem;
-            color: var(--color-white);
-            font-size: 0.7rem;
+            color: var(--white);
+            font-size: 0.68rem;
             letter-spacing: 0.3em;
             text-transform: uppercase;
-            opacity: 0.8;
+            opacity: 0.85;
         }
 
-        .azure-hero__scroll-line {
-            width: 1px;
-            height: 40px;
-            background: linear-gradient(to bottom, var(--color-gold), transparent);
+        .gt-hero__scroll-line {
+            width: 1px; height: 44px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
             animation: scrollPulse 2.5s ease-in-out infinite;
         }
 
         @keyframes scrollPulse {
-            0%, 100% { transform: scaleY(1); opacity: 0.8; }
-            50% { transform: scaleY(0.6); opacity: 0.4; }
+            0%, 100% { transform: scaleY(1); opacity: 0.85; }
+            50% { transform: scaleY(0.55); opacity: 0.4; }
         }
 
         /* =========================================================
-           6. CRUISE DISCOVERY — editorial asymmetric grid
+           6. CRUISE OVERVIEW
            ========================================================= */
-        .azure-discover {
+        .gt-overview {
             padding: var(--space-3xl) 0;
-            background: var(--color-ivory);
+            background: var(--ivory);
         }
 
-        .azure-discover__header {
-            max-width: 720px;
-            margin-bottom: var(--space-2xl);
+        .gt-overview__header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto var(--space-2xl);
         }
 
-        .azure-discover__title {
-            font-size: clamp(2rem, 4.5vw, 3.5rem);
+        .gt-overview__title {
+            font-size: clamp(2.25rem, 5vw, 3.75rem);
+            color: var(--navy);
             margin-bottom: var(--space-md);
-            color: var(--color-navy);
         }
 
-        .azure-discover__title em {
+        .gt-overview__title em { color: var(--med-blue); }
+
+        .gt-overview__lead {
+            font-size: 1.05rem;
+            color: var(--muted);
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .gt-overview__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            border-top: 1px solid var(--sand);
+        }
+
+        .gt-overview__item {
+            padding: var(--space-xl) var(--space-lg);
+            border-right: 1px solid var(--sand);
+            position: relative;
+            transition: background var(--dur) var(--ease);
+        }
+
+        .gt-overview__item:last-child { border-right: none; }
+
+        .gt-overview__item:hover { background: var(--white); }
+
+        .gt-overview__num {
+            font-family: var(--font-display);
             font-style: italic;
-            color: var(--color-teal);
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: var(--space-sm);
+            line-height: 1;
         }
 
-        .azure-discover__lead {
-            font-size: 1.1rem;
-            color: var(--color-muted);
-            max-width: 580px;
+        .gt-overview__item-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+        }
+
+        .gt-overview__item-text {
+            font-size: 0.95rem;
+            color: var(--muted);
             line-height: 1.7;
         }
 
-        /* Asymmetric editorial grid: featured + 2 smaller */
-        .azure-destinations {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr;
-            grid-template-rows: auto auto;
-            gap: var(--space-lg);
-        }
-
-        .azure-destination {
+        /* =========================================================
+           7. ITINERARY
+           ========================================================= */
+        .gt-itinerary {
+            padding: var(--space-3xl) 0;
+            background: var(--navy);
+            color: var(--ivory);
             position: relative;
             overflow: hidden;
+        }
+
+        .gt-itinerary::before {
+            content: '';
+            position: absolute;
+            top: -100px; right: -100px;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(214, 184, 121, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .gt-itinerary__header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto var(--space-2xl);
+        }
+
+        .gt-itinerary__title {
+            font-size: clamp(2.25rem, 5vw, 3.75rem);
+            color: var(--ivory);
+            margin-bottom: var(--space-md);
+        }
+
+        .gt-itinerary__title em { color: var(--gold); }
+
+        .gt-itinerary__lead {
+            font-size: 1.05rem;
+            color: rgba(248, 245, 239, 0.7);
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        /* Route banner */
+        .gt-route {
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(214, 184, 121, 0.25);
             border-radius: 4px;
-            background: var(--color-navy);
+            margin-bottom: var(--space-2xl);
+            text-align: center;
         }
 
-        .azure-destination--featured {
-            grid-row: 1 / 3;
-            min-height: 640px;
-        }
-
-        .azure-destination--secondary {
-            min-height: 310px;
-        }
-
-        .azure-destination__image {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-        }
-
-        .azure-destination__image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 1s var(--ease-out);
-        }
-
-        .azure-destination:hover .azure-destination__image img {
-            transform: scale(1.06);
-        }
-
-        /* Dark gradient overlay for legibility */
-        .azure-destination__overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to top,
-                rgba(7, 27, 44, 0.85) 0%,
-                rgba(7, 27, 44, 0.2) 55%,
-                rgba(7, 27, 44, 0.05) 100%
-            );
-            z-index: 1;
-        }
-
-        .azure-destination__content {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            padding: var(--space-lg);
-            color: var(--color-white);
-            z-index: 2;
-        }
-
-        .azure-destination__tag {
-            display: inline-block;
+        .gt-route__label {
+            display: block;
             font-size: 0.7rem;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
-            color: var(--color-gold);
-            margin-bottom: var(--space-sm);
+            color: var(--gold);
+            margin-bottom: 0.75rem;
             font-weight: 600;
         }
 
-        .azure-destination__name {
+        .gt-route__path {
+            font-family: var(--font-display);
+            font-size: clamp(0.85rem, 1.4vw, 1.15rem);
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            color: var(--ivory);
+            line-height: 1.8;
+        }
+
+        .gt-route__path .gt-route__arrow {
+            color: var(--gold);
+            margin: 0 0.5rem;
+            font-style: italic;
+        }
+
+        /* Timeline */
+        .gt-timeline {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-lg);
+        }
+
+        .gt-timeline::before {
+            content: '';
+            position: absolute;
+            top: 140px;
+            left: 5%; right: 5%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold) 10%, var(--gold) 90%, transparent);
+            opacity: 0.4;
+        }
+
+        .gt-stop {
+            position: relative;
+            padding-top: 160px;
+        }
+
+        .gt-stop__image {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 140px;
+            overflow: hidden;
+            border-radius: 4px;
+            border: 1px solid rgba(214, 184, 121, 0.2);
+        }
+
+        .gt-stop__image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 1s var(--ease);
+        }
+
+        .gt-stop:hover .gt-stop__image img { transform: scale(1.08); }
+
+        .gt-stop__marker {
+            position: absolute;
+            top: 140px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 14px; height: 14px;
+            background: var(--gold);
+            border: 2px solid var(--navy);
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 0 0 4px rgba(214, 184, 121, 0.15);
+        }
+
+        .gt-stop__num {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .gt-stop__city {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--ivory);
+            margin-bottom: 0.15rem;
+            line-height: 1.2;
+        }
+
+        .gt-stop__country {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .gt-stop__desc {
+            font-size: 0.88rem;
+            color: rgba(248, 245, 239, 0.65);
+            line-height: 1.6;
+        }
+
+        .gt-stop--return .gt-stop__marker {
+            background: var(--ivory);
+            border-color: var(--gold);
+        }
+
+        /* =========================================================
+           8. DESTINATION GALLERY
+           ========================================================= */
+        .gt-gallery {
+            padding: var(--space-3xl) 0;
+            background: var(--ivory);
+        }
+
+        .gt-gallery__header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto var(--space-2xl);
+        }
+
+        .gt-gallery__title {
+            font-size: clamp(2.25rem, 5vw, 3.75rem);
+            color: var(--navy);
+            margin-bottom: var(--space-md);
+        }
+
+        .gt-gallery__title em { color: var(--med-blue); }
+
+        .gt-gallery__lead {
+            font-size: 1.05rem;
+            color: var(--muted);
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        /* Asymmetric editorial grid */
+        .gt-destinations {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: 200px;
+            gap: var(--space-md);
+        }
+
+        .gt-dest {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            background: var(--navy);
+            cursor: pointer;
+        }
+
+        .gt-dest--large {
+            grid-column: span 7;
+            grid-row: span 2;
+        }
+
+        .gt-dest--tall {
+            grid-column: span 5;
+            grid-row: span 2;
+        }
+
+        .gt-dest--medium {
+            grid-column: span 4;
+            grid-row: span 2;
+        }
+
+        .gt-dest--wide {
+            grid-column: span 8;
+            grid-row: span 2;
+        }
+
+        .gt-dest__image {
+            position: absolute;
+            inset: 0;
+        }
+
+        .gt-dest__image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s var(--ease);
+        }
+
+        .gt-dest:hover .gt-dest__image img { transform: scale(1.08); }
+
+        .gt-dest__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 29, 44, 0.9) 0%, rgba(10, 29, 44, 0.15) 55%, rgba(10, 29, 44, 0.05) 100%);
+            z-index: 1;
+            transition: background var(--dur) var(--ease);
+        }
+
+        .gt-dest:hover .gt-dest__overlay {
+            background: linear-gradient(to top, rgba(10, 29, 44, 0.95) 0%, rgba(10, 29, 44, 0.3) 60%, rgba(10, 29, 44, 0.1) 100%);
+        }
+
+        .gt-dest__content {
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            padding: var(--space-lg);
+            color: var(--white);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 100%;
+        }
+
+        .gt-dest__country {
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .gt-dest__name {
             font-family: var(--font-display);
             font-size: clamp(1.5rem, 2.5vw, 2.25rem);
             font-weight: 500;
-            margin-bottom: var(--space-sm);
-            line-height: 1.15;
+            margin-bottom: 0.75rem;
+            line-height: 1.1;
         }
 
-        .azure-destination--featured .azure-destination__name {
-            font-size: clamp(2rem, 3.5vw, 3rem);
-        }
+        .gt-dest--large .gt-dest__name { font-size: clamp(2rem, 3.5vw, 3rem); }
 
-        .azure-destination__desc {
-            font-size: 0.95rem;
+        .gt-dest__desc {
+            font-size: 0.92rem;
             line-height: 1.6;
-            opacity: 0.9;
+            opacity: 0.88;
             max-width: 440px;
             margin-bottom: var(--space-md);
         }
 
-        .azure-destination__link {
+        .gt-dest__link {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: var(--color-gold);
+            color: var(--gold);
             padding-bottom: 4px;
             border-bottom: 1px solid transparent;
-            transition: all var(--duration) var(--ease-out);
+            transition: all var(--dur) var(--ease);
+            width: fit-content;
         }
 
-        .azure-destination__link:hover,
-        .azure-destination__link:focus-visible {
-            color: var(--color-white);
-            border-bottom-color: var(--color-gold);
+        .gt-dest__link:hover,
+        .gt-dest__link:focus-visible {
+            color: var(--white);
+            border-bottom-color: var(--gold);
         }
 
-        .azure-destination__link svg {
-            transition: transform var(--duration) var(--ease-out);
-        }
-
-        .azure-destination__link:hover svg {
-            transform: translateX(4px);
-        }
+        .gt-dest__link svg { transition: transform var(--dur) var(--ease); }
+        .gt-dest__link:hover svg { transform: translateX(4px); }
 
         /* =========================================================
-           7. ABOUT SECTION — split editorial layout
+           9. LIFE ONBOARD
            ========================================================= */
-        .azure-about {
+        .gt-onboard {
             padding: var(--space-3xl) 0;
-            background: var(--color-white);
+            background: var(--white);
         }
 
-        .azure-about__grid {
-            display: grid;
-            grid-template-columns: 1fr 1.1fr;
-            gap: clamp(2rem, 6vw, 6rem);
-            align-items: center;
-        }
-
-        .azure-about__image {
-            position: relative;
-            overflow: hidden;
-            border-radius: 4px;
-            aspect-ratio: 4 / 5;
-        }
-
-        .azure-about__image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 1.2s var(--ease-out);
-        }
-
-        .azure-about__image:hover img {
-            transform: scale(1.04);
-        }
-
-        /* Gold accent frame */
-        .azure-about__image::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            right: -20px;
-            bottom: -20px;
-            border: 1px solid var(--color-gold);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .azure-about__title {
-            font-size: clamp(1.85rem, 3.5vw, 2.75rem);
-            color: var(--color-navy);
-            margin-bottom: var(--space-md);
-            line-height: 1.2;
-        }
-
-        .azure-about__title em {
-            font-style: italic;
-            color: var(--color-teal);
-        }
-
-        .azure-about__text {
-            color: var(--color-muted);
-            font-size: 1.05rem;
-            line-height: 1.8;
-            margin-bottom: var(--space-xl);
-            max-width: 520px;
-        }
-
-        .azure-principles {
-            list-style: none;
-            margin-bottom: var(--space-xl);
-            border-top: 1px solid var(--color-sand);
-        }
-
-        .azure-principle {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-md);
-            padding: var(--space-md) 0;
-            border-bottom: 1px solid var(--color-sand);
-        }
-
-        .azure-principle__number {
-            font-family: var(--font-display);
-            font-style: italic;
-            font-size: 1.5rem;
-            color: var(--color-gold);
-            flex-shrink: 0;
-            min-width: 40px;
-        }
-
-        .azure-principle__title {
-            font-family: var(--font-display);
-            font-size: 1.15rem;
-            font-weight: 500;
-            color: var(--color-navy);
-            margin-bottom: 0.25rem;
-        }
-
-        .azure-principle__desc {
-            font-size: 0.9rem;
-            color: var(--color-muted);
-        }
-
-        .azure-text-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--color-navy);
-            padding-bottom: 4px;
-            border-bottom: 1px solid var(--color-gold);
-            transition: all var(--duration) var(--ease-out);
-        }
-
-        .azure-text-link:hover,
-        .azure-text-link:focus-visible {
-            color: var(--color-teal);
-            border-bottom-color: var(--color-teal);
-            gap: 1rem;
-        }
-
-        /* =========================================================
-           8. FEATURES / BENEFITS
-           ========================================================= */
-        .azure-features {
-            padding: var(--space-3xl) 0;
-            background: var(--color-sand);
-        }
-
-        .azure-features__header {
+        .gt-onboard__header {
             text-align: center;
-            max-width: 640px;
+            max-width: 760px;
             margin: 0 auto var(--space-2xl);
         }
 
-        .azure-features__title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: var(--color-navy);
+        .gt-onboard__title {
+            font-size: clamp(2.25rem, 5vw, 3.75rem);
+            color: var(--navy);
             margin-bottom: var(--space-md);
         }
 
-        .azure-features__title em {
-            font-style: italic;
-            color: var(--color-teal);
-        }
+        .gt-onboard__title em { color: var(--med-blue); }
 
-        .azure-features__lead {
-            color: var(--color-muted);
+        .gt-onboard__lead {
             font-size: 1.05rem;
+            color: var(--muted);
+            max-width: 620px;
+            margin: 0 auto;
         }
 
-        .azure-benefits {
+        .gt-features {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0;
-            border-top: 1px solid rgba(16, 42, 67, 0.15);
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-md);
         }
 
-        .azure-benefit {
-            padding: var(--space-xl) var(--space-lg);
-            border-right: 1px solid rgba(16, 42, 67, 0.15);
-            transition: background var(--duration) var(--ease-out);
+        .gt-feature {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            min-height: 380px;
+            background: var(--navy);
         }
 
-        .azure-benefit:last-child { border-right: none; }
-
-        .azure-benefit:hover {
-            background: rgba(255, 255, 255, 0.5);
+        .gt-feature__image {
+            position: absolute;
+            inset: 0;
         }
 
-        .azure-benefit__icon {
-            width: 48px;
-            height: 48px;
-            color: var(--color-teal);
+        .gt-feature__image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s var(--ease);
+        }
+
+        .gt-feature:hover .gt-feature__image img { transform: scale(1.06); }
+
+        .gt-feature__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 29, 44, 0.92) 0%, rgba(10, 29, 44, 0.35) 60%, rgba(10, 29, 44, 0.1) 100%);
+            z-index: 1;
+        }
+
+        .gt-feature__content {
+            position: relative;
+            z-index: 2;
+            padding: var(--space-xl);
+            color: var(--white);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .gt-feature__icon {
+            width: 44px; height: 44px;
+            color: var(--gold);
             margin-bottom: var(--space-md);
         }
 
-        .azure-benefit__title {
+        .gt-feature__title {
             font-family: var(--font-display);
-            font-size: 1.3rem;
+            font-size: 1.75rem;
             font-weight: 500;
-            color: var(--color-navy);
             margin-bottom: 0.75rem;
+            line-height: 1.15;
         }
 
-        .azure-benefit__text {
+        .gt-feature__text {
             font-size: 0.95rem;
-            color: var(--color-muted);
             line-height: 1.7;
+            opacity: 0.9;
+            max-width: 420px;
         }
 
         /* =========================================================
-           9. FEATURED EXPERIENCE — cinematic full-bleed
+           10. CINEMATIC BRAND BANNER
            ========================================================= */
-        .azure-experience {
+        .gt-banner {
             position: relative;
-            min-height: 80vh;
+            min-height: 70vh;
             display: flex;
             align-items: center;
-            color: var(--color-white);
+            color: var(--white);
             overflow: hidden;
             isolation: isolate;
         }
 
-        .azure-experience__bg {
+        .gt-banner__bg {
             position: absolute;
             inset: 0;
             z-index: -2;
-            background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80');
+            background-color: var(--navy);
+            background-image: url('https://images.unsplash.com/photo-1548572314-9817ae1f0666?auto=format&fit=crop&w=2000&q=80');
             background-size: cover;
             background-position: center;
         }
 
-        .azure-experience__bg::after {
+        .gt-banner__bg::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(
-                135deg,
-                rgba(7, 27, 44, 0.88) 0%,
-                rgba(16, 42, 67, 0.7) 100%
-            );
+            background: linear-gradient(135deg, rgba(10, 29, 44, 0.85) 0%, rgba(16, 43, 63, 0.6) 100%);
         }
 
-        .azure-experience__content {
+        .gt-banner__content {
             padding: var(--space-3xl) 0;
             max-width: 720px;
         }
 
-        .azure-experience__eyebrow {
-            color: var(--color-gold);
-        }
+        .gt-banner__eyebrow { color: var(--gold); }
+        .gt-banner__eyebrow::before { background: var(--gold); }
 
-        .azure-experience__eyebrow::before {
-            background: var(--color-gold);
-        }
-
-        .azure-experience__title {
-            font-size: clamp(2.25rem, 5vw, 4rem);
+        .gt-banner__title {
+            font-size: clamp(2.5rem, 5.5vw, 4.5rem);
             margin-bottom: var(--space-md);
-            font-weight: 500;
-            line-height: 1.1;
+            line-height: 1.05;
         }
 
-        .azure-experience__title em {
-            font-style: italic;
-            color: var(--color-gold-soft);
-        }
+        .gt-banner__title em { color: var(--gold-soft); }
 
-        .azure-experience__text {
+        .gt-banner__text {
             font-size: 1.15rem;
             font-weight: 300;
-            line-height: 1.7;
-            max-width: 520px;
+            line-height: 1.75;
+            max-width: 540px;
             margin-bottom: var(--space-xl);
             opacity: 0.92;
         }
 
         /* =========================================================
-           10. CONTACT SECTION
+           11. CONTACT
            ========================================================= */
-        .azure-contact {
+        .gt-contact {
             padding: var(--space-3xl) 0;
-            background: var(--color-ivory);
+            background: var(--sand);
         }
 
-        .azure-contact__header {
-            text-align: center;
-            max-width: 640px;
-            margin: 0 auto var(--space-2xl);
-        }
-
-        .azure-contact__title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: var(--color-navy);
-            margin-bottom: var(--space-md);
-        }
-
-        .azure-contact__title em {
-            font-style: italic;
-            color: var(--color-teal);
-        }
-
-        .azure-contact__lead {
-            color: var(--color-muted);
-            font-size: 1.05rem;
-        }
-
-        .azure-contact__grid {
+        .gt-contact__grid {
             display: grid;
-            grid-template-columns: 1fr 1.5fr;
+            grid-template-columns: 1fr 1.3fr;
             gap: clamp(2rem, 5vw, 5rem);
             align-items: start;
         }
 
-        .azure-contact__info {
-            padding-right: var(--space-lg);
-        }
-
-        .azure-contact__info-title {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: var(--color-navy);
+        .gt-contact__title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--navy);
             margin-bottom: var(--space-md);
+            line-height: 1.15;
         }
 
-        .azure-contact__info-text {
-            color: var(--color-muted);
+        .gt-contact__title em { color: var(--med-blue); }
+
+        .gt-contact__text {
+            color: var(--muted);
+            font-size: 1.05rem;
             margin-bottom: var(--space-xl);
             line-height: 1.7;
         }
 
-        .azure-contact__details {
-            list-style: none;
+        .gt-contact__details {
             display: flex;
             flex-direction: column;
             gap: var(--space-md);
         }
 
-        .azure-contact__detail {
+        .gt-contact__detail {
             display: flex;
             align-items: flex-start;
             gap: var(--space-sm);
             padding-bottom: var(--space-md);
-            border-bottom: 1px solid var(--color-sand);
+            border-bottom: 1px solid rgba(16, 43, 63, 0.12);
         }
 
-        .azure-contact__detail:last-child { border-bottom: none; }
+        .gt-contact__detail:last-child { border-bottom: none; }
 
-        .azure-contact__detail-icon {
-            width: 40px;
-            height: 40px;
+        .gt-contact__detail-icon {
+            width: 42px; height: 42px;
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--color-white);
-            border: 1px solid var(--color-sand);
+            background: var(--white);
             border-radius: 50%;
-            color: var(--color-teal);
+            color: var(--med-blue);
         }
 
-        .azure-contact__detail-label {
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
+        .gt-contact__detail-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--color-muted);
+            color: var(--muted);
             margin-bottom: 0.25rem;
             font-weight: 600;
         }
 
-        .azure-contact__detail-value {
-            color: var(--color-navy);
+        .gt-contact__detail-value {
+            color: var(--navy);
             font-weight: 500;
             font-size: 1rem;
         }
 
-        .azure-contact__detail-value:hover {
-            color: var(--color-teal);
-        }
+        .gt-contact__detail-value:hover { color: var(--med-blue); }
 
-        /* Contact form */
-        .azure-contact__form {
-            background: var(--color-white);
-            padding: clamp(1.5rem, 3vw, 3rem);
+        /* Form */
+        .gt-form {
+            background: var(--white);
+            padding: clamp(1.75rem, 3vw, 3rem);
             border-radius: 4px;
-            box-shadow: var(--shadow-soft);
+            box-shadow: 0 20px 50px -20px rgba(16, 43, 63, 0.15);
         }
 
-        .azure-form-row {
+        .gt-form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: var(--space-md);
         }
 
-        .azure-form-group {
-            margin-bottom: var(--space-md);
-        }
+        .gt-form-group { margin-bottom: var(--space-md); }
 
-        .azure-form-label {
+        .gt-form-label {
             display: block;
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: var(--color-navy);
+            color: var(--navy);
             margin-bottom: 0.6rem;
             font-weight: 600;
         }
 
-        .azure-form-input,
-        .azure-form-textarea {
+        .gt-form-input,
+        .gt-form-textarea {
             width: 100%;
             padding: 0.95rem 1rem;
             font-family: var(--font-body);
             font-size: 0.95rem;
-            color: var(--color-ink);
-            background: var(--color-ivory);
-            border: 1px solid var(--color-sand);
+            color: var(--ink);
+            background: var(--ivory);
+            border: 1px solid var(--sand);
             border-radius: 2px;
-            transition: all var(--duration) var(--ease-out);
+            transition: all var(--dur) var(--ease);
         }
 
-        .azure-form-input:focus,
-        .azure-form-textarea:focus {
+        .gt-form-input:focus,
+        .gt-form-textarea:focus {
             outline: none;
-            border-color: var(--color-teal);
-            background: var(--color-white);
-            box-shadow: 0 0 0 3px rgba(42, 127, 133, 0.12);
+            border-color: var(--med-blue);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(45, 100, 120, 0.1);
         }
 
-        .azure-form-textarea {
+        .gt-form-textarea {
             resize: vertical;
             min-height: 140px;
-            font-family: inherit;
         }
 
-        .azure-form-submit {
+        .gt-form-submit {
             width: 100%;
             padding: 1.1rem 2rem;
-            background: var(--color-navy);
-            color: var(--color-white);
+            background: var(--navy);
+            color: var(--white);
             font-family: var(--font-body);
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 600;
-            letter-spacing: 0.18em;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            border: 1px solid var(--color-navy);
+            border: 1px solid var(--navy);
             border-radius: 2px;
             cursor: pointer;
-            transition: all var(--duration) var(--ease-out);
+            transition: all var(--dur) var(--ease);
             margin-top: var(--space-sm);
         }
 
-        .azure-form-submit:hover,
-        .azure-form-submit:focus-visible {
-            background: var(--color-gold);
-            border-color: var(--color-gold);
-            color: var(--color-midnight);
+        .gt-form-submit:hover,
+        .gt-form-submit:focus-visible {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
         }
 
         /* =========================================================
-           11. FOOTER
+           12. FOOTER
            ========================================================= */
-        .azure-footer {
-            background: var(--color-midnight);
-            color: var(--color-ivory);
+        .gt-footer {
+            background: var(--navy-deep);
+            color: var(--ivory);
             padding: var(--space-2xl) 0 var(--space-lg);
         }
 
-        .azure-footer__grid {
+        .gt-footer__grid {
             display: grid;
             grid-template-columns: 1.5fr 1fr 1fr 1fr;
             gap: var(--space-xl);
             padding-bottom: var(--space-xl);
-            border-bottom: 1px solid rgba(248, 246, 240, 0.1);
+            border-bottom: 1px solid rgba(248, 245, 239, 0.1);
         }
 
-        .azure-footer__brand {
+        .gt-footer__logo {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.55rem;
+            color: var(--ivory);
+            font-family: var(--font-display);
+            line-height: 1;
+            margin-bottom: var(--space-md);
+        }
+
+        .gt-footer__logo-mark {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            position: relative;
+        }
+
+        .gt-footer__logo-mark::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0; right: 0;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .gt-footer__logo-word {
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+        }
+
+        .gt-footer__tagline {
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--gold);
+            font-size: 1.05rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .gt-footer__desc {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(248, 245, 239, 0.6);
             max-width: 320px;
         }
 
-        .azure-footer__logo {
-            font-family: var(--font-display);
-            font-size: 1.35rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            color: var(--color-ivory);
-            text-transform: uppercase;
-            margin-bottom: var(--space-sm);
-        }
-
-        .azure-footer__logo span {
-            color: var(--color-gold);
-            font-style: italic;
-            letter-spacing: 0.05em;
-            margin-left: 0.25rem;
-            text-transform: none;
-        }
-
-        .azure-footer__tagline {
-            font-family: var(--font-display);
-            font-style: italic;
-            color: var(--color-gold);
-            font-size: 1rem;
-            margin-bottom: var(--space-md);
-        }
-
-        .azure-footer__desc {
-            font-size: 0.9rem;
-            line-height: 1.7;
-            color: rgba(248, 246, 240, 0.65);
-        }
-
-        .azure-footer__heading {
-            font-size: 0.75rem;
+        .gt-footer__heading {
+            font-size: 0.72rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--color-gold);
+            color: var(--gold);
             margin-bottom: var(--space-md);
             font-weight: 600;
         }
 
-        .azure-footer__list {
-            list-style: none;
+        .gt-footer__list {
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
         }
 
-        .azure-footer__link {
+        .gt-footer__link {
             font-size: 0.9rem;
-            color: rgba(248, 246, 240, 0.7);
-            transition: color var(--duration) var(--ease-out);
+            color: rgba(248, 245, 239, 0.7);
+            transition: color var(--dur) var(--ease);
         }
 
-        .azure-footer__link:hover,
-        .azure-footer__link:focus-visible {
-            color: var(--color-gold);
-        }
+        .gt-footer__link:hover,
+        .gt-footer__link:focus-visible { color: var(--gold); }
 
-        .azure-footer__bottom {
+        .gt-footer__bottom {
             padding-top: var(--space-lg);
             display: flex;
             justify-content: space-between;
@@ -1171,52 +1236,47 @@
             flex-wrap: wrap;
             gap: var(--space-sm);
             font-size: 0.85rem;
-            color: rgba(248, 246, 240, 0.5);
+            color: rgba(248, 245, 239, 0.5);
         }
 
-        .azure-footer__closing {
+        .gt-footer__closing {
             font-family: var(--font-display);
             font-style: italic;
-            color: rgba(198, 165, 107, 0.8);
+            color: rgba(214, 184, 121, 0.85);
         }
 
         /* =========================================================
-           12. RESPONSIVE — Tablet (max-width: 1023px)
+           13. RESPONSIVE — Tablet
            ========================================================= */
         @media (max-width: 1023px) {
-            .azure-benefits {
+            .gt-overview__grid { grid-template-columns: 1fr; }
+            .gt-overview__item { border-right: none; border-bottom: 1px solid var(--sand); }
+            .gt-overview__item:last-child { border-bottom: none; }
+
+            .gt-timeline {
                 grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-md);
             }
 
-            .azure-benefit {
-                border-bottom: 1px solid rgba(16, 42, 67, 0.15);
+            .gt-timeline::before { display: none; }
+
+            .gt-destinations {
+                grid-template-columns: repeat(6, 1fr);
+                grid-auto-rows: 220px;
             }
 
-            .azure-benefit:nth-child(2) { border-right: none; }
-            .azure-benefit:nth-child(3) { border-right: 1px solid rgba(16, 42, 67, 0.15); }
+            .gt-dest--large { grid-column: span 6; grid-row: span 2; }
+            .gt-dest--tall { grid-column: span 3; grid-row: span 2; }
+            .gt-dest--medium { grid-column: span 3; grid-row: span 2; }
+            .gt-dest--wide { grid-column: span 6; grid-row: span 2; }
 
-            .azure-destinations {
-                grid-template-columns: 1fr 1fr;
-            }
+            .gt-features { grid-template-columns: 1fr; }
 
-            .azure-destination--featured {
-                grid-column: 1 / -1;
-                grid-row: auto;
-                min-height: 480px;
-            }
-
-            .azure-about__grid {
-                gap: var(--space-xl);
-            }
-
-            .azure-footer__grid {
-                grid-template-columns: 1fr 1fr;
-                gap: var(--space-xl);
-            }
+            .gt-footer__grid { grid-template-columns: 1fr 1fr; }
         }
 
         /* =========================================================
-           13. RESPONSIVE — Mobile (max-width: 767px)
+           14. RESPONSIVE — Mobile
            ========================================================= */
         @media (max-width: 767px) {
             :root {
@@ -1224,275 +1284,464 @@
                 --space-2xl: 4rem;
             }
 
-            /* Show hamburger, hide desktop nav */
-            .azure-menu-btn {
-                display: flex;
-            }
+            .gt-menu-btn { display: flex; }
 
-            .azure-nav {
+            .gt-nav {
                 position: fixed;
-                top: 0;
-                right: 0;
+                top: 0; right: 0;
                 width: min(85%, 340px);
                 height: 100vh;
-                background: var(--color-midnight);
+                background: var(--navy);
                 flex-direction: column;
                 align-items: flex-start;
                 padding: 6rem 2rem 2rem;
                 gap: var(--space-lg);
                 transform: translateX(100%);
-                transition: transform var(--duration) var(--ease-out);
-                box-shadow: -20px 0 60px rgba(0, 0, 0, 0.3);
+                transition: transform var(--dur) var(--ease);
+                box-shadow: -20px 0 60px rgba(0, 0, 0, 0.4);
             }
 
-            .azure-nav__list {
+            .gt-nav__list {
                 flex-direction: column;
                 gap: var(--space-md);
                 width: 100%;
             }
 
-            .azure-nav__link {
-                font-size: 1rem;
+            .gt-nav__link { font-size: 1rem; display: block; padding: 0.5rem 0; }
+            .gt-nav__cta { width: 100%; text-align: center; margin-top: var(--space-sm); }
+
+            .gt-menu-toggle:checked ~ .gt-nav { transform: translateX(0); }
+
+            .gt-hero__content { padding-top: 7rem; padding-bottom: 5rem; }
+            .gt-hero__scroll { display: none; }
+
+            .gt-hero__actions { flex-direction: column; width: 100%; }
+            .gt-hero__actions .gt-btn { width: 100%; justify-content: center; }
+
+            .gt-timeline {
+                grid-template-columns: 1fr;
+                padding-left: 2rem;
+            }
+
+            .gt-timeline::before {
                 display: block;
-                padding: 0.5rem 0;
+                top: 0; bottom: 0;
+                left: 0; right: auto;
+                width: 1px; height: 100%;
+                background: linear-gradient(180deg, transparent, var(--gold) 10%, var(--gold) 90%, transparent);
             }
 
-            .azure-nav__cta {
-                width: 100%;
-                text-align: center;
-                margin-top: var(--space-sm);
+            .gt-stop {
+                padding-top: 0;
+                padding-left: 1.5rem;
+                padding-bottom: var(--space-lg);
+                border-left: none;
             }
 
-            /* Open mobile menu when checkbox is checked */
-            .azure-menu-toggle:checked ~ .azure-nav {
-                transform: translateX(0);
+            .gt-stop__image {
+                position: relative;
+                height: 180px;
+                margin-bottom: var(--space-sm);
             }
 
-            .azure-hero__content {
-                padding-top: 7rem;
-                padding-bottom: 5rem;
+            .gt-stop__marker {
+                position: absolute;
+                top: 50%;
+                left: -2.35rem;
+                transform: translateY(-50%);
             }
 
-            .azure-hero__scroll {
-                display: none;
-            }
-
-            .azure-hero__actions {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .azure-hero__actions .azure-btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .azure-destinations {
+            .gt-destinations {
                 grid-template-columns: 1fr;
+                grid-auto-rows: 280px;
             }
 
-            .azure-destination--featured,
-            .azure-destination--secondary {
-                min-height: 380px;
+            .gt-dest--large,
+            .gt-dest--tall,
+            .gt-dest--medium,
+            .gt-dest--wide {
+                grid-column: span 1;
+                grid-row: span 1;
             }
 
-            .azure-about__grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-xl);
-            }
+            .gt-contact__grid { grid-template-columns: 1fr; }
+            .gt-form-row { grid-template-columns: 1fr; }
 
-            .azure-about__image {
-                aspect-ratio: 4 / 3;
-            }
+            .gt-footer__grid { grid-template-columns: 1fr; gap: var(--space-xl); }
+            .gt-footer__bottom { flex-direction: column; text-align: center; }
 
-            .azure-about__image::before {
-                display: none;
-            }
+            .gt-banner { min-height: 60vh; }
 
-            .azure-benefits {
-                grid-template-columns: 1fr;
-            }
-
-            .azure-benefit {
-                border-right: none;
-            }
-
-            .azure-contact__grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-xl);
-            }
-
-            .azure-contact__info {
-                padding-right: 0;
-            }
-
-            .azure-form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .azure-footer__grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-xl);
-            }
-
-            .azure-footer__bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .azure-experience {
-                min-height: 70vh;
-            }
+            .gt-route { padding: 1.25rem 1rem; }
+            .gt-route__path { font-size: 0.78rem; letter-spacing: 0.04em; }
+            .gt-route__path .gt-route__arrow { margin: 0 0.3rem; }
         }
 
-        @media (max-width: 420px) {
-            .azure-destination__content {
-                padding: var(--space-md);
-            }
-
-            .azure-destination__desc {
-                font-size: 0.88rem;
-            }
+        @media (max-width: 480px) {
+            .gt-dest__content { padding: var(--space-md); }
+            .gt-dest__desc { font-size: 0.85rem; }
+            .gt-feature__content { padding: var(--space-md); }
         }
     </style>
 </head>
 <body>
 
     <!-- =========================================================
-         HEADER & NAVIGATION
-         Transparent fixed header with CSS-only mobile menu
+         HEADER
          ========================================================= -->
-    <header class="azure-header">
-        <div class="azure-container azure-header__inner">
-            <a href="#top" class="azure-logo" aria-label="Azure Voyages home">
-                Azure<span>Voyages</span>
+    <header class="gt-header">
+        <div class="gt-container gt-header__inner">
+            <a href="#top" class="gt-logo" aria-label="GT CRUISE home">
+                <span class="gt-logo__mark">GT</span>
+                <span class="gt-logo__word">Cruise</span>
             </a>
 
-            <!-- Checkbox drives the mobile menu (no JS required) -->
-            <input type="checkbox" id="azure-menu" class="azure-menu-toggle" aria-label="Toggle navigation menu">
-            <label for="azure-menu" class="azure-menu-btn" aria-hidden="true">
-                <span class="azure-menu-btn__lines"></span>
+            <input type="checkbox" id="gt-menu" class="gt-menu-toggle" aria-label="Toggle navigation menu">
+            <label for="gt-menu" class="gt-menu-btn" aria-hidden="true">
+                <span class="gt-menu-btn__lines"></span>
             </label>
 
-            <nav class="azure-nav" aria-label="Primary navigation">
-                <ul class="azure-nav__list">
-                    <li><a href="#destinations" class="azure-nav__link">Destinations</a></li>
-                    <li><a href="#fleet" class="azure-nav__link">Our Fleet</a></li>
-                    <li><a href="#experiences" class="azure-nav__link">Experiences</a></li>
-                    <li><a href="#about" class="azure-nav__link">About</a></li>
+            <nav class="gt-nav" aria-label="Primary navigation">
+                <ul class="gt-nav__list">
+                    <li><a href="#top" class="gt-nav__link">Home</a></li>
+                    <li><a href="#voyage" class="gt-nav__link">The Voyage</a></li>
+                    <li><a href="#destinations" class="gt-nav__link">Destinations</a></li>
+                    <li><a href="#onboard" class="gt-nav__link">Life Onboard</a></li>
+                    <li><a href="#gallery" class="gt-nav__link">Gallery</a></li>
+                    <li><a href="#contact" class="gt-nav__link">Contact</a></li>
                 </ul>
-                <a href="#destinations" class="azure-nav__cta">Explore Cruises</a>
+                <a href="#voyage" class="gt-nav__cta">Explore the Voyage</a>
             </nav>
         </div>
     </header>
 
     <!-- =========================================================
-         HERO SECTION
-         Full-viewport cinematic hero with overlay and CTAs
+         HERO
          ========================================================= -->
-    <section class="azure-hero" id="top">
-        <div class="azure-hero__bg" role="img" aria-label="Luxury cruise ship sailing across a deep blue ocean at sunset"></div>
+    <section class="gt-hero" id="top">
+        <div class="gt-hero__bg" role="img" aria-label="Luxury white cruise ship sailing across the deep blue Mediterranean Sea with a distant coastline"></div>
 
-        <div class="azure-container azure-hero__content">
-            <p class="azure-eyebrow azure-hero__eyebrow">Discover a New Perspective</p>
-            <h1 class="azure-display azure-hero__title">
-                Your World.<br>
-                <em>Without Limits.</em>
+        <div class="gt-container gt-hero__content">
+            <div class="gt-hero__logo" aria-hidden="true">
+                <span class="gt-hero__logo-mark">GT</span>
+                <span class="gt-hero__logo-word">Cruise</span>
+            </div>
+
+            <p class="gt-eyebrow gt-hero__eyebrow">Discover the Mediterranean</p>
+
+            <h1 class="gt-display gt-hero__title">
+                Your Journey.<br>
+                <em>Your World.</em>
             </h1>
-            <p class="azure-hero__subtitle">
-                Discover extraordinary destinations, unforgettable experiences, and the freedom of the open sea aboard our exceptional cruise collection.
+
+            <p class="gt-hero__subtitle">
+                Discover extraordinary coastlines, historic cities, sunlit islands, and unforgettable moments at sea on one remarkable Mediterranean voyage.
             </p>
-            <div class="azure-hero__actions">
-                <a href="#destinations" class="azure-btn azure-btn--primary">
-                    Explore Our Cruises
-                    <svg class="azure-btn__arrow" width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
+
+            <div class="gt-hero__actions">
+                <a href="#voyage" class="gt-btn gt-btn--primary">
+                    Explore the Voyage
+                    <svg class="gt-btn__arrow" width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
                         <path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
                     </svg>
                 </a>
-                <a href="#experiences" class="azure-btn azure-btn--ghost">Discover the Experience</a>
+                <a href="#destinations" class="gt-btn gt-btn--ghost">Discover Destinations</a>
             </div>
         </div>
 
-        <!-- Scroll indicator -->
-        <div class="azure-hero__scroll" aria-hidden="true">
+        <div class="gt-hero__scroll" aria-hidden="true">
             <span>Scroll</span>
-            <span class="azure-hero__scroll-line"></span>
+            <span class="gt-hero__scroll-line"></span>
         </div>
     </section>
 
     <!-- =========================================================
-         CRUISE DISCOVERY — editorial asymmetric destination grid
+         CRUISE OVERVIEW
          ========================================================= -->
-    <section class="azure-discover" id="destinations">
-        <div class="azure-container">
-            <div class="azure-discover__header">
-                <p class="azure-eyebrow">Curated Voyages</p>
-                <h2 class="azure-display azure-discover__title">Find Your Kind of <em>Escape</em></h2>
-                <p class="azure-discover__lead">
-                    From sunlit Mediterranean coastlines to remote northern wonders, discover journeys designed to stay with you.
+    <section class="gt-overview" id="voyage">
+        <div class="gt-container">
+            <div class="gt-overview__header">
+                <p class="gt-eyebrow">The Voyage</p>
+                <h2 class="gt-display gt-overview__title">One Voyage. <em>Endless Discoveries.</em></h2>
+                <p class="gt-overview__lead">
+                    From the vibrant waterfront of Barcelona to the legendary history of Athens, GT CRUISE invites you to discover the Mediterranean through its most captivating destinations.
                 </p>
             </div>
 
-            <div class="azure-destinations">
-                <!-- Featured destination — Mediterranean -->
-                <article class="azure-destination azure-destination--featured">
-                    <div class="azure-destination__image">
-                        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1400&q=80" alt="Sunlit Mediterranean coastal village with turquoise waters and colorful cliffside homes">
+            <div class="gt-overview__grid">
+                <div class="gt-overview__item">
+                    <div class="gt-overview__num">01</div>
+                    <h3 class="gt-overview__item-title">A Mediterranean Journey</h3>
+                    <p class="gt-overview__item-text">Explore remarkable destinations across Spain, France, Italy, Malta, and Greece — seven unforgettable ports of call.</p>
+                </div>
+                <div class="gt-overview__item">
+                    <div class="gt-overview__num">02</div>
+                    <h3 class="gt-overview__item-title">A Round-Trip Experience</h3>
+                    <p class="gt-overview__item-text">Begin and end your journey in Barcelona, the vibrant heart of the Catalan coast and gateway to the Mediterranean.</p>
+                </div>
+                <div class="gt-overview__item">
+                    <div class="gt-overview__num">03</div>
+                    <h3 class="gt-overview__item-title">Unforgettable Moments</h3>
+                    <p class="gt-overview__item-text">Enjoy coastal scenery, local culture, historic architecture, and the beauty of life at sea — every day a new discovery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         ITINERARY
+         ========================================================= -->
+    <section class="gt-itinerary">
+        <div class="gt-container">
+            <div class="gt-itinerary__header">
+                <p class="gt-eyebrow">The Complete Route</p>
+                <h2 class="gt-display gt-itinerary__title">Seven Ports. <em>One Unforgettable Voyage.</em></h2>
+                <p class="gt-itinerary__lead">
+                    A carefully curated journey through the most celebrated cities and islands of the Mediterranean Sea.
+                </p>
+            </div>
+
+            <!-- Route banner -->
+            <div class="gt-route">
+                <span class="gt-route__label">The Mediterranean Route</span>
+                <div class="gt-route__path">
+                    Barcelona <span class="gt-route__arrow">→</span>
+                    Marseille <span class="gt-route__arrow">→</span>
+                    Genoa <span class="gt-route__arrow">→</span>
+                    Naples <span class="gt-route__arrow">→</span>
+                    Valletta <span class="gt-route__arrow">→</span>
+                    Santorini <span class="gt-route__arrow">→</span>
+                    Athens <span class="gt-route__arrow">→</span>
+                    Barcelona
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="gt-timeline">
+                <article class="gt-stop">
+                    <div class="gt-stop__image">
+                        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=80" alt="Barcelona skyline with Sagrada Familia and Mediterranean waterfront">
                     </div>
-                    <div class="azure-destination__overlay"></div>
-                    <div class="azure-destination__content">
-                        <span class="azure-destination__tag">Featured Journey · 10 Nights</span>
-                        <h3 class="azure-destination__name">Mediterranean Escape</h3>
-                        <p class="azure-destination__desc">
-                            Wander through coastal villages, historic cities, and turquoise waters — from the Amalfi Coast to the Greek Isles.
-                        </p>
-                        <a href="#contact" class="azure-destination__link">
-                            Discover Journey
-                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true">
-                                <path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
-                            </svg>
+                    <div class="gt-stop__marker"></div>
+                    <div class="gt-stop__num">Stop 01</div>
+                    <h3 class="gt-stop__city">Barcelona</h3>
+                    <div class="gt-stop__country">Spain · Departure &amp; Return</div>
+                    <p class="gt-stop__desc">Begin in Barcelona, a vibrant Mediterranean city famous for its architecture, lively boulevards, coastal atmosphere, and exceptional cuisine.</p>
+                </article>
+
+                <article class="gt-stop">
+                    <div class="gt-stop__image">
+                        <img src="https://images.unsplash.com/photo-1531575278845-595c3f20d3b4?auto=format&fit=crop&w=800&q=80" alt="Marseille Old Port with colorful waterfront buildings">
+                    </div>
+                    <div class="gt-stop__marker"></div>
+                    <div class="gt-stop__num">Stop 02</div>
+                    <h3 class="gt-stop__city">Marseille</h3>
+                    <div class="gt-stop__country">France</div>
+                    <p class="gt-stop__desc">Discover the historic Old Port, the beauty of Provence, colorful waterfront streets, and the charm of southern France.</p>
+                </article>
+
+                <article class="gt-stop">
+                    <div class="gt-stop__image">
+                        <img src="https://images.unsplash.com/photo-1538332576228-eb5b1b00f5d3?auto=format&fit=crop&w=800&q=80" alt="Genoa historic harbor with colorful Italian buildings">
+                    </div>
+                    <div class="gt-stop__marker"></div>
+                    <div class="gt-stop__num">Stop 03</div>
+                    <h3 class="gt-stop__city">Genoa</h3>
+                    <div class="gt-stop__country">Italy</div>
+                    <p class="gt-stop__desc">Explore the historic Italian maritime city, its narrow old streets, grand architecture, palaces, and authentic Ligurian cuisine.</p>
+                </article>
+
+                <article class="gt-stop">
+                    <div class="gt-stop__image">
+                        <img src="https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?auto=format&fit=crop&w=800&q=80" alt="Naples bay with Mount Vesuvius in the background">
+                    </div>
+                    <div class="gt-stop__marker"></div>
+                    <div class="gt-stop__num">Stop 04</div>
+                    <h3 class="gt-stop__city">Naples</h3>
+                    <div class="gt-stop__country">Italy</div>
+                    <p class="gt-stop__desc">Experience the vibrant character of southern Italy, its celebrated pizza, historic neighborhoods, and rich cultural heritage.</p>
+                </article>
+
+                <article class="gt-stop">
+                    <div class="gt-stop__image">
+                        <img src="https://images.unsplash.com/photo-1593214624335-5546 something?auto=format&fit=crop&w=800&q=80"
+                             onerror="this.src='https://images.unsplash.com/photo-1593214624335-5546c7b8c2a4?auto=format&fit=crop&w=800&q=80'"
+                             alt="Valletta Malta golden limestone harbor architecture">
+                    </div>
+                    <div class="gt-stop__marker"></div>
+                    <div class="gt-stop__num">Stop 05</div>
+                    <h3 class="gt-stop__city">Valletta</h3>
+                    <div class="gt-stop__country">Malta</div>
+                    <p class="gt-stop__desc">Discover golden limestone architecture, historic fortifications, charming streets, and beautiful harbor views.</p>
+                </article>
+
+                <article class="gt-stop">
+                    <div class="gt-stop__image">
+                        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=80" alt="Santorini whitewashed buildings with blue domes overlooking the Aegean Sea">
+                    </div>
+                    <div class="gt-stop__marker"></div>
+                    <div class="gt-stop__num">Stop 06</div>
+                    <h3 class="gt-stop__city">Santorini</h3>
+                    <div class="gt-stop__country">Greece</div>
+                    <p class="gt-stop__desc">Admire whitewashed villages, blue-domed churches, dramatic volcanic cliffs, and breathtaking Aegean sunsets.</p>
+                </article>
+
+                <article class="gt-stop">
+                    <div class="gt-stop__image">
+                        <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&fit=crop&w=800&q=80" alt="Athens Acropolis at golden hour">
+                    </div>
+                    <div class="gt-stop__marker"></div>
+                    <div class="gt-stop__num">Stop 07</div>
+                    <h3 class="gt-stop__city">Athens</h3>
+                    <div class="gt-stop__country">Greece · Piraeus Port</div>
+                    <p class="gt-stop__desc">Explore the historic birthplace of democracy, the Acropolis, ancient Greek landmarks, and the culture of modern Athens.</p>
+                </article>
+
+                <article class="gt-stop gt-stop--return">
+                    <div class="gt-stop__image">
+                        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=80" alt="Barcelona return port at sunset">
+                    </div>
+                    <div class="gt-stop__marker"></div>
+                    <div class="gt-stop__num">Final Stop</div>
+                    <h3 class="gt-stop__city">Barcelona</h3>
+                    <div class="gt-stop__country">Spain · Homecoming</div>
+                    <p class="gt-stop__desc">Return to Barcelona and complete the Mediterranean round-trip journey, carrying memories that will last a lifetime.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         DESTINATION GALLERY
+         ========================================================= -->
+    <section class="gt-gallery" id="destinations">
+        <div class="gt-container">
+            <div class="gt-gallery__header">
+                <p class="gt-eyebrow">Destinations</p>
+                <h2 class="gt-display gt-gallery__title">Discover the <em>Mediterranean.</em></h2>
+                <p class="gt-gallery__lead">
+                    Seven remarkable ports, each with its own story, flavor, and atmosphere — waiting to be explored.
+                </p>
+            </div>
+
+            <div class="gt-destinations" id="gallery">
+                <!-- Barcelona — Large feature -->
+                <article class="gt-dest gt-dest--large">
+                    <div class="gt-dest__image">
+                        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1400&q=80" alt="Barcelona Mediterranean architecture and coastal energy">
+                    </div>
+                    <div class="gt-dest__overlay"></div>
+                    <div class="gt-dest__content">
+                        <span class="gt-dest__country">Spain</span>
+                        <h3 class="gt-dest__name">Barcelona</h3>
+                        <p class="gt-dest__desc">Mediterranean energy and architecture — where Gaudí's imagination meets the sea, and every boulevard tells a story.</p>
+                        <a href="#contact" class="gt-dest__link">
+                            Explore Destination
+                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
                         </a>
                     </div>
                 </article>
 
-                <!-- Secondary destination — Caribbean -->
-                <article class="azure-destination azure-destination--secondary">
-                    <div class="azure-destination__image">
-                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80" alt="Tropical Caribbean beach with white sand and warm sunset over calm water">
+                <!-- Marseille — Tall -->
+                <article class="gt-dest gt-dest--tall">
+                    <div class="gt-dest__image">
+                        <img src="https://images.unsplash.com/photo-1531575278845-595c3f20d3b4?auto=format&fit=crop&w=1000&q=80" alt="Marseille Old Port with colorful Provençal buildings">
                     </div>
-                    <div class="azure-destination__overlay"></div>
-                    <div class="azure-destination__content">
-                        <span class="azure-destination__tag">7 Nights</span>
-                        <h3 class="azure-destination__name">Caribbean Dreams</h3>
-                        <p class="azure-destination__desc">
-                            Tropical islands, white-sand beaches, and warm sunsets across the West Indies.
-                        </p>
-                        <a href="#contact" class="azure-destination__link">
-                            Discover Journey
-                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true">
-                                <path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
-                            </svg>
+                    <div class="gt-dest__overlay"></div>
+                    <div class="gt-dest__content">
+                        <span class="gt-dest__country">France</span>
+                        <h3 class="gt-dest__name">Marseille</h3>
+                        <p class="gt-dest__desc">The spirit of Provence — sunlit harbors, lavender-scented hills, and the timeless charm of southern France.</p>
+                        <a href="#contact" class="gt-dest__link">
+                            Explore
+                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
                         </a>
                     </div>
                 </article>
 
-                <!-- Secondary destination — Northern Horizons -->
-                <article class="azure-destination azure-destination--secondary">
-                    <div class="azure-destination__image">
-                        <img src="https://images.unsplash.com/photo-1513201098788-5b04f6a8b0ff?auto=format&fit=crop&w=1000&q=80" alt="Dramatic Norwegian fjord with towering cliffs and calm reflective waters">
+                <!-- Genoa — Medium -->
+                <article class="gt-dest gt-dest--medium">
+                    <div class="gt-dest__image">
+                        <img src="https://images.unsplash.com/photo-1538332576228-eb5b1b00f5d3?auto=format&fit=crop&w=1000&q=80" alt="Genoa historic Italian maritime harbor">
                     </div>
-                    <div class="azure-destination__overlay"></div>
-                    <div class="azure-destination__content">
-                        <span class="azure-destination__tag">12 Nights</span>
-                        <h3 class="azure-destination__name">Northern Horizons</h3>
-                        <p class="azure-destination__desc">
-                            Dramatic fjords, quiet landscapes, and extraordinary scenery along the Norwegian coast.
-                        </p>
-                        <a href="#contact" class="azure-destination__link">
-                            Discover Journey
-                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true">
-                                <path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
-                            </svg>
+                    <div class="gt-dest__overlay"></div>
+                    <div class="gt-dest__content">
+                        <span class="gt-dest__country">Italy</span>
+                        <h3 class="gt-dest__name">Genoa</h3>
+                        <p class="gt-dest__desc">Italy's maritime heritage — narrow caruggi, grand palaces, and the soul of Liguria.</p>
+                        <a href="#contact" class="gt-dest__link">
+                            Explore
+                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Naples — Wide -->
+                <article class="gt-dest gt-dest--wide">
+                    <div class="gt-dest__image">
+                        <img src="https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?auto=format&fit=crop&w=1400&q=80" alt="Naples bay with Mount Vesuvius and colorful waterfront">
+                    </div>
+                    <div class="gt-dest__overlay"></div>
+                    <div class="gt-dest__content">
+                        <span class="gt-dest__country">Italy</span>
+                        <h3 class="gt-dest__name">Naples</h3>
+                        <p class="gt-dest__desc">The soul of southern Italy — where Vesuvius watches over ancient streets, legendary pizza, and a vibrant cultural heritage.</p>
+                        <a href="#contact" class="gt-dest__link">
+                            Explore Destination
+                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Valletta — Tall -->
+                <article class="gt-dest gt-dest--tall">
+                    <div class="gt-dest__image">
+                        <img src="https://images.unsplash.com/photo-1588401317945-10 something?auto=format&fit=crop&w=1000&q=80"
+                             onerror="this.src='https://images.unsplash.com/photo-1588401317945-1074c2c9d3d3?auto=format&fit=crop&w=1000&q=80'"
+                             alt="Valletta Malta golden limestone fortifications and harbor">
+                    </div>
+                    <div class="gt-dest__overlay"></div>
+                    <div class="gt-dest__content">
+                        <span class="gt-dest__country">Malta</span>
+                        <h3 class="gt-dest__name">Valletta</h3>
+                        <p class="gt-dest__desc">Malta's golden history — honey-colored stone, ancient fortifications, and a harbor steeped in legend.</p>
+                        <a href="#contact" class="gt-dest__link">
+                            Explore
+                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Santorini — Medium -->
+                <article class="gt-dest gt-dest--medium">
+                    <div class="gt-dest__image">
+                        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1000&q=80" alt="Santorini whitewashed village with blue domes at sunset">
+                    </div>
+                    <div class="gt-dest__overlay"></div>
+                    <div class="gt-dest__content">
+                        <span class="gt-dest__country">Greece</span>
+                        <h3 class="gt-dest__name">Santorini</h3>
+                        <p class="gt-dest__desc">Aegean beauty and sunsets — whitewashed villages perched on volcanic cliffs above the deep blue sea.</p>
+                        <a href="#contact" class="gt-dest__link">
+                            Explore
+                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Athens — Wide -->
+                <article class="gt-dest gt-dest--wide">
+                    <div class="gt-dest__image">
+                        <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&fit=crop&w=1400&q=80" alt="Athens Acropolis at golden hour with modern city below">
+                    </div>
+                    <div class="gt-dest__overlay"></div>
+                    <div class="gt-dest__content">
+                        <span class="gt-dest__country">Greece</span>
+                        <h3 class="gt-dest__name">Athens</h3>
+                        <p class="gt-dest__desc">Ancient wonders and modern culture — where the Acropolis watches over a city alive with history, philosophy, and Mediterranean light.</p>
+                        <a href="#contact" class="gt-dest__link">
+                            Explore Destination
+                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
                         </a>
                     </div>
                 </article>
@@ -1501,136 +1750,104 @@
     </section>
 
     <!-- =========================================================
-         ABOUT SECTION — split editorial layout
+         LIFE ONBOARD
          ========================================================= -->
-    <section class="azure-about" id="about">
-        <div class="azure-container azure-about__grid">
-            <div class="azure-about__image">
-                <img src="https://images.unsplash.com/photo-1566024287286-457247b70310?auto=format&fit=crop&w=1200&q=80" alt="Elegant luxury cruise ship deck with teak flooring and ocean views at golden hour">
+    <section class="gt-onboard" id="onboard">
+        <div class="gt-container">
+            <div class="gt-onboard__header">
+                <p class="gt-eyebrow">Life Onboard</p>
+                <h2 class="gt-display gt-onboard__title">The Journey Is <em>Just as Beautiful.</em></h2>
+                <p class="gt-onboard__lead">
+                    Beyond every destination lies another opportunity to relax, indulge, and enjoy the extraordinary atmosphere of the Mediterranean.
+                </p>
             </div>
 
-            <div class="azure-about__content">
-                <p class="azure-eyebrow">The Azure Difference</p>
-                <h2 class="azure-display azure-about__title">
-                    Travel Is Not Just Where You Go. <em>It Is How You Feel.</em>
-                </h2>
-                <p class="azure-about__text">
-                    At Azure Voyages, we believe the journey should be just as extraordinary as the destination. Thoughtfully curated itineraries, exceptional hospitality, and inspiring spaces turn every voyage into a story worth telling.
-                </p>
+            <div class="gt-features">
+                <article class="gt-feature">
+                    <div class="gt-feature__image">
+                        <img src="https://images.unsplash.com/photo-1566024287286-457247b70310?auto=format&fit=crop&w=1200&q=80" alt="Luxury oceanview suite with panoramic sea view">
+                    </div>
+                    <div class="gt-feature__overlay"></div>
+                    <div class="gt-feature__content">
+                        <svg class="gt-feature__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                            <path d="M6 32V20a4 4 0 014-4h28a4 4 0 014 4v12" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M4 32h40v6H4z" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M12 16v-4a4 4 0 014-4h16a4 4 0 014 4v4" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                        <h3 class="gt-feature__title">Oceanview Suites</h3>
+                        <p class="gt-feature__text">Relax in beautifully designed spaces inspired by comfort, light, and the endless blue horizon.</p>
+                    </div>
+                </article>
 
-                <ul class="azure-principles">
-                    <li class="azure-principle">
-                        <span class="azure-principle__number">01</span>
-                        <div>
-                            <h3 class="azure-principle__title">Thoughtfully Curated Journeys</h3>
-                            <p class="azure-principle__desc">Itineraries designed by travel experts who know every port by heart.</p>
-                        </div>
-                    </li>
-                    <li class="azure-principle">
-                        <span class="azure-principle__number">02</span>
-                        <div>
-                            <h3 class="azure-principle__title">Personal, Attentive Service</h3>
-                            <p class="azure-principle__desc">A dedicated crew who remember the details that matter most to you.</p>
-                        </div>
-                    </li>
-                    <li class="azure-principle">
-                        <span class="azure-principle__number">03</span>
-                        <div>
-                            <h3 class="azure-principle__title">Extraordinary Experiences at Sea</h3>
-                            <p class="azure-principle__desc">From private shore excursions to starlit dinners on deck.</p>
-                        </div>
-                    </li>
-                </ul>
+                <article class="gt-feature">
+                    <div class="gt-feature__image">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80" alt="Elegant Mediterranean dining table with fresh ingredients">
+                    </div>
+                    <div class="gt-feature__overlay"></div>
+                    <div class="gt-feature__content">
+                        <svg class="gt-feature__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                            <path d="M14 6v10a4 4 0 004 4v22" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M10 6v8a4 4 0 004 4" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M18 6v8a4 4 0 01-4 4" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M34 6c0 6-4 10-4 16v20" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M34 6c4 4 4 10 0 16" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                        <h3 class="gt-feature__title">Mediterranean Dining</h3>
+                        <p class="gt-feature__text">Discover a culinary atmosphere inspired by Mediterranean ingredients, regional flavors, and leisurely dining.</p>
+                    </div>
+                </article>
 
-                <a href="#fleet" class="azure-text-link">
-                    Discover Our Story
-                    <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true">
-                        <path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
-                    </svg>
-                </a>
+                <article class="gt-feature">
+                    <div class="gt-feature__image">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80" alt="Sunset deck on cruise ship with panoramic ocean view">
+                    </div>
+                    <div class="gt-feature__overlay"></div>
+                    <div class="gt-feature__content">
+                        <svg class="gt-feature__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                            <circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M24 6v4M24 38v4M6 24h4M38 24h4M11 11l3 3M34 34l3 3M37 11l-3 3M14 34l-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <h3 class="gt-feature__title">Sunset Deck</h3>
+                        <p class="gt-feature__text">Enjoy panoramic ocean views, golden evenings, and peaceful moments beneath the Mediterranean sky.</p>
+                    </div>
+                </article>
+
+                <article class="gt-feature">
+                    <div class="gt-feature__image">
+                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80" alt="Serene wellness spa with calming atmosphere">
+                    </div>
+                    <div class="gt-feature__overlay"></div>
+                    <div class="gt-feature__content">
+                        <svg class="gt-feature__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                            <path d="M24 42s-14-8-14-20a10 10 0 0120-4 10 10 0 0120 4c0 12-14 20-14 20" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                            <path d="M24 18v12M18 24h12" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                        <h3 class="gt-feature__title">Wellness &amp; Relaxation</h3>
+                        <p class="gt-feature__text">Find your balance with a calm atmosphere dedicated to unwinding and enjoying life at sea.</p>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- =========================================================
-         FEATURES / BENEFITS — four-column editorial layout
+         CINEMATIC BRAND BANNER
          ========================================================= -->
-    <section class="azure-features" id="fleet">
-        <div class="azure-container">
-            <div class="azure-features__header">
-                <p class="azure-eyebrow">The Azure Standard</p>
-                <h2 class="azure-display azure-features__title">Every Detail, <em>Considered.</em></h2>
-                <p class="azure-features__lead">
-                    Four pillars that define every voyage we offer — refined, considered, and quietly exceptional.
-                </p>
-            </div>
+    <section class="gt-banner">
+        <div class="gt-banner__bg" role="img" aria-label="Cruise ship sailing past the Italian coastline at golden hour"></div>
 
-            <div class="azure-benefits">
-                <!-- Benefit 1: Comfort -->
-                <div class="azure-benefit">
-                    <svg class="azure-benefit__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                        <path d="M6 32V20a4 4 0 014-4h28a4 4 0 014 4v12" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M4 32h40v6H4z" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M12 16v-4a4 4 0 014-4h16a4 4 0 014 4v4" stroke="currentColor" stroke-width="1.5"/>
-                    </svg>
-                    <h3 class="azure-benefit__title">Exceptional Comfort</h3>
-                    <p class="azure-benefit__text">Beautifully designed cabins and inviting public spaces, crafted for rest and reflection.</p>
-                </div>
-
-                <!-- Benefit 2: Dining -->
-                <div class="azure-benefit">
-                    <svg class="azure-benefit__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                        <path d="M14 6v10a4 4 0 004 4v22" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M10 6v8a4 4 0 004 4" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M18 6v8a4 4 0 01-4 4" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M34 6c0 6-4 10-4 16v20" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M34 6c4 4 4 10 0 16" stroke="currentColor" stroke-width="1.5"/>
-                    </svg>
-                    <h3 class="azure-benefit__title">Inspired Dining</h3>
-                    <p class="azure-benefit__text">Memorable culinary experiences with fresh, seasonal flavors from every port of call.</p>
-                </div>
-
-                <!-- Benefit 3: Destinations -->
-                <div class="azure-benefit">
-                    <svg class="azure-benefit__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                        <circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M6 24h36M24 6c5 5 8 11 8 18s-3 13-8 18c-5-5-8-11-8-18s3-13 8-18z" stroke="currentColor" stroke-width="1.5"/>
-                    </svg>
-                    <h3 class="azure-benefit__title">Extraordinary Destinations</h3>
-                    <p class="azure-benefit__text">Carefully selected ports and enriching excursions that reveal the soul of each place.</p>
-                </div>
-
-                <!-- Benefit 4: Service -->
-                <div class="azure-benefit">
-                    <svg class="azure-benefit__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                        <path d="M24 42s-14-8-14-20a10 10 0 0120-4 10 10 0 0120 4c0 12-14 20-14 20" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                        <path d="M24 18v12M18 24h12" stroke="currentColor" stroke-width="1.5"/>
-                    </svg>
-                    <h3 class="azure-benefit__title">Seamless Service</h3>
-                    <p class="azure-benefit__text">Thoughtful hospitality throughout your journey — attentive without ever being intrusive.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- =========================================================
-         FEATURED EXPERIENCE — cinematic full-bleed section
-         ========================================================= -->
-    <section class="azure-experience" id="experiences">
-        <div class="azure-experience__bg" role="img" aria-label="Calm ocean horizon at golden hour with soft sunlight"></div>
-
-        <div class="azure-container azure-experience__content">
-            <p class="azure-eyebrow azure-experience__eyebrow">Your Next Chapter Begins at Sea</p>
-            <h2 class="azure-display azure-experience__title">
-                Some Journeys<br>
-                <em>Change Everything.</em>
+        <div class="gt-container gt-banner__content">
+            <p class="gt-eyebrow gt-banner__eyebrow">A New Way to Travel</p>
+            <h2 class="gt-display gt-banner__title">
+                The Sea Remembers<br>
+                <em>Every Journey.</em>
             </h2>
-            <p class="azure-experience__text">
-                Find a slower rhythm, wake up somewhere extraordinary, and discover a different view every morning.
+            <p class="gt-banner__text">
+                Some voyages change the way you see the world. GT CRUISE invites you to discover a slower rhythm, a warmer horizon, and the timeless beauty of the Mediterranean.
             </p>
-            <a href="#contact" class="azure-btn azure-btn--primary">
-                Find Your Voyage
-                <svg class="azure-btn__arrow" width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
+            <a href="#contact" class="gt-btn gt-btn--primary">
+                Begin Your Story
+                <svg class="gt-btn__arrow" width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
                     <path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
                 </svg>
             </a>
@@ -1638,139 +1855,133 @@
     </section>
 
     <!-- =========================================================
-         CONTACT SECTION — warm ivory background with form
-         NOTE: The form below requires a backend or form service
-         (e.g., Formspree, Netlify Forms, custom API) to actually
-         submit inquiries. Update the action attribute accordingly.
+         CONTACT
+         NOTE: This form requires a backend or form service
+         (Formspree, Netlify Forms, custom API) to submit inquiries.
+         Update the action attribute before using commercially.
          ========================================================= -->
-    <section class="azure-contact" id="contact">
-        <div class="azure-container">
-            <div class="azure-contact__header">
-                <p class="azure-eyebrow">Begin Your Voyage</p>
-                <h2 class="azure-display azure-contact__title">Let the Sea <em>Inspire</em> Your Next Journey.</h2>
-                <p class="azure-contact__lead">
-                    Our travel specialists are here to help you find a voyage that feels uniquely yours.
+    <section class="gt-contact" id="contact">
+        <div class="gt-container gt-contact__grid">
+            <div>
+                <p class="gt-eyebrow">Contact</p>
+                <h2 class="gt-display gt-contact__title">Let the Sea <em>Inspire</em> Your Next Journey.</h2>
+                <p class="gt-contact__text">
+                    Our travel specialists are here to help you find a voyage that feels uniquely yours. Reach out and begin the conversation.
                 </p>
-            </div>
 
-            <div class="azure-contact__grid">
-                <div class="azure-contact__info">
-                    <h3 class="azure-contact__info-title">Speak With a Specialist</h3>
-                    <p class="azure-contact__info-text">
-                        Whether you're planning a milestone celebration or a quiet escape, we'll help craft an itinerary that matches your rhythm.
-                    </p>
-
-                    <ul class="azure-contact__details">
-                        <li class="azure-contact__detail">
-                            <span class="azure-contact__detail-icon" aria-hidden="true">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                                    <path d="M4 6l8 7 8-7M4 6h16v12H4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                                </svg>
-                            </span>
-                            <div>
-                                <div class="azure-contact__detail-label">Email</div>
-                                <a href="mailto:hello@azurevoyages.example" class="azure-contact__detail-value">hello@azurevoyages.example</a>
-                            </div>
-                        </li>
-                        <li class="azure-contact__detail">
-                            <span class="azure-contact__detail-icon" aria-hidden="true">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                                    <path d="M5 4h4l2 5-3 2a11 11 0 006 6l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                                </svg>
-                            </span>
-                            <div>
-                                <div class="azure-contact__detail-label">Phone</div>
-                                <a href="tel:+18005550148" class="azure-contact__detail-value">+1 (800) 555-0148</a>
-                            </div>
-                        </li>
-                        <li class="azure-contact__detail">
-                            <span class="azure-contact__detail-icon" aria-hidden="true">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                                    <path d="M12 22s8-7 8-13a8 8 0 10-16 0c0 6 8 13 8 13z" stroke="currentColor" stroke-width="1.5"/>
-                                    <circle cx="12" cy="9" r="3" stroke="currentColor" stroke-width="1.5"/>
-                                </svg>
-                            </span>
-                            <div>
-                                <div class="azure-contact__detail-label">Office</div>
-                                <span class="azure-contact__detail-value">Marina Bay, Suite 1400</span>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="gt-contact__details">
+                    <div class="gt-contact__detail">
+                        <span class="gt-contact__detail-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                <path d="M4 6l8 7 8-7M4 6h16v12H4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <div>
+                            <div class="gt-contact__detail-label">Email</div>
+                            <a href="mailto:hello@gtcruise.example" class="gt-contact__detail-value">hello@gtcruise.example</a>
+                        </div>
+                    </div>
+                    <div class="gt-contact__detail">
+                        <span class="gt-contact__detail-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 4h4l2 5-3 2a11 11 0 006 6l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <div>
+                            <div class="gt-contact__detail-label">Phone</div>
+                            <a href="tel:+18005550148" class="gt-contact__detail-value">+1 (800) 555-0148</a>
+                        </div>
+                    </div>
+                    <div class="gt-contact__detail">
+                        <span class="gt-contact__detail-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 22s8-7 8-13a8 8 0 10-16 0c0 6 8 13 8 13z" stroke="currentColor" stroke-width="1.5"/>
+                                <circle cx="12" cy="9" r="3" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                        </span>
+                        <div>
+                            <div class="gt-contact__detail-label">Headquarters</div>
+                            <span class="gt-contact__detail-value">Port Vell, Barcelona</span>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- NOTE: Replace action with your form endpoint (Formspree, Netlify, etc.) -->
-                <form class="azure-contact__form" action="#" method="POST">
-                    <div class="azure-form-row">
-                        <div class="azure-form-group">
-                            <label for="azure-name" class="azure-form-label">Your Name</label>
-                            <input type="text" id="azure-name" name="name" class="azure-form-input" required autocomplete="name">
-                        </div>
-                        <div class="azure-form-group">
-                            <label for="azure-email" class="azure-form-label">Email Address</label>
-                            <input type="email" id="azure-email" name="email" class="azure-form-input" required autocomplete="email">
-                        </div>
-                    </div>
-                    <div class="azure-form-group">
-                        <label for="azure-message" class="azure-form-label">Your Message</label>
-                        <textarea id="azure-message" name="message" class="azure-form-textarea" required placeholder="Tell us about the voyage you're dreaming of..."></textarea>
-                    </div>
-                    <button type="submit" class="azure-form-submit">Send an Inquiry</button>
-                </form>
             </div>
+
+            <!-- NOTE: Replace action with your form endpoint -->
+            <form class="gt-form" action="#" method="POST">
+                <div class="gt-form-row">
+                    <div class="gt-form-group">
+                        <label for="gt-name" class="gt-form-label">Your Name</label>
+                        <input type="text" id="gt-name" name="name" class="gt-form-input" required autocomplete="name">
+                    </div>
+                    <div class="gt-form-group">
+                        <label for="gt-email" class="gt-form-label">Email Address</label>
+                        <input type="email" id="gt-email" name="email" class="gt-form-input" required autocomplete="email">
+                    </div>
+                </div>
+                <div class="gt-form-group">
+                    <label for="gt-message" class="gt-form-label">Your Message</label>
+                    <textarea id="gt-message" name="message" class="gt-form-textarea" required placeholder="Tell us about the voyage you're dreaming of..."></textarea>
+                </div>
+                <button type="submit" class="gt-form-submit">Send an Inquiry</button>
+            </form>
         </div>
     </section>
 
     <!-- =========================================================
-         FOOTER — minimal, elegant, deep navy
+         FOOTER
          ========================================================= -->
-    <footer class="azure-footer">
-        <div class="azure-container">
-            <div class="azure-footer__grid">
-                <div class="azure-footer__brand">
-                    <div class="azure-footer__logo">Azure<span>Voyages</span></div>
-                    <p class="azure-footer__tagline">Beyond the Horizon.</p>
-                    <p class="azure-footer__desc">
-                        Luxury cruise journeys crafted for travelers who seek more than a destination — a way of being in the world.
+    <footer class="gt-footer">
+        <div class="gt-container">
+            <div class="gt-footer__grid">
+                <div>
+                    <div class="gt-footer__logo">
+                        <span class="gt-footer__logo-mark">GT</span>
+                        <span class="gt-footer__logo-word">Cruise</span>
+                    </div>
+                    <p class="gt-footer__tagline">Your Journey. Your World.</p>
+                    <p class="gt-footer__desc">
+                        A premium Mediterranean cruise experience — crafted for travelers who seek beauty, discovery, and the timeless rhythm of the sea.
                     </p>
                 </div>
 
                 <div>
-                    <h4 class="azure-footer__heading">Voyages</h4>
-                    <ul class="azure-footer__list">
-                        <li><a href="#destinations" class="azure-footer__link">Mediterranean</a></li>
-                        <li><a href="#destinations" class="azure-footer__link">Caribbean</a></li>
-                        <li><a href="#destinations" class="azure-footer__link">Northern Horizons</a></li>
-                        <li><a href="#destinations" class="azure-footer__link">All Destinations</a></li>
+                    <h4 class="gt-footer__heading">The Voyage</h4>
+                    <ul class="gt-footer__list">
+                        <li><a href="#voyage" class="gt-footer__link">Overview</a></li>
+                        <li><a href="#voyage" class="gt-footer__link">Itinerary</a></li>
+                        <li><a href="#destinations" class="gt-footer__link">Destinations</a></li>
+                        <li><a href="#onboard" class="gt-footer__link">Life Onboard</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="azure-footer__heading">Company</h4>
-                    <ul class="azure-footer__list">
-                        <li><a href="#about" class="azure-footer__link">About Azure</a></li>
-                        <li><a href="#fleet" class="azure-footer__link">Our Fleet</a></li>
-                        <li><a href="#experiences" class="azure-footer__link">Experiences</a></li>
-                        <li><a href="#contact" class="azure-footer__link">Contact</a></li>
+                    <h4 class="gt-footer__heading">Discover</h4>
+                    <ul class="gt-footer__list">
+                        <li><a href="#gallery" class="gt-footer__link">Gallery</a></li>
+                        <li><a href="#onboard" class="gt-footer__link">Suites</a></li>
+                        <li><a href="#onboard" class="gt-footer__link">Dining</a></li>
+                        <li><a href="#onboard" class="gt-footer__link">Wellness</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="azure-footer__heading">Contact</h4>
-                    <ul class="azure-footer__list">
-                        <li><a href="mailto:hello@azurevoyages.example" class="azure-footer__link">hello@azurevoyages.example</a></li>
-                        <li><a href="tel:+18005550148" class="azure-footer__link">+1 (800) 555-0148</a></li>
-                        <li><span class="azure-footer__link">Marina Bay, Suite 1400</span></li>
+                    <h4 class="gt-footer__heading">Contact</h4>
+                    <ul class="gt-footer__list">
+                        <li><a href="mailto:hello@gtcruise.example" class="gt-footer__link">hello@gtcruise.example</a></li>
+                        <li><a href="tel:+18005550148" class="gt-footer__link">+1 (800) 555-0148</a></li>
+                        <li><span class="gt-footer__link">Port Vell, Barcelona</span></li>
+                        <li><a href="#contact" class="gt-footer__link">Send an Inquiry</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="azure-footer__bottom">
-                <p>© 2026 Azure Voyages. All rights reserved.</p>
-                <p class="azure-footer__closing">The sea, once it casts its spell, holds one in its net of wonder forever.</p>
+            <div class="gt-footer__bottom">
+                <p>© 2026 GT CRUISE. All rights reserved. A fictional cruise liner concept.</p>
+                <p class="gt-footer__closing">The sea, once it casts its spell, holds one in its net of wonder forever.</p>
             </div>
         </div>
     </footer>
 
 </body>
 </html>
-
