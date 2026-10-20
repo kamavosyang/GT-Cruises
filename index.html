@@ -741,172 +741,7 @@
         }
         
         /* ============================================
-           DESTINATIONS GALLERY
-           ============================================ */
-        .destinations {
-            padding: 8rem 0;
-            background: var(--ivory);
-        }
-        
-        .destinations__header {
-            text-align: center;
-            max-width: 760px;
-            margin: 0 auto 4rem;
-        }
-        
-        .destinations__title {
-            color: var(--navy);
-            margin-bottom: 1.5rem;
-        }
-        
-        .destinations__title em {
-            color: var(--med-blue);
-        }
-        
-        .destinations__lead {
-            font-size: 1.05rem;
-            color: var(--muted);
-            max-width: 620px;
-            margin: 0 auto;
-        }
-        
-        .dest-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            grid-auto-rows: 200px;
-            gap: 1.5rem;
-        }
-        
-        .dest {
-            position: relative;
-            overflow: hidden;
-            border-radius: 4px;
-            background: var(--navy);
-            cursor: pointer;
-        }
-        
-        .dest--large {
-            grid-column: span 7;
-            grid-row: span 2;
-        }
-        
-        .dest--tall {
-            grid-column: span 5;
-            grid-row: span 2;
-        }
-        
-        .dest--medium {
-            grid-column: span 4;
-            grid-row: span 2;
-        }
-        
-        .dest--wide {
-            grid-column: span 8;
-            grid-row: span 2;
-        }
-        
-        .dest__image {
-            position: absolute;
-            inset: 0;
-        }
-        
-        .dest__image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 1.2s var(--transition);
-        }
-        
-        .dest:hover .dest__image img {
-            transform: scale(1.08);
-        }
-        
-        .dest__overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(10, 29, 44, 0.9) 0%, rgba(10, 29, 44, 0.15) 55%, rgba(10, 29, 44, 0.05) 100%);
-            z-index: 1;
-            transition: background var(--dur) var(--transition);
-        }
-        
-        .dest:hover .dest__overlay {
-            background: linear-gradient(to top, rgba(10, 29, 44, 0.95) 0%, rgba(10, 29, 44, 0.3) 60%, rgba(10, 29, 44, 0.1) 100%);
-        }
-        
-        .dest__content {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            padding: 2rem;
-            color: var(--white);
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            height: 100%;
-        }
-        
-        .dest__country {
-            font-size: 0.7rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        
-        .dest__name {
-            font-family: var(--font-display);
-            font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-            font-weight: 500;
-            margin-bottom: 0.75rem;
-            line-height: 1.1;
-        }
-        
-        .dest--large .dest__name {
-            font-size: clamp(2rem, 3.5vw, 3rem);
-        }
-        
-        .dest__desc {
-            font-size: 0.92rem;
-            line-height: 1.6;
-            opacity: 0.88;
-            max-width: 440px;
-            margin-bottom: 1.5rem;
-        }
-        
-        .dest__link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--gold);
-            padding-bottom: 4px;
-            border-bottom: 1px solid transparent;
-            transition: all var(--dur) var(--transition);
-            width: fit-content;
-        }
-        
-        .dest__link:hover,
-        .dest__link:focus-visible {
-            color: var(--white);
-            border-bottom-color: var(--gold);
-        }
-        
-        .dest__link svg {
-            transition: transform var(--dur) var(--transition);
-        }
-        
-        .dest__link:hover svg {
-            transform: translateX(4px);
-        }
-        
-        /* ============================================
-           LIFE ONBOARD
+           LIFE ONBOARD (moved before Destinations)
            ============================================ */
         .onboard {
             padding: 8rem 0;
@@ -1003,6 +838,148 @@
             line-height: 1.7;
             opacity: 0.9;
             max-width: 420px;
+        }
+        
+        /* ============================================
+           DESTINATIONS GALLERY — SYMMETRICAL GRID
+           ============================================ */
+        .destinations {
+            padding: 8rem 0;
+            background: var(--ivory);
+        }
+        
+        .destinations__header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 4rem;
+        }
+        
+        .destinations__title {
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+        
+        .destinations__title em {
+            color: var(--med-blue);
+        }
+        
+        .destinations__lead {
+            font-size: 1.05rem;
+            color: var(--muted);
+            max-width: 620px;
+            margin: 0 auto;
+        }
+        
+        /* Symmetrical, uniform destination grid */
+        .dest-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.75rem;
+        }
+        
+        .dest {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            background: var(--navy);
+            aspect-ratio: 4 / 5;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .dest__image {
+            position: absolute;
+            inset: 0;
+        }
+        
+        .dest__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 1.2s var(--transition);
+        }
+        
+        .dest:hover .dest__image img {
+            transform: scale(1.08);
+        }
+        
+        .dest__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 29, 44, 0.92) 0%, rgba(10, 29, 44, 0.25) 55%, rgba(10, 29, 44, 0.05) 100%);
+            z-index: 1;
+            transition: background var(--dur) var(--transition);
+        }
+        
+        .dest:hover .dest__overlay {
+            background: linear-gradient(to top, rgba(10, 29, 44, 0.95) 0%, rgba(10, 29, 44, 0.35) 60%, rgba(10, 29, 44, 0.1) 100%);
+        }
+        
+        .dest__content {
+            position: relative;
+            z-index: 2;
+            padding: 1.75rem;
+            color: var(--white);
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        
+        .dest__country {
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .dest__name {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 2vw, 2rem);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            line-height: 1.1;
+            color: var(--white);
+        }
+        
+        .dest__desc {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            opacity: 0.88;
+            margin-bottom: 1.25rem;
+        }
+        
+        .dest__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            padding-bottom: 4px;
+            border-bottom: 1px solid transparent;
+            transition: all var(--dur) var(--transition);
+            width: fit-content;
+        }
+        
+        .dest__link:hover,
+        .dest__link:focus-visible {
+            color: var(--white);
+            border-bottom-color: var(--gold);
+        }
+        
+        .dest__link svg {
+            transition: transform var(--dur) var(--transition);
+        }
+        
+        .dest__link:hover svg {
+            transform: translateX(4px);
         }
         
         /* ============================================
@@ -1359,25 +1336,10 @@
                 display: none;
             }
             
+            /* Destinations: 2 columns on tablet */
             .dest-grid {
-                grid-template-columns: repeat(6, 1fr);
-                grid-auto-rows: 220px;
-            }
-            
-            .dest--large {
-                grid-column: span 6;
-                grid-row: span 2;
-            }
-            
-            .dest--tall,
-            .dest--medium {
-                grid-column: span 3;
-                grid-row: span 2;
-            }
-            
-            .dest--wide {
-                grid-column: span 6;
-                grid-row: span 2;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
             }
             
             .features {
@@ -1497,17 +1459,14 @@
                 transform: translateY(-50%);
             }
             
+            /* Destinations: 1 column on mobile */
             .dest-grid {
                 grid-template-columns: 1fr;
-                grid-auto-rows: 280px;
+                gap: 1.25rem;
             }
             
-            .dest--large,
-            .dest--tall,
-            .dest--medium,
-            .dest--wide {
-                grid-column: span 1;
-                grid-row: span 1;
+            .dest {
+                aspect-ratio: 4 / 5;
             }
             
             .contact__grid {
@@ -1776,134 +1735,7 @@
         </div>
     </section>
 
-    <!-- DESTINATIONS -->
-    <section class="destinations" id="destinations">
-        <div class="container">
-            <div class="destinations__header">
-                <p class="eyebrow">Destinations</p>
-                <h2 class="destinations__title">Discover the <em>Mediterranean.</em></h2>
-                <p class="destinations__lead">
-                    Seven remarkable ports, each with its own story, flavor, and atmosphere — waiting to be explored.
-                </p>
-            </div>
-            
-            <div class="dest-grid" id="gallery">
-                <article class="dest dest--large">
-                    <div class="dest__image">
-                        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1200&q=75" alt="Barcelona" loading="lazy">
-                    </div>
-                    <div class="dest__overlay"></div>
-                    <div class="dest__content">
-                        <span class="dest__country">Spain</span>
-                        <h3 class="dest__name">Barcelona</h3>
-                        <p class="dest__desc">Mediterranean energy and architecture — where Gaudí's imagination meets the sea, and every boulevard tells a story.</p>
-                        <a href="#contact" class="dest__link">
-                            Explore Destination
-                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
-                        </a>
-                    </div>
-                </article>
-                
-                <article class="dest dest--tall">
-                    <div class="dest__image">
-                        <img src="Marseille.jpg" alt="Marseille" loading="lazy">
-                    </div>
-                    <div class="dest__overlay"></div>
-                    <div class="dest__content">
-                        <span class="dest__country">France</span>
-                        <h3 class="dest__name">Marseille</h3>
-                        <p class="dest__desc">The spirit of Provence — sunlit harbors, lavender-scented hills, and the timeless charm of southern France.</p>
-                        <a href="#contact" class="dest__link">
-                            Explore
-                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
-                        </a>
-                    </div>
-                </article>
-                
-                <article class="dest dest--medium">
-                    <div class="dest__image">
-                        <img src="Genoa.avif" alt="Genoa" loading="lazy">
-                    </div>
-                    <div class="dest__overlay"></div>
-                    <div class="dest__content">
-                        <span class="dest__country">Italy</span>
-                        <h3 class="dest__name">Genoa</h3>
-                        <p class="dest__desc">Italy's maritime heritage — narrow caruggi, grand palaces, and the soul of Liguria.</p>
-                        <a href="#contact" class="dest__link">
-                            Explore
-                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
-                        </a>
-                    </div>
-                </article>
-                
-                <article class="dest dest--wide">
-                    <div class="dest__image">
-                        <img src="Napels.avif" alt="Naples" loading="lazy">
-                    </div>
-                    <div class="dest__overlay"></div>
-                    <div class="dest__content">
-                        <span class="dest__country">Italy</span>
-                        <h3 class="dest__name">Naples</h3>
-                        <p class="dest__desc">The soul of southern Italy — where Vesuvius watches over ancient streets, legendary pizza, and a vibrant cultural heritage.</p>
-                        <a href="#contact" class="dest__link">
-                            Explore Destination
-                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
-                        </a>
-                    </div>
-                </article>
-                
-                <article class="dest dest--tall">
-                    <div class="dest__image">
-                        <img src="Malta.jpg" alt="Valletta" loading="lazy">
-                    </div>
-                    <div class="dest__overlay"></div>
-                    <div class="dest__content">
-                        <span class="dest__country">Malta</span>
-                        <h3 class="dest__name">Valletta</h3>
-                        <p class="dest__desc">Malta's golden history — honey-colored stone, ancient fortifications, and a harbor steeped in legend.</p>
-                        <a href="#contact" class="dest__link">
-                            Explore
-                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
-                        </a>
-                    </div>
-                </article>
-                
-                <article class="dest dest--medium">
-                    <div class="dest__image">
-                        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=900&q=75" alt="Santorini" loading="lazy">
-                    </div>
-                    <div class="dest__overlay"></div>
-                    <div class="dest__content">
-                        <span class="dest__country">Greece</span>
-                        <h3 class="dest__name">Santorini</h3>
-                        <p class="dest__desc">Aegean beauty and sunsets — whitewashed villages perched on volcanic cliffs above the deep blue sea.</p>
-                        <a href="#contact" class="dest__link">
-                            Explore
-                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
-                        </a>
-                    </div>
-                </article>
-                
-                <article class="dest dest--wide">
-                    <div class="dest__image">
-                        <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&fit=crop&w=1200&q=75" alt="Athens" loading="lazy">
-                    </div>
-                    <div class="dest__overlay"></div>
-                    <div class="dest__content">
-                        <span class="dest__country">Greece</span>
-                        <h3 class="dest__name">Athens</h3>
-                        <p class="dest__desc">Ancient wonders and modern culture — where the Acropolis watches over a city alive with history, philosophy, and Mediterranean light.</p>
-                        <a href="#contact" class="dest__link">
-                            Explore Destination
-                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
-                        </a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- LIFE ONBOARD -->
+    <!-- LIFE ONBOARD (moved before Destinations) -->
     <section class="onboard" id="onboard">
         <div class="container">
             <div class="onboard__header">
@@ -1976,6 +1808,133 @@
                         </svg>
                         <h3 class="feature__title">Wellness &amp; Relaxation</h3>
                         <p class="feature__text">Find your balance with a calm atmosphere dedicated to unwinding and enjoying life at sea.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESTINATIONS (moved after Life Onboard) -->
+    <section class="destinations" id="destinations">
+        <div class="container">
+            <div class="destinations__header">
+                <p class="eyebrow">Destinations</p>
+                <h2 class="destinations__title">Discover the <em>Mediterranean.</em></h2>
+                <p class="destinations__lead">
+                    Seven remarkable ports, each with its own story, flavor, and atmosphere — waiting to be explored.
+                </p>
+            </div>
+            
+            <div class="dest-grid" id="gallery">
+                <article class="dest">
+                    <div class="dest__image">
+                        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=900&q=75" alt="Barcelona" loading="lazy">
+                    </div>
+                    <div class="dest__overlay"></div>
+                    <div class="dest__content">
+                        <span class="dest__country">Spain</span>
+                        <h3 class="dest__name">Barcelona</h3>
+                        <p class="dest__desc">Mediterranean energy and architecture — where Gaudí's imagination meets the sea, and every boulevard tells a story.</p>
+                        <a href="#contact" class="dest__link">
+                            Explore Destination
+                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="dest">
+                    <div class="dest__image">
+                        <img src="Marseille.jpg" alt="Marseille" loading="lazy">
+                    </div>
+                    <div class="dest__overlay"></div>
+                    <div class="dest__content">
+                        <span class="dest__country">France</span>
+                        <h3 class="dest__name">Marseille</h3>
+                        <p class="dest__desc">The spirit of Provence — sunlit harbors, lavender-scented hills, and the timeless charm of southern France.</p>
+                        <a href="#contact" class="dest__link">
+                            Explore Destination
+                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="dest">
+                    <div class="dest__image">
+                        <img src="Genoa.avif" alt="Genoa" loading="lazy">
+                    </div>
+                    <div class="dest__overlay"></div>
+                    <div class="dest__content">
+                        <span class="dest__country">Italy</span>
+                        <h3 class="dest__name">Genoa</h3>
+                        <p class="dest__desc">Italy's maritime heritage — narrow caruggi, grand palaces, and the soul of Liguria.</p>
+                        <a href="#contact" class="dest__link">
+                            Explore Destination
+                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="dest">
+                    <div class="dest__image">
+                        <img src="Napels.avif" alt="Naples" loading="lazy">
+                    </div>
+                    <div class="dest__overlay"></div>
+                    <div class="dest__content">
+                        <span class="dest__country">Italy</span>
+                        <h3 class="dest__name">Naples</h3>
+                        <p class="dest__desc">The soul of southern Italy — where Vesuvius watches over ancient streets, legendary pizza, and a vibrant cultural heritage.</p>
+                        <a href="#contact" class="dest__link">
+                            Explore Destination
+                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="dest">
+                    <div class="dest__image">
+                        <img src="Malta.jpg" alt="Valletta" loading="lazy">
+                    </div>
+                    <div class="dest__overlay"></div>
+                    <div class="dest__content">
+                        <span class="dest__country">Malta</span>
+                        <h3 class="dest__name">Valletta</h3>
+                        <p class="dest__desc">Malta's golden history — honey-colored stone, ancient fortifications, and a harbor steeped in legend.</p>
+                        <a href="#contact" class="dest__link">
+                            Explore Destination
+                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="dest">
+                    <div class="dest__image">
+                        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=900&q=75" alt="Santorini" loading="lazy">
+                    </div>
+                    <div class="dest__overlay"></div>
+                    <div class="dest__content">
+                        <span class="dest__country">Greece</span>
+                        <h3 class="dest__name">Santorini</h3>
+                        <p class="dest__desc">Aegean beauty and sunsets — whitewashed villages perched on volcanic cliffs above the deep blue sea.</p>
+                        <a href="#contact" class="dest__link">
+                            Explore Destination
+                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="dest">
+                    <div class="dest__image">
+                        <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&fit=crop&w=900&q=75" alt="Athens" loading="lazy">
+                    </div>
+                    <div class="dest__overlay"></div>
+                    <div class="dest__content">
+                        <span class="dest__country">Greece</span>
+                        <h3 class="dest__name">Athens</h3>
+                        <p class="dest__desc">Ancient wonders and modern culture — where the Acropolis watches over a city alive with history, philosophy, and Mediterranean light.</p>
+                        <a href="#contact" class="dest__link">
+                            Explore Destination
+                            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+                        </a>
                     </div>
                 </article>
             </div>
@@ -2128,4 +2087,3 @@
 
 </body>
 </html>
-
