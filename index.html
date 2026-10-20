@@ -741,107 +741,7 @@
         }
         
         /* ============================================
-           LIFE ONBOARD (moved before Destinations)
-           ============================================ */
-        .onboard {
-            padding: 8rem 0;
-            background: var(--white);
-        }
-        
-        .onboard__header {
-            text-align: center;
-            max-width: 760px;
-            margin: 0 auto 4rem;
-        }
-        
-        .onboard__title {
-            color: var(--navy);
-            margin-bottom: 1.5rem;
-        }
-        
-        .onboard__title em {
-            color: var(--med-blue);
-        }
-        
-        .onboard__lead {
-            font-size: 1.05rem;
-            color: var(--muted);
-            max-width: 620px;
-            margin: 0 auto;
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-        
-        .feature {
-            position: relative;
-            overflow: hidden;
-            border-radius: 4px;
-            min-height: 380px;
-            background: var(--navy);
-        }
-        
-        .feature__image {
-            position: absolute;
-            inset: 0;
-        }
-        
-        .feature__image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 1.2s var(--transition);
-        }
-        
-        .feature:hover .feature__image img {
-            transform: scale(1.06);
-        }
-        
-        .feature__overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(10, 29, 44, 0.92) 0%, rgba(10, 29, 44, 0.35) 60%, rgba(10, 29, 44, 0.1) 100%);
-            z-index: 1;
-        }
-        
-        .feature__content {
-            position: relative;
-            z-index: 2;
-            padding: 3rem;
-            color: var(--white);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-        }
-        
-        .feature__icon {
-            width: 44px;
-            height: 44px;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
-        }
-        
-        .feature__title {
-            font-family: var(--font-display);
-            font-size: 1.75rem;
-            font-weight: 500;
-            margin-bottom: 0.75rem;
-            line-height: 1.15;
-        }
-        
-        .feature__text {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            opacity: 0.9;
-            max-width: 420px;
-        }
-        
-        /* ============================================
-           DESTINATIONS GALLERY — SYMMETRICAL GRID
+           DESTINATIONS GALLERY
            ============================================ */
         .destinations {
             padding: 8rem 0;
@@ -870,7 +770,6 @@
             margin: 0 auto;
         }
         
-        /* Symmetrical, uniform destination grid */
         .dest-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -980,6 +879,263 @@
         
         .dest__link:hover svg {
             transform: translateX(4px);
+        }
+        
+        /* ============================================
+           LIFE ONBOARD — CINEMATIC INTRO
+           ============================================ */
+        .onboard {
+            background: var(--white);
+        }
+        
+        .onboard-intro {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            overflow: hidden;
+            isolation: isolate;
+        }
+        
+        .onboard-intro__bg {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background-color: var(--navy);
+            background-image: url('https://images.unsplash.com/photo-1548572314-9817ae1f0666?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .onboard-intro__overlay {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(180deg, 
+                rgba(10, 29, 44, 0.7) 0%, 
+                rgba(10, 29, 44, 0.5) 50%, 
+                rgba(10, 29, 44, 0.85) 100%);
+        }
+        
+        .onboard-intro__content {
+            text-align: center;
+            max-width: 900px;
+            padding: 8rem 0;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1.2s var(--transition) 0.3s forwards;
+        }
+        
+        .onboard-intro__eyebrow {
+            color: var(--gold);
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .onboard-intro__eyebrow::before {
+            background: var(--gold);
+            width: 48px;
+        }
+        
+        .onboard-intro__title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            color: var(--white);
+        }
+        
+        .onboard-intro__title em {
+            color: var(--gold-soft);
+        }
+        
+        .onboard-intro__text {
+            font-size: clamp(1rem, 1.4vw, 1.2rem);
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 680px;
+            margin: 0 auto 3rem;
+            opacity: 0.92;
+        }
+        
+        .onboard-intro__btn {
+            margin-top: 1rem;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* ============================================
+           LIFE ONBOARD — EXPERIENCES GALLERY
+           ============================================ */
+        .experiences {
+            padding: 8rem 0;
+            background: var(--ivory);
+        }
+        
+        .experiences__header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 5rem;
+        }
+        
+        .experiences__title {
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+        
+        .experiences__title em {
+            color: var(--med-blue);
+        }
+        
+        .experiences__lead {
+            font-size: 1.05rem;
+            color: var(--muted);
+            max-width: 620px;
+            margin: 0 auto;
+        }
+        
+        .exp-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto;
+            gap: 1.5rem;
+        }
+        
+        .exp {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            background: var(--navy);
+            min-height: 380px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s var(--transition), transform 0.8s var(--transition);
+        }
+        
+        .exp.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .exp--large {
+            grid-column: span 2;
+            grid-row: span 2;
+            min-height: 780px;
+        }
+        
+        .exp--wide {
+            grid-column: span 2;
+        }
+        
+        .exp__image {
+            position: absolute;
+            inset: 0;
+        }
+        
+        .exp__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.4s var(--transition);
+        }
+        
+        .exp:hover .exp__image img {
+            transform: scale(1.08);
+        }
+        
+        .exp__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, 
+                rgba(10, 29, 44, 0.95) 0%, 
+                rgba(10, 29, 44, 0.4) 55%, 
+                rgba(10, 29, 44, 0.1) 100%);
+            z-index: 1;
+            transition: background var(--dur) var(--transition);
+        }
+        
+        .exp:hover .exp__overlay {
+            background: linear-gradient(to top, 
+                rgba(10, 29, 44, 0.98) 0%, 
+                rgba(10, 29, 44, 0.5) 60%, 
+                rgba(10, 29, 44, 0.15) 100%);
+        }
+        
+        .exp__content {
+            position: relative;
+            z-index: 2;
+            padding: 2.5rem;
+            color: var(--white);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        
+        .exp__icon {
+            width: 48px;
+            height: 48px;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .exp--large .exp__icon {
+            width: 56px;
+            height: 56px;
+        }
+        
+        .exp__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 2.2vw, 2rem);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            line-height: 1.15;
+            color: var(--white);
+        }
+        
+        .exp--large .exp__title {
+            font-size: clamp(2rem, 3vw, 2.75rem);
+        }
+        
+        .exp__text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            opacity: 0.9;
+            max-width: 480px;
+        }
+        
+        .exp--large .exp__text {
+            font-size: 1.05rem;
+            max-width: 560px;
+        }
+        
+        /* Decorative glow effect for White Party */
+        .exp--glow::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: 20%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(214, 184, 121, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;
+            animation: glowPulse 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
         }
         
         /* ============================================
@@ -1336,18 +1492,37 @@
                 display: none;
             }
             
-            /* Destinations: 2 columns on tablet */
             .dest-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
             }
             
-            .features {
-                grid-template-columns: 1fr;
+            /* Experiences: 2 columns on tablet */
+            .exp-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
+            }
+            
+            .exp--large {
+                grid-column: span 2;
+                grid-row: span 1;
+                min-height: 500px;
+            }
+            
+            .exp--wide {
+                grid-column: span 2;
             }
             
             .footer__grid {
                 grid-template-columns: 1fr 1fr;
+            }
+            
+            .onboard-intro {
+                min-height: 70vh;
+            }
+            
+            .onboard-intro__bg {
+                background-attachment: scroll;
             }
         }
         
@@ -1419,7 +1594,7 @@
             .overview,
             .itinerary,
             .destinations,
-            .onboard,
+            .experiences,
             .contact {
                 padding: 5rem 0;
             }
@@ -1459,7 +1634,6 @@
                 transform: translateY(-50%);
             }
             
-            /* Destinations: 1 column on mobile */
             .dest-grid {
                 grid-template-columns: 1fr;
                 gap: 1.25rem;
@@ -1467,6 +1641,27 @@
             
             .dest {
                 aspect-ratio: 4 / 5;
+            }
+            
+            /* Experiences: 1 column on mobile */
+            .exp-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+            
+            .exp--large,
+            .exp--wide {
+                grid-column: span 1;
+                grid-row: span 1;
+                min-height: 400px;
+            }
+            
+            .exp--large {
+                min-height: 480px;
+            }
+            
+            .exp__content {
+                padding: 1.75rem;
             }
             
             .contact__grid {
@@ -1503,6 +1698,18 @@
             .route__arrow {
                 margin: 0 0.3rem;
             }
+            
+            .onboard-intro {
+                min-height: 60vh;
+            }
+            
+            .onboard-intro__bg {
+                background-attachment: scroll;
+            }
+            
+            .onboard-intro__content {
+                padding: 5rem 0;
+            }
         }
         
         @media (max-width: 480px) {
@@ -1514,8 +1721,12 @@
                 font-size: 0.85rem;
             }
             
-            .feature__content {
+            .exp__content {
                 padding: 1.5rem;
+            }
+            
+            .exp__text {
+                font-size: 0.88rem;
             }
         }
     </style>
@@ -1735,86 +1946,7 @@
         </div>
     </section>
 
-    <!-- LIFE ONBOARD (moved before Destinations) -->
-    <section class="onboard" id="onboard">
-        <div class="container">
-            <div class="onboard__header">
-                <p class="eyebrow">Life Onboard</p>
-                <h2 class="onboard__title">The Journey Is <em>Just as Beautiful.</em></h2>
-                <p class="onboard__lead">
-                    Beyond every destination lies another opportunity to relax, indulge, and enjoy the extraordinary atmosphere of the Mediterranean.
-                </p>
-            </div>
-            
-            <div class="features">
-                <article class="feature">
-                    <div class="feature__image">
-                        <img src="https://images.unsplash.com/photo-1566024287286-457247b70310?auto=format&fit=crop&w=1000&q=75" alt="Oceanview suite" loading="lazy">
-                    </div>
-                    <div class="feature__overlay"></div>
-                    <div class="feature__content">
-                        <svg class="feature__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                            <path d="M6 32V20a4 4 0 014-4h28a4 4 0 014 4v12" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M4 32h40v6H4z" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M12 16v-4a4 4 0 014-4h16a4 4 0 014 4v4" stroke="currentColor" stroke-width="1.5"/>
-                        </svg>
-                        <h3 class="feature__title">Oceanview Suites</h3>
-                        <p class="feature__text">Relax in beautifully designed spaces inspired by comfort, light, and the endless blue horizon.</p>
-                    </div>
-                </article>
-                
-                <article class="feature">
-                    <div class="feature__image">
-                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1000&q=75" alt="Mediterranean dining" loading="lazy">
-                    </div>
-                    <div class="feature__overlay"></div>
-                    <div class="feature__content">
-                        <svg class="feature__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                            <path d="M14 6v10a4 4 0 004 4v22" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M10 6v8a4 4 0 004 4" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M18 6v8a4 4 0 01-4 4" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M34 6c0 6-4 10-4 16v20" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M34 6c4 4 4 10 0 16" stroke="currentColor" stroke-width="1.5"/>
-                        </svg>
-                        <h3 class="feature__title">Mediterranean Dining</h3>
-                        <p class="feature__text">Discover a culinary atmosphere inspired by Mediterranean ingredients, regional flavors, and leisurely dining.</p>
-                    </div>
-                </article>
-                
-                <article class="feature">
-                    <div class="feature__image">
-                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1000&q=75" alt="Sunset deck" loading="lazy">
-                    </div>
-                    <div class="feature__overlay"></div>
-                    <div class="feature__content">
-                        <svg class="feature__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                            <circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M24 6v4M24 38v4M6 24h4M38 24h4M11 11l3 3M34 34l3 3M37 11l-3 3M14 34l-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                        </svg>
-                        <h3 class="feature__title">Sunset Deck</h3>
-                        <p class="feature__text">Enjoy panoramic ocean views, golden evenings, and peaceful moments beneath the Mediterranean sky.</p>
-                    </div>
-                </article>
-                
-                <article class="feature">
-                    <div class="feature__image">
-                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=75" alt="Wellness spa" loading="lazy">
-                    </div>
-                    <div class="feature__overlay"></div>
-                    <div class="feature__content">
-                        <svg class="feature__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                            <path d="M24 42s-14-8-14-20a10 10 0 0120-4 10 10 0 0120 4c0 12-14 20-14 20" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                            <path d="M24 18v12M18 24h12" stroke="currentColor" stroke-width="1.5"/>
-                        </svg>
-                        <h3 class="feature__title">Wellness &amp; Relaxation</h3>
-                        <p class="feature__text">Find your balance with a calm atmosphere dedicated to unwinding and enjoying life at sea.</p>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- DESTINATIONS (moved after Life Onboard) -->
+    <!-- DESTINATIONS -->
     <section class="destinations" id="destinations">
         <div class="container">
             <div class="destinations__header">
@@ -1941,6 +2073,170 @@
         </div>
     </section>
 
+    <!-- LIFE ONBOARD — ENHANCED -->
+    <section class="onboard" id="onboard">
+        <!-- Cinematic Introduction -->
+        <div class="onboard-intro">
+            <div class="onboard-intro__bg" role="img" aria-label="Luxury cruise ship sailing across the Mediterranean at golden hour"></div>
+            <div class="onboard-intro__overlay"></div>
+            
+            <div class="container onboard-intro__content">
+                <p class="eyebrow onboard-intro__eyebrow">Life On Board</p>
+                <h2 class="onboard-intro__title">
+                    The Journey Is<br>
+                    <em>Just as Beautiful.</em>
+                </h2>
+                <p class="onboard-intro__text">
+                    More than a destination, a world of experiences awaits. Discover extraordinary dining, endless entertainment, moments of relaxation, and unforgettable nights at sea.
+                </p>
+                <a href="#experiences" class="btn btn--primary onboard-intro__btn">
+                    Discover Life On Board
+                    <svg class="btn__arrow" width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
+                        <path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Experiences Gallery -->
+        <div class="experiences" id="experiences">
+            <div class="container">
+                <div class="experiences__header">
+                    <p class="eyebrow">On Board Experiences</p>
+                    <h2 class="experiences__title">A World of <em>Extraordinary Moments.</em></h2>
+                    <p class="experiences__lead">
+                        From sunlit pools to starlit decks, every moment aboard is crafted to inspire, delight, and renew.
+                    </p>
+                </div>
+                
+                <div class="exp-grid">
+                    <!-- Swimming Pools & Sun Decks -->
+                    <article class="exp exp--large">
+                        <div class="exp__image">
+                            <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80" alt="Infinity pool on cruise ship deck" loading="lazy">
+                        </div>
+                        <div class="exp__overlay"></div>
+                        <div class="exp__content">
+                            <svg class="exp__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                                <path d="M6 32c4-4 8-4 12 0s8 4 12 0 8-4 12 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M6 38c4-4 8-4 12 0s8 4 12 0 8-4 12 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <circle cx="24" cy="14" r="6" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M24 8v-2M24 22v2M18 14h-2M30 14h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                            <h3 class="exp__title">A World Above the Waves</h3>
+                            <p class="exp__text">Spend sunlit afternoons by the pool, enjoy refreshing drinks, and take in endless ocean views from the heart of the ship.</p>
+                        </div>
+                    </article>
+                    
+                    <!-- Theatre & Live Shows -->
+                    <article class="exp">
+                        <div class="exp__image">
+                            <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=900&q=80" alt="Grand cruise theatre with stage lighting" loading="lazy">
+                        </div>
+                        <div class="exp__overlay"></div>
+                        <div class="exp__content">
+                            <svg class="exp__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                                <path d="M8 12h32v24H8z" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M12 16l4 4-4 4M20 24h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <circle cx="36" cy="16" r="2" fill="currentColor"/>
+                            </svg>
+                            <h3 class="exp__title">Every Night Takes the Stage</h3>
+                            <p class="exp__text">From dazzling theatrical productions to live music and spectacular performances, every evening brings something extraordinary.</p>
+                        </div>
+                    </article>
+                    
+                    <!-- Restaurants & Fine Dining -->
+                    <article class="exp">
+                        <div class="exp__image">
+                            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80" alt="Mediterranean fine dining" loading="lazy">
+                        </div>
+                        <div class="exp__overlay"></div>
+                        <div class="exp__content">
+                            <svg class="exp__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                                <path d="M14 6v10a4 4 0 004 4v22" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M10 6v8a4 4 0 004 4" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M18 6v8a4 4 0 01-4 4" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M34 6c0 6-4 10-4 16v20" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M34 6c4 4 4 10 0 16" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                            <h3 class="exp__title">A Taste of Every Horizon</h3>
+                            <p class="exp__text">Discover Mediterranean flavours, international cuisine, unforgettable dinners, and exceptional dining experiences inspired by the destinations you visit.</p>
+                        </div>
+                    </article>
+                    
+                    <!-- Bars, Lounges & Cocktails -->
+                    <article class="exp">
+                        <div class="exp__image">
+                            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80" alt="Sophisticated cocktail bar with ocean view" loading="lazy">
+                        </div>
+                        <div class="exp__overlay"></div>
+                        <div class="exp__content">
+                            <svg class="exp__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                                <path d="M12 6l12 18 12-18" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                                <path d="M24 24v18" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M16 42h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <circle cx="30" cy="12" r="2" fill="currentColor"/>
+                            </svg>
+                            <h3 class="exp__title">Raise a Glass to the Sea</h3>
+                            <p class="exp__text">Enjoy handcrafted cocktails, intimate lounges, sunset aperitifs, and evenings that unfold at your own pace.</p>
+                        </div>
+                    </article>
+                    
+                    <!-- White Party & Nights Under the Stars -->
+                    <article class="exp exp--wide exp--glow">
+                        <div class="exp__image">
+                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80" alt="Glamorous white party on cruise ship deck at night" loading="lazy">
+                        </div>
+                        <div class="exp__overlay"></div>
+                        <div class="exp__content">
+                            <svg class="exp__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                                <path d="M24 6l3 9h9l-7 5 3 9-8-6-8 6 3-9-7-5h9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+                                <circle cx="36" cy="14" r="1.5" fill="currentColor"/>
+                                <circle cx="40" cy="28" r="1" fill="currentColor"/>
+                            </svg>
+                            <h3 class="exp__title">One Night. All in White.</h3>
+                            <p class="exp__text">Dress in white, dance beneath the stars, and celebrate unforgettable nights surrounded by the Mediterranean Sea.</p>
+                        </div>
+                    </article>
+                    
+                    <!-- Shopping & Onboard Boutiques -->
+                    <article class="exp">
+                        <div class="exp__image">
+                            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80" alt="Luxury shopping boutique on cruise ship" loading="lazy">
+                        </div>
+                        <div class="exp__overlay"></div>
+                        <div class="exp__content">
+                            <svg class="exp__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                                <path d="M12 16h24v24H12z" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M18 16v-4a6 6 0 0112 0v4" stroke="currentColor" stroke-width="1.5"/>
+                                <circle cx="24" cy="28" r="3" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                            <h3 class="exp__title">A Little Something Extraordinary</h3>
+                            <p class="exp__text">Explore stylish boutiques, discover special finds, and enjoy a world of shopping between your favourite destinations.</p>
+                        </div>
+                    </article>
+                    
+                    <!-- Spa, Wellness & Relaxation -->
+                    <article class="exp exp--wide">
+                        <div class="exp__image">
+                            <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=1200&q=80" alt="Luxurious cruise ship spa with ocean view" loading="lazy">
+                        </div>
+                        <div class="exp__overlay"></div>
+                        <div class="exp__content">
+                            <svg class="exp__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                                <path d="M24 42s-14-8-14-20a10 10 0 0120-4 10 10 0 0120 4c0 12-14 20-14 20" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                                <path d="M24 18v12M18 24h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                            <h3 class="exp__title">A Sanctuary of Serenity</h3>
+                            <p class="exp__text">Surrender to tranquility with restorative treatments, ocean-view relaxation spaces, and wellness rituals designed to renew body and mind.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- BRAND BANNER -->
     <section class="banner">
         <div class="banner__bg" role="img" aria-label="Cruise ship sailing past the Italian coastline at golden hour"></div>
@@ -2011,7 +2307,6 @@
                 </div>
             </div>
             
-            <!-- NOTE: Replace action with your form endpoint (Formspree, Netlify Forms, etc.) -->
             <form class="form" action="#" method="POST">
                 <div class="form-row">
                     <div class="form-group">
@@ -2061,9 +2356,9 @@
                     <h4 class="footer__heading">Discover</h4>
                     <ul class="footer__list">
                         <li><a href="#gallery" class="footer__link">Gallery</a></li>
-                        <li><a href="#onboard" class="footer__link">Suites</a></li>
-                        <li><a href="#onboard" class="footer__link">Dining</a></li>
-                        <li><a href="#onboard" class="footer__link">Wellness</a></li>
+                        <li><a href="#experiences" class="footer__link">Suites</a></li>
+                        <li><a href="#experiences" class="footer__link">Dining</a></li>
+                        <li><a href="#experiences" class="footer__link">Wellness</a></li>
                     </ul>
                 </div>
                 
@@ -2084,6 +2379,41 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Intersection Observer for scroll-triggered animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Stagger animation based on element index
+                    setTimeout(() => {
+                        entry.target.classList.add('is-visible');
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all experience cards
+        document.querySelectorAll('.exp').forEach(exp => {
+            observer.observe(exp);
+        });
+        
+        // Parallax effect for cinematic intro
+        const onboardIntro = document.querySelector('.onboard-intro__bg');
+        if (onboardIntro && window.innerWidth > 1023) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * 0.3;
+                onboardIntro.style.transform = `translateY(${rate}px)`;
+            }, { passive: true });
+        }
+    </script>
 
 </body>
 </html>
