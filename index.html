@@ -3,74 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="GT CRUISE — Your Journey. Your World. A premium Mediterranean cruise experience across Barcelona, Marseille, Genoa, Naples, Valletta, Santorini, and Athens.">
+    <meta name="description" content="GT CRUISE — Premium Mediterranean cruise experiences. Your Journey. Your World.">
     <title>GT CRUISE — Your Journey. Your World.</title>
-
-    <!-- Google Fonts: Cormorant Garamond (editorial serif) + Manrope (modern sans) -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* =========================================================
-           1. DESIGN TOKENS
-           ========================================================= */
+        /* ============================================
+           VARIABLES & RESET
+           ============================================ */
         :root {
             --navy: #102B3F;
             --navy-deep: #0a1d2c;
             --med-blue: #2D6478;
-            --med-blue-soft: #3d7a8f;
             --ivory: #F8F5EF;
             --gold: #D6B879;
             --gold-soft: #e4cc94;
             --sand: #DCCDB8;
             --white: #FFFFFF;
-            --ink: #1a2f40;
+            --ink: #1a2a3a;
             --muted: #6b7a85;
-
+            
             --font-display: 'Cormorant Garamond', Georgia, serif;
             --font-body: 'Manrope', -apple-system, sans-serif;
-
-            --space-xs: 0.5rem;
-            --space-sm: 1rem;
-            --space-md: 1.5rem;
-            --space-lg: 2.5rem;
-            --space-xl: 4rem;
-            --space-2xl: 6rem;
-            --space-3xl: 8rem;
-
-            --container: 1320px;
-            --pad: clamp(1.25rem, 4vw, 3rem);
-
-            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+            
+            --transition: cubic-bezier(0.22, 1, 0.36, 1);
             --dur: 0.6s;
         }
-
-        /* =========================================================
-           2. RESET & BASE
-           ========================================================= */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-
+        
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        
         body {
             font-family: var(--font-body);
-            font-weight: 400;
-            font-size: 1rem;
+            font-size: 16px;
             line-height: 1.7;
             color: var(--ink);
-            background: var(--ivory);
+            background: var(--white);
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
-
-        img { max-width: 100%; height: auto; display: block; }
-        a { color: inherit; text-decoration: none; transition: color var(--dur) var(--ease); }
-        button { font-family: inherit; cursor: pointer; border: none; background: none; }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color var(--dur) var(--transition);
+        }
+        
         ul { list-style: none; }
-
-        :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-
+        
+        :focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+        }
+        
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -78,292 +80,54 @@
                 scroll-behavior: auto !important;
             }
         }
-
-        .gt-container {
-            max-width: var(--container);
+        
+        .container {
+            max-width: 1320px;
             margin: 0 auto;
-            padding-left: var(--pad);
-            padding-right: var(--pad);
+            padding: 0 clamp(1.25rem, 4vw, 3rem);
         }
-
-        /* =========================================================
-           3. TYPOGRAPHY UTILITIES
-           ========================================================= */
-        .gt-eyebrow {
+        
+        /* ============================================
+           TYPOGRAPHY
+           ============================================ */
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            font-weight: 500;
+            line-height: 1.15;
+        }
+        
+        h1 { font-size: clamp(2.75rem, 7vw, 5.5rem); }
+        h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); }
+        h3 { font-size: clamp(1.4rem, 2.5vw, 2rem); }
+        
+        .eyebrow {
             display: inline-flex;
             align-items: center;
             gap: 0.85rem;
-            font-family: var(--font-body);
             font-size: 0.72rem;
             font-weight: 600;
             letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--gold);
-            margin-bottom: var(--space-md);
+            margin-bottom: 1.25rem;
         }
-
-        .gt-eyebrow::before {
+        
+        .eyebrow::before {
             content: '';
             width: 36px;
             height: 1px;
             background: var(--gold);
         }
-
-        .gt-display {
-            font-family: var(--font-display);
-            font-weight: 500;
-            line-height: 1.08;
-            letter-spacing: -0.01em;
-        }
-
-        .gt-display em {
+        
+        em {
             font-style: italic;
             font-weight: 400;
         }
-
-        /* =========================================================
-           4. HEADER
-           ========================================================= */
-        .gt-header {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100;
-            padding: 1.25rem 0;
-            background: linear-gradient(to bottom, rgba(10, 29, 44, 0.55), rgba(10, 29, 44, 0.15) 70%, transparent);
-            transition: background var(--dur) var(--ease), padding var(--dur) var(--ease);
-        }
-
-        .gt-header__inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: var(--space-md);
-        }
-
-        /* Typographic logo */
-        .gt-logo {
-            display: inline-flex;
-            align-items: baseline;
-            gap: 0.55rem;
-            color: var(--white);
-            font-family: var(--font-display);
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            line-height: 1;
-        }
-
-        .gt-logo__mark {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            position: relative;
-        }
-
-        .gt-logo__mark::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: var(--gold);
-        }
-
-        .gt-logo__word {
-            font-size: 1.35rem;
-            font-weight: 500;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-        }
-
-        .gt-nav { display: flex; align-items: center; gap: var(--space-lg); }
-
-        .gt-nav__list { display: flex; gap: 2rem; }
-
-        .gt-nav__link {
-            position: relative;
-            font-size: 0.78rem;
-            font-weight: 500;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--white);
-            padding: 0.4rem 0;
-        }
-
-        .gt-nav__link::after {
-            content: '';
-            position: absolute;
-            left: 0; bottom: 0;
-            width: 0; height: 1px;
-            background: var(--gold);
-            transition: width var(--dur) var(--ease);
-        }
-
-        .gt-nav__link:hover,
-        .gt-nav__link:focus-visible { color: var(--gold); }
-        .gt-nav__link:hover::after,
-        .gt-nav__link:focus-visible::after { width: 100%; }
-
-        .gt-nav__cta {
-            display: inline-block;
-            padding: 0.7rem 1.4rem;
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--white);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 2px;
-            transition: all var(--dur) var(--ease);
-        }
-
-        .gt-nav__cta:hover,
-        .gt-nav__cta:focus-visible {
-            background: var(--gold);
-            border-color: var(--gold);
-            color: var(--navy);
-        }
-
-        /* CSS-only mobile menu */
-        .gt-menu-toggle { position: absolute; opacity: 0; pointer-events: none; }
-
-        .gt-menu-btn {
-            display: none;
-            width: 44px; height: 44px;
-            align-items: center; justify-content: center;
-            cursor: pointer;
-            position: relative;
-            z-index: 110;
-        }
-
-        .gt-menu-btn__lines {
-            position: relative;
-            width: 26px; height: 2px;
-            background: var(--white);
-            transition: background var(--dur) var(--ease);
-        }
-
-        .gt-menu-btn__lines::before,
-        .gt-menu-btn__lines::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            width: 26px; height: 2px;
-            background: var(--white);
-            transition: transform var(--dur) var(--ease), top var(--dur) var(--ease);
-        }
-        .gt-menu-btn__lines::before { top: -8px; }
-        .gt-menu-btn__lines::after { top: 8px; }
-
-        .gt-menu-toggle:checked ~ .gt-menu-btn .gt-menu-btn__lines { background: transparent; }
-        .gt-menu-toggle:checked ~ .gt-menu-btn .gt-menu-btn__lines::before { top: 0; transform: rotate(45deg); }
-        .gt-menu-toggle:checked ~ .gt-menu-btn .gt-menu-btn__lines::after { top: 0; transform: rotate(-45deg); }
-
-        /* =========================================================
-           5. HERO
-           ========================================================= */
-        .gt-hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            color: var(--white);
-            overflow: hidden;
-            isolation: isolate;
-        }
-
-        .gt-hero__bg {
-            position: absolute;
-            inset: 0;
-            z-index: -2;
-            background-color: var(--navy);
-            background-image: url('https://images.unsplash.com/photo-1599640842225-85d111c60e6b?auto=format&fit=crop&w=2000&q=80');
-            background-size: cover;
-            background-position: center 40%;
-        }
-
-        .gt-hero__bg::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(180deg, rgba(10, 29, 44, 0.55) 0%, rgba(10, 29, 44, 0.25) 40%, rgba(10, 29, 44, 0.75) 100%),
-                linear-gradient(90deg, rgba(10, 29, 44, 0.5) 0%, transparent 60%);
-        }
-
-        .gt-hero__content {
-            padding-top: 9rem;
-            padding-bottom: var(--space-3xl);
-            max-width: 820px;
-        }
-
-        .gt-hero__logo {
-            display: inline-flex;
-            align-items: baseline;
-            gap: 0.7rem;
-            margin-bottom: var(--space-xl);
-            color: var(--white);
-            font-family: var(--font-display);
-            line-height: 1;
-        }
-
-        .gt-hero__logo-mark {
-            font-size: clamp(3rem, 6vw, 4.5rem);
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            position: relative;
-        }
-
-        .gt-hero__logo-mark::after {
-            content: '';
-            position: absolute;
-            bottom: -6px; left: 0; right: 0;
-            height: 1.5px;
-            background: var(--gold);
-        }
-
-        .gt-hero__logo-word {
-            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-            font-weight: 500;
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
-        }
-
-        .gt-hero__eyebrow {
-            color: var(--gold);
-            margin-bottom: var(--space-lg);
-        }
-
-        .gt-hero__eyebrow::before { background: var(--gold); width: 48px; }
-
-        .gt-hero__title {
-            font-size: clamp(3rem, 8vw, 6.5rem);
-            margin-bottom: var(--space-lg);
-            line-height: 1;
-        }
-
-        .gt-hero__title em {
-            font-style: italic;
-            font-weight: 400;
-            color: var(--gold-soft);
-        }
-
-        .gt-hero__subtitle {
-            font-size: clamp(1rem, 1.3vw, 1.15rem);
-            font-weight: 300;
-            line-height: 1.75;
-            max-width: 560px;
-            margin-bottom: var(--space-xl);
-            opacity: 0.92;
-        }
-
-        .gt-hero__actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-sm);
-        }
-
-        .gt-btn {
+        
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
@@ -374,55 +138,332 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             border-radius: 2px;
-            transition: all var(--dur) var(--ease);
+            transition: all var(--dur) var(--transition);
+            cursor: pointer;
+            border: 1px solid;
         }
-
-        .gt-btn--primary {
+        
+        .btn--primary {
             background: var(--gold);
             color: var(--navy);
-            border: 1px solid var(--gold);
+            border-color: var(--gold);
         }
-
-        .gt-btn--primary:hover,
-        .gt-btn--primary:focus-visible {
+        
+        .btn--primary:hover {
             background: var(--white);
             border-color: var(--white);
+            color: var(--navy);
             transform: translateY(-2px);
         }
-
-        .gt-btn--ghost {
+        
+        .btn--ghost {
             background: transparent;
             color: var(--white);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-color: rgba(255, 255, 255, 0.5);
         }
-
-        .gt-btn--ghost:hover,
-        .gt-btn--ghost:focus-visible {
+        
+        .btn--ghost:hover {
             background: var(--white);
             color: var(--navy);
             border-color: var(--white);
         }
-
-        .gt-btn--dark {
+        
+        .btn--dark {
             background: var(--navy);
             color: var(--white);
-            border: 1px solid var(--navy);
+            border-color: var(--navy);
         }
-
-        .gt-btn--dark:hover,
-        .gt-btn--dark:focus-visible {
+        
+        .btn--dark:hover {
             background: var(--gold);
             border-color: var(--gold);
             color: var(--navy);
         }
-
-        .gt-btn__arrow {
-            transition: transform var(--dur) var(--ease);
+        
+        .btn__arrow {
+            transition: transform var(--dur) var(--transition);
         }
-        .gt-btn:hover .gt-btn__arrow { transform: translateX(4px); }
-
-        /* Scroll indicator */
-        .gt-hero__scroll {
+        
+        .btn:hover .btn__arrow {
+            transform: translateX(4px);
+        }
+        
+        /* ============================================
+           HEADER
+           ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.25rem 0;
+            background: linear-gradient(to bottom, rgba(10, 29, 44, 0.6), rgba(10, 29, 44, 0.1) 70%, transparent);
+        }
+        
+        .header__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+        
+        .logo {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.55rem;
+            color: var(--white);
+            font-family: var(--font-display);
+            line-height: 1;
+        }
+        
+        .logo__mark {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: var(--gold);
+            position: relative;
+        }
+        
+        .logo__mark::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gold);
+        }
+        
+        .logo__word {
+            font-size: 1.35rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+        
+        .nav__list {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav__link {
+            position: relative;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--white);
+            padding: 0.4rem 0;
+        }
+        
+        .nav__link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width var(--dur) var(--transition);
+        }
+        
+        .nav__link:hover,
+        .nav__link:focus-visible {
+            color: var(--gold);
+        }
+        
+        .nav__link:hover::after,
+        .nav__link:focus-visible::after {
+            width: 100%;
+        }
+        
+        .nav__cta {
+            padding: 0.7rem 1.4rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 2px;
+            transition: all var(--dur) var(--transition);
+        }
+        
+        .nav__cta:hover,
+        .nav__cta:focus-visible {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
+        }
+        
+        /* Mobile menu */
+        .menu-toggle {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .menu-btn {
+            display: none;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            z-index: 110;
+        }
+        
+        .menu-btn__lines {
+            position: relative;
+            width: 26px;
+            height: 2px;
+            background: var(--white);
+            transition: background var(--dur) var(--transition);
+        }
+        
+        .menu-btn__lines::before,
+        .menu-btn__lines::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 26px;
+            height: 2px;
+            background: var(--white);
+            transition: transform var(--dur) var(--transition), top var(--dur) var(--transition);
+        }
+        
+        .menu-btn__lines::before { top: -8px; }
+        .menu-btn__lines::after { top: 8px; }
+        
+        .menu-toggle:checked ~ .menu-btn .menu-btn__lines {
+            background: transparent;
+        }
+        
+        .menu-toggle:checked ~ .menu-btn .menu-btn__lines::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+        
+        .menu-toggle:checked ~ .menu-btn .menu-btn__lines::after {
+            top: 0;
+            transform: rotate(-45deg);
+        }
+        
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            overflow: hidden;
+            isolation: isolate;
+        }
+        
+        .hero__bg {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background-color: var(--navy);
+            background-image: url('https://images.unsplash.com/photo-1599640842225-85d111c60e6b?auto=format&fit=crop&w=1600&q=75');
+            background-size: cover;
+            background-position: center 40%;
+        }
+        
+        .hero__bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10, 29, 44, 0.55) 0%, rgba(10, 29, 44, 0.25) 40%, rgba(10, 29, 44, 0.75) 100%),
+                        linear-gradient(90deg, rgba(10, 29, 44, 0.5) 0%, transparent 60%);
+        }
+        
+        .hero__content {
+            padding-top: 9rem;
+            padding-bottom: 8rem;
+            max-width: 820px;
+        }
+        
+        .hero__logo {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.7rem;
+            margin-bottom: 3rem;
+            color: var(--white);
+            font-family: var(--font-display);
+            line-height: 1;
+        }
+        
+        .hero__logo-mark {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.02em;
+            position: relative;
+        }
+        
+        .hero__logo-mark::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+        
+        .hero__logo-word {
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 500;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+        }
+        
+        .hero__eyebrow {
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+        
+        .hero__eyebrow::before {
+            background: var(--gold);
+            width: 48px;
+        }
+        
+        .hero__title {
+            margin-bottom: 2rem;
+            line-height: 1;
+        }
+        
+        .hero__title em {
+            color: var(--gold-soft);
+        }
+        
+        .hero__subtitle {
+            font-size: clamp(1rem, 1.3vw, 1.15rem);
+            font-weight: 300;
+            line-height: 1.75;
+            max-width: 560px;
+            margin-bottom: 3rem;
+            opacity: 0.92;
+        }
+        
+        .hero__actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .hero__scroll {
             position: absolute;
             bottom: 2rem;
             left: 50%;
@@ -437,141 +478,148 @@
             text-transform: uppercase;
             opacity: 0.85;
         }
-
-        .gt-hero__scroll-line {
-            width: 1px; height: 44px;
+        
+        .hero__scroll-line {
+            width: 1px;
+            height: 44px;
             background: linear-gradient(to bottom, var(--gold), transparent);
             animation: scrollPulse 2.5s ease-in-out infinite;
         }
-
+        
         @keyframes scrollPulse {
             0%, 100% { transform: scaleY(1); opacity: 0.85; }
             50% { transform: scaleY(0.55); opacity: 0.4; }
         }
-
-        /* =========================================================
-           6. CRUISE OVERVIEW
-           ========================================================= */
-        .gt-overview {
-            padding: var(--space-3xl) 0;
+        
+        /* ============================================
+           OVERVIEW
+           ============================================ */
+        .overview {
+            padding: 8rem 0;
             background: var(--ivory);
         }
-
-        .gt-overview__header {
+        
+        .overview__header {
             text-align: center;
             max-width: 760px;
-            margin: 0 auto var(--space-2xl);
+            margin: 0 auto 5rem;
         }
-
-        .gt-overview__title {
-            font-size: clamp(2.25rem, 5vw, 3.75rem);
+        
+        .overview__title {
             color: var(--navy);
-            margin-bottom: var(--space-md);
+            margin-bottom: 1.5rem;
         }
-
-        .gt-overview__title em { color: var(--med-blue); }
-
-        .gt-overview__lead {
+        
+        .overview__title em {
+            color: var(--med-blue);
+        }
+        
+        .overview__lead {
             font-size: 1.05rem;
             color: var(--muted);
             max-width: 620px;
             margin: 0 auto;
         }
-
-        .gt-overview__grid {
+        
+        .overview__grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 0;
             border-top: 1px solid var(--sand);
         }
-
-        .gt-overview__item {
-            padding: var(--space-xl) var(--space-lg);
+        
+        .overview__item {
+            padding: 3rem 2rem;
             border-right: 1px solid var(--sand);
-            position: relative;
-            transition: background var(--dur) var(--ease);
+            transition: background var(--dur) var(--transition);
         }
-
-        .gt-overview__item:last-child { border-right: none; }
-
-        .gt-overview__item:hover { background: var(--white); }
-
-        .gt-overview__num {
+        
+        .overview__item:last-child {
+            border-right: none;
+        }
+        
+        .overview__item:hover {
+            background: var(--white);
+        }
+        
+        .overview__num {
             font-family: var(--font-display);
             font-style: italic;
             font-size: 2.5rem;
             color: var(--gold);
-            margin-bottom: var(--space-sm);
+            margin-bottom: 1rem;
             line-height: 1;
         }
-
-        .gt-overview__item-title {
+        
+        .overview__item-title {
             font-family: var(--font-display);
             font-size: 1.6rem;
             font-weight: 500;
             color: var(--navy);
             margin-bottom: 0.75rem;
         }
-
-        .gt-overview__item-text {
+        
+        .overview__item-text {
             font-size: 0.95rem;
             color: var(--muted);
             line-height: 1.7;
         }
-
-        /* =========================================================
-           7. ITINERARY
-           ========================================================= */
-        .gt-itinerary {
-            padding: var(--space-3xl) 0;
+        
+        /* ============================================
+           ITINERARY
+           ============================================ */
+        .itinerary {
+            padding: 8rem 0;
             background: var(--navy);
             color: var(--ivory);
             position: relative;
             overflow: hidden;
         }
-
-        .gt-itinerary::before {
+        
+        .itinerary::before {
             content: '';
             position: absolute;
-            top: -100px; right: -100px;
-            width: 400px; height: 400px;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
             background: radial-gradient(circle, rgba(214, 184, 121, 0.08) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
-
-        .gt-itinerary__header {
+        
+        .itinerary__header {
             text-align: center;
             max-width: 760px;
-            margin: 0 auto var(--space-2xl);
+            margin: 0 auto 4rem;
         }
-
-        .gt-itinerary__title {
-            font-size: clamp(2.25rem, 5vw, 3.75rem);
+        
+        .itinerary__title {
             color: var(--ivory);
-            margin-bottom: var(--space-md);
+            margin-bottom: 1.5rem;
         }
-
-        .gt-itinerary__title em { color: var(--gold); }
-
-        .gt-itinerary__lead {
+        
+        .itinerary__title em {
+            color: var(--gold);
+        }
+        
+        .itinerary__lead {
             font-size: 1.05rem;
             color: rgba(248, 245, 239, 0.7);
             max-width: 620px;
             margin: 0 auto;
         }
-
-        /* Route banner */
-        .gt-route {
+        
+        .route {
             padding: 1.5rem 2rem;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(214, 184, 121, 0.25);
             border-radius: 4px;
-            margin-bottom: var(--space-2xl);
+            margin-bottom: 4rem;
             text-align: center;
         }
-
-        .gt-route__label {
+        
+        .route__label {
             display: block;
             font-size: 0.7rem;
             letter-spacing: 0.3em;
@@ -580,8 +628,8 @@
             margin-bottom: 0.75rem;
             font-weight: 600;
         }
-
-        .gt-route__path {
+        
+        .route__path {
             font-family: var(--font-display);
             font-size: clamp(0.85rem, 1.4vw, 1.15rem);
             font-weight: 500;
@@ -589,75 +637,81 @@
             color: var(--ivory);
             line-height: 1.8;
         }
-
-        .gt-route__path .gt-route__arrow {
+        
+        .route__arrow {
             color: var(--gold);
             margin: 0 0.5rem;
             font-style: italic;
         }
-
-        /* Timeline */
-        .gt-timeline {
+        
+        .timeline {
             position: relative;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: var(--space-lg);
+            gap: 2rem;
         }
-
-        .gt-timeline::before {
+        
+        .timeline::before {
             content: '';
             position: absolute;
             top: 140px;
-            left: 5%; right: 5%;
+            left: 5%;
+            right: 5%;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--gold) 10%, var(--gold) 90%, transparent);
             opacity: 0.4;
         }
-
-        .gt-stop {
+        
+        .stop {
             position: relative;
             padding-top: 160px;
         }
-
-        .gt-stop__image {
+        
+        .stop__image {
             position: absolute;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 140px;
             overflow: hidden;
             border-radius: 4px;
             border: 1px solid rgba(214, 184, 121, 0.2);
         }
-
-        .gt-stop__image img {
-            width: 100%; height: 100%;
+        
+        .stop__image img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            transition: transform 1s var(--ease);
+            transition: transform 1s var(--transition);
         }
-
-        .gt-stop:hover .gt-stop__image img { transform: scale(1.08); }
-
-        .gt-stop__marker {
+        
+        .stop:hover .stop__image img {
+            transform: scale(1.08);
+        }
+        
+        .stop__marker {
             position: absolute;
             top: 140px;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 14px; height: 14px;
+            width: 14px;
+            height: 14px;
             background: var(--gold);
             border: 2px solid var(--navy);
             border-radius: 50%;
             z-index: 2;
             box-shadow: 0 0 0 4px rgba(214, 184, 121, 0.15);
         }
-
-        .gt-stop__num {
+        
+        .stop__num {
             font-family: var(--font-display);
             font-style: italic;
             font-size: 1.1rem;
             color: var(--gold);
             margin-bottom: 0.25rem;
         }
-
-        .gt-stop__city {
+        
+        .stop__city {
             font-family: var(--font-display);
             font-size: 1.4rem;
             font-weight: 500;
@@ -665,8 +719,8 @@
             margin-bottom: 0.15rem;
             line-height: 1.2;
         }
-
-        .gt-stop__country {
+        
+        .stop__country {
             font-size: 0.7rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -674,112 +728,117 @@
             margin-bottom: 0.75rem;
             font-weight: 600;
         }
-
-        .gt-stop__desc {
+        
+        .stop__desc {
             font-size: 0.88rem;
             color: rgba(248, 245, 239, 0.65);
             line-height: 1.6;
         }
-
-        .gt-stop--return .gt-stop__marker {
+        
+        .stop--return .stop__marker {
             background: var(--ivory);
             border-color: var(--gold);
         }
-
-        /* =========================================================
-           8. DESTINATION GALLERY
-           ========================================================= */
-        .gt-gallery {
-            padding: var(--space-3xl) 0;
+        
+        /* ============================================
+           DESTINATIONS GALLERY
+           ============================================ */
+        .destinations {
+            padding: 8rem 0;
             background: var(--ivory);
         }
-
-        .gt-gallery__header {
+        
+        .destinations__header {
             text-align: center;
             max-width: 760px;
-            margin: 0 auto var(--space-2xl);
+            margin: 0 auto 4rem;
         }
-
-        .gt-gallery__title {
-            font-size: clamp(2.25rem, 5vw, 3.75rem);
+        
+        .destinations__title {
             color: var(--navy);
-            margin-bottom: var(--space-md);
+            margin-bottom: 1.5rem;
         }
-
-        .gt-gallery__title em { color: var(--med-blue); }
-
-        .gt-gallery__lead {
+        
+        .destinations__title em {
+            color: var(--med-blue);
+        }
+        
+        .destinations__lead {
             font-size: 1.05rem;
             color: var(--muted);
             max-width: 620px;
             margin: 0 auto;
         }
-
-        /* Asymmetric editorial grid */
-        .gt-destinations {
+        
+        .dest-grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             grid-auto-rows: 200px;
-            gap: var(--space-md);
+            gap: 1.5rem;
         }
-
-        .gt-dest {
+        
+        .dest {
             position: relative;
             overflow: hidden;
             border-radius: 4px;
             background: var(--navy);
             cursor: pointer;
         }
-
-        .gt-dest--large {
+        
+        .dest--large {
             grid-column: span 7;
             grid-row: span 2;
         }
-
-        .gt-dest--tall {
+        
+        .dest--tall {
             grid-column: span 5;
             grid-row: span 2;
         }
-
-        .gt-dest--medium {
+        
+        .dest--medium {
             grid-column: span 4;
             grid-row: span 2;
         }
-
-        .gt-dest--wide {
+        
+        .dest--wide {
             grid-column: span 8;
             grid-row: span 2;
         }
-
-        .gt-dest__image {
+        
+        .dest__image {
             position: absolute;
             inset: 0;
         }
-
-        .gt-dest__image img {
-            width: 100%; height: 100%;
+        
+        .dest__image img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            transition: transform 1.2s var(--ease);
+            transition: transform 1.2s var(--transition);
         }
-
-        .gt-dest:hover .gt-dest__image img { transform: scale(1.08); }
-
-        .gt-dest__overlay {
+        
+        .dest:hover .dest__image img {
+            transform: scale(1.08);
+        }
+        
+        .dest__overlay {
             position: absolute;
             inset: 0;
             background: linear-gradient(to top, rgba(10, 29, 44, 0.9) 0%, rgba(10, 29, 44, 0.15) 55%, rgba(10, 29, 44, 0.05) 100%);
             z-index: 1;
-            transition: background var(--dur) var(--ease);
+            transition: background var(--dur) var(--transition);
         }
-
-        .gt-dest:hover .gt-dest__overlay {
+        
+        .dest:hover .dest__overlay {
             background: linear-gradient(to top, rgba(10, 29, 44, 0.95) 0%, rgba(10, 29, 44, 0.3) 60%, rgba(10, 29, 44, 0.1) 100%);
         }
-
-        .gt-dest__content {
+        
+        .dest__content {
             position: absolute;
-            left: 0; right: 0; bottom: 0;
-            padding: var(--space-lg);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 2rem;
             color: var(--white);
             z-index: 2;
             display: flex;
@@ -787,8 +846,8 @@
             justify-content: flex-end;
             height: 100%;
         }
-
-        .gt-dest__country {
+        
+        .dest__country {
             font-size: 0.7rem;
             letter-spacing: 0.25em;
             text-transform: uppercase;
@@ -796,26 +855,28 @@
             margin-bottom: 0.5rem;
             font-weight: 600;
         }
-
-        .gt-dest__name {
+        
+        .dest__name {
             font-family: var(--font-display);
             font-size: clamp(1.5rem, 2.5vw, 2.25rem);
             font-weight: 500;
             margin-bottom: 0.75rem;
             line-height: 1.1;
         }
-
-        .gt-dest--large .gt-dest__name { font-size: clamp(2rem, 3.5vw, 3rem); }
-
-        .gt-dest__desc {
+        
+        .dest--large .dest__name {
+            font-size: clamp(2rem, 3.5vw, 3rem);
+        }
+        
+        .dest__desc {
             font-size: 0.92rem;
             line-height: 1.6;
             opacity: 0.88;
             max-width: 440px;
-            margin-bottom: var(--space-md);
+            margin-bottom: 1.5rem;
         }
-
-        .gt-dest__link {
+        
+        .dest__link {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
@@ -826,118 +887,128 @@
             color: var(--gold);
             padding-bottom: 4px;
             border-bottom: 1px solid transparent;
-            transition: all var(--dur) var(--ease);
+            transition: all var(--dur) var(--transition);
             width: fit-content;
         }
-
-        .gt-dest__link:hover,
-        .gt-dest__link:focus-visible {
+        
+        .dest__link:hover,
+        .dest__link:focus-visible {
             color: var(--white);
             border-bottom-color: var(--gold);
         }
-
-        .gt-dest__link svg { transition: transform var(--dur) var(--ease); }
-        .gt-dest__link:hover svg { transform: translateX(4px); }
-
-        /* =========================================================
-           9. LIFE ONBOARD
-           ========================================================= */
-        .gt-onboard {
-            padding: var(--space-3xl) 0;
+        
+        .dest__link svg {
+            transition: transform var(--dur) var(--transition);
+        }
+        
+        .dest__link:hover svg {
+            transform: translateX(4px);
+        }
+        
+        /* ============================================
+           LIFE ONBOARD
+           ============================================ */
+        .onboard {
+            padding: 8rem 0;
             background: var(--white);
         }
-
-        .gt-onboard__header {
+        
+        .onboard__header {
             text-align: center;
             max-width: 760px;
-            margin: 0 auto var(--space-2xl);
+            margin: 0 auto 4rem;
         }
-
-        .gt-onboard__title {
-            font-size: clamp(2.25rem, 5vw, 3.75rem);
+        
+        .onboard__title {
             color: var(--navy);
-            margin-bottom: var(--space-md);
+            margin-bottom: 1.5rem;
         }
-
-        .gt-onboard__title em { color: var(--med-blue); }
-
-        .gt-onboard__lead {
+        
+        .onboard__title em {
+            color: var(--med-blue);
+        }
+        
+        .onboard__lead {
             font-size: 1.05rem;
             color: var(--muted);
             max-width: 620px;
             margin: 0 auto;
         }
-
-        .gt-features {
+        
+        .features {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-md);
+            gap: 1.5rem;
         }
-
-        .gt-feature {
+        
+        .feature {
             position: relative;
             overflow: hidden;
             border-radius: 4px;
             min-height: 380px;
             background: var(--navy);
         }
-
-        .gt-feature__image {
+        
+        .feature__image {
             position: absolute;
             inset: 0;
         }
-
-        .gt-feature__image img {
-            width: 100%; height: 100%;
+        
+        .feature__image img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            transition: transform 1.2s var(--ease);
+            transition: transform 1.2s var(--transition);
         }
-
-        .gt-feature:hover .gt-feature__image img { transform: scale(1.06); }
-
-        .gt-feature__overlay {
+        
+        .feature:hover .feature__image img {
+            transform: scale(1.06);
+        }
+        
+        .feature__overlay {
             position: absolute;
             inset: 0;
             background: linear-gradient(to top, rgba(10, 29, 44, 0.92) 0%, rgba(10, 29, 44, 0.35) 60%, rgba(10, 29, 44, 0.1) 100%);
             z-index: 1;
         }
-
-        .gt-feature__content {
+        
+        .feature__content {
             position: relative;
             z-index: 2;
-            padding: var(--space-xl);
+            padding: 3rem;
             color: var(--white);
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
         }
-
-        .gt-feature__icon {
-            width: 44px; height: 44px;
+        
+        .feature__icon {
+            width: 44px;
+            height: 44px;
             color: var(--gold);
-            margin-bottom: var(--space-md);
+            margin-bottom: 1.5rem;
         }
-
-        .gt-feature__title {
+        
+        .feature__title {
             font-family: var(--font-display);
             font-size: 1.75rem;
             font-weight: 500;
             margin-bottom: 0.75rem;
             line-height: 1.15;
         }
-
-        .gt-feature__text {
+        
+        .feature__text {
             font-size: 0.95rem;
             line-height: 1.7;
             opacity: 0.9;
             max-width: 420px;
         }
-
-        /* =========================================================
-           10. CINEMATIC BRAND BANNER
-           ========================================================= */
-        .gt-banner {
+        
+        /* ============================================
+           BRAND BANNER
+           ============================================ */
+        .banner {
             position: relative;
             min-height: 70vh;
             display: flex;
@@ -946,98 +1017,107 @@
             overflow: hidden;
             isolation: isolate;
         }
-
-        .gt-banner__bg {
+        
+        .banner__bg {
             position: absolute;
             inset: 0;
             z-index: -2;
             background-color: var(--navy);
-            background-image: url('https://images.unsplash.com/photo-1548572314-9817ae1f0666?auto=format&fit=crop&w=2000&q=80');
+            background-image: url('https://images.unsplash.com/photo-1548572314-9817ae1f0666?auto=format&fit=crop&w=1600&q=75');
             background-size: cover;
             background-position: center;
         }
-
-        .gt-banner__bg::after {
+        
+        .banner__bg::after {
             content: '';
             position: absolute;
             inset: 0;
             background: linear-gradient(135deg, rgba(10, 29, 44, 0.85) 0%, rgba(16, 43, 63, 0.6) 100%);
         }
-
-        .gt-banner__content {
-            padding: var(--space-3xl) 0;
+        
+        .banner__content {
+            padding: 6rem 0;
             max-width: 720px;
         }
-
-        .gt-banner__eyebrow { color: var(--gold); }
-        .gt-banner__eyebrow::before { background: var(--gold); }
-
-        .gt-banner__title {
-            font-size: clamp(2.5rem, 5.5vw, 4.5rem);
-            margin-bottom: var(--space-md);
+        
+        .banner__eyebrow {
+            color: var(--gold);
+        }
+        
+        .banner__eyebrow::before {
+            background: var(--gold);
+        }
+        
+        .banner__title {
+            margin-bottom: 1.5rem;
             line-height: 1.05;
         }
-
-        .gt-banner__title em { color: var(--gold-soft); }
-
-        .gt-banner__text {
+        
+        .banner__title em {
+            color: var(--gold-soft);
+        }
+        
+        .banner__text {
             font-size: 1.15rem;
             font-weight: 300;
             line-height: 1.75;
             max-width: 540px;
-            margin-bottom: var(--space-xl);
+            margin-bottom: 2.5rem;
             opacity: 0.92;
         }
-
-        /* =========================================================
-           11. CONTACT
-           ========================================================= */
-        .gt-contact {
-            padding: var(--space-3xl) 0;
+        
+        /* ============================================
+           CONTACT
+           ============================================ */
+        .contact {
+            padding: 8rem 0;
             background: var(--sand);
         }
-
-        .gt-contact__grid {
+        
+        .contact__grid {
             display: grid;
             grid-template-columns: 1fr 1.3fr;
             gap: clamp(2rem, 5vw, 5rem);
             align-items: start;
         }
-
-        .gt-contact__title {
-            font-size: clamp(2rem, 4vw, 3rem);
+        
+        .contact__title {
             color: var(--navy);
-            margin-bottom: var(--space-md);
-            line-height: 1.15;
+            margin-bottom: 1.5rem;
         }
-
-        .gt-contact__title em { color: var(--med-blue); }
-
-        .gt-contact__text {
+        
+        .contact__title em {
+            color: var(--med-blue);
+        }
+        
+        .contact__text {
             color: var(--muted);
             font-size: 1.05rem;
-            margin-bottom: var(--space-xl);
+            margin-bottom: 2.5rem;
             line-height: 1.7;
         }
-
-        .gt-contact__details {
+        
+        .contact__details {
             display: flex;
             flex-direction: column;
-            gap: var(--space-md);
+            gap: 1.5rem;
         }
-
-        .gt-contact__detail {
+        
+        .contact__detail {
             display: flex;
             align-items: flex-start;
-            gap: var(--space-sm);
-            padding-bottom: var(--space-md);
+            gap: 1rem;
+            padding-bottom: 1.5rem;
             border-bottom: 1px solid rgba(16, 43, 63, 0.12);
         }
-
-        .gt-contact__detail:last-child { border-bottom: none; }
-
-        .gt-contact__detail-icon {
-            width: 42px; height: 42px;
+        
+        .contact__detail:last-child {
+            border-bottom: none;
+        }
+        
+        .contact__detail-icon {
+            width: 42px;
+            height: 42px;
             flex-shrink: 0;
             display: flex;
             align-items: center;
@@ -1046,8 +1126,8 @@
             border-radius: 50%;
             color: var(--med-blue);
         }
-
-        .gt-contact__detail-label {
+        
+        .contact__detail-label {
             font-size: 0.7rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -1055,32 +1135,35 @@
             margin-bottom: 0.25rem;
             font-weight: 600;
         }
-
-        .gt-contact__detail-value {
+        
+        .contact__detail-value {
             color: var(--navy);
             font-weight: 500;
             font-size: 1rem;
         }
-
-        .gt-contact__detail-value:hover { color: var(--med-blue); }
-
-        /* Form */
-        .gt-form {
+        
+        .contact__detail-value:hover {
+            color: var(--med-blue);
+        }
+        
+        .form {
             background: var(--white);
             padding: clamp(1.75rem, 3vw, 3rem);
             border-radius: 4px;
             box-shadow: 0 20px 50px -20px rgba(16, 43, 63, 0.15);
         }
-
-        .gt-form-row {
+        
+        .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--space-md);
+            gap: 1.5rem;
         }
-
-        .gt-form-group { margin-bottom: var(--space-md); }
-
-        .gt-form-label {
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
             display: block;
             font-size: 0.72rem;
             letter-spacing: 0.18em;
@@ -1089,9 +1172,9 @@
             margin-bottom: 0.6rem;
             font-weight: 600;
         }
-
-        .gt-form-input,
-        .gt-form-textarea {
+        
+        .form-input,
+        .form-textarea {
             width: 100%;
             padding: 0.95rem 1rem;
             font-family: var(--font-body);
@@ -1100,23 +1183,23 @@
             background: var(--ivory);
             border: 1px solid var(--sand);
             border-radius: 2px;
-            transition: all var(--dur) var(--ease);
+            transition: all var(--dur) var(--transition);
         }
-
-        .gt-form-input:focus,
-        .gt-form-textarea:focus {
+        
+        .form-input:focus,
+        .form-textarea:focus {
             outline: none;
             border-color: var(--med-blue);
             background: var(--white);
             box-shadow: 0 0 0 3px rgba(45, 100, 120, 0.1);
         }
-
-        .gt-form-textarea {
+        
+        .form-textarea {
             resize: vertical;
             min-height: 140px;
         }
-
-        .gt-form-submit {
+        
+        .form-submit {
             width: 100%;
             padding: 1.1rem 2rem;
             background: var(--navy);
@@ -1129,617 +1212,688 @@
             border: 1px solid var(--navy);
             border-radius: 2px;
             cursor: pointer;
-            transition: all var(--dur) var(--ease);
-            margin-top: var(--space-sm);
+            transition: all var(--dur) var(--transition);
+            margin-top: 1rem;
         }
-
-        .gt-form-submit:hover,
-        .gt-form-submit:focus-visible {
+        
+        .form-submit:hover,
+        .form-submit:focus-visible {
             background: var(--gold);
             border-color: var(--gold);
             color: var(--navy);
         }
-
-        /* =========================================================
-           12. FOOTER
-           ========================================================= */
-        .gt-footer {
+        
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
             background: var(--navy-deep);
             color: var(--ivory);
-            padding: var(--space-2xl) 0 var(--space-lg);
+            padding: 5rem 0 2rem;
         }
-
-        .gt-footer__grid {
+        
+        .footer__grid {
             display: grid;
             grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: var(--space-xl);
-            padding-bottom: var(--space-xl);
+            gap: 3rem;
+            padding-bottom: 3rem;
             border-bottom: 1px solid rgba(248, 245, 239, 0.1);
         }
-
-        .gt-footer__logo {
+        
+        .footer__logo {
             display: inline-flex;
             align-items: baseline;
             gap: 0.55rem;
             color: var(--ivory);
             font-family: var(--font-display);
             line-height: 1;
-            margin-bottom: var(--space-md);
+            margin-bottom: 1.5rem;
         }
-
-        .gt-footer__logo-mark {
+        
+        .footer__logo-mark {
             font-size: 1.8rem;
             font-weight: 700;
+            color: var(--gold);
             letter-spacing: 0.02em;
             position: relative;
         }
-
-        .gt-footer__logo-mark::after {
+        
+        .footer__logo-mark::after {
             content: '';
             position: absolute;
-            bottom: -4px; left: 0; right: 0;
+            bottom: -4px;
+            left: 0;
+            right: 0;
             height: 1px;
             background: var(--gold);
         }
-
-        .gt-footer__logo-word {
+        
+        .footer__logo-word {
             font-size: 1.2rem;
             font-weight: 500;
             letter-spacing: 0.25em;
             text-transform: uppercase;
         }
-
-        .gt-footer__tagline {
+        
+        .footer__tagline {
             font-family: var(--font-display);
             font-style: italic;
             color: var(--gold);
             font-size: 1.05rem;
-            margin-bottom: var(--space-md);
+            margin-bottom: 1.5rem;
         }
-
-        .gt-footer__desc {
+        
+        .footer__desc {
             font-size: 0.9rem;
             line-height: 1.7;
             color: rgba(248, 245, 239, 0.6);
             max-width: 320px;
         }
-
-        .gt-footer__heading {
+        
+        .footer__heading {
             font-size: 0.72rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--gold);
-            margin-bottom: var(--space-md);
+            margin-bottom: 1.5rem;
             font-weight: 600;
         }
-
-        .gt-footer__list {
+        
+        .footer__list {
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
         }
-
-        .gt-footer__link {
+        
+        .footer__link {
             font-size: 0.9rem;
             color: rgba(248, 245, 239, 0.7);
-            transition: color var(--dur) var(--ease);
+            transition: color var(--dur) var(--transition);
         }
-
-        .gt-footer__link:hover,
-        .gt-footer__link:focus-visible { color: var(--gold); }
-
-        .gt-footer__bottom {
-            padding-top: var(--space-lg);
+        
+        .footer__link:hover,
+        .footer__link:focus-visible {
+            color: var(--gold);
+        }
+        
+        .footer__bottom {
+            padding-top: 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: var(--space-sm);
+            gap: 1rem;
             font-size: 0.85rem;
             color: rgba(248, 245, 239, 0.5);
         }
-
-        .gt-footer__closing {
+        
+        .footer__closing {
             font-family: var(--font-display);
             font-style: italic;
             color: rgba(214, 184, 121, 0.85);
         }
-
-        /* =========================================================
-           13. RESPONSIVE — Tablet
-           ========================================================= */
+        
+        /* ============================================
+           RESPONSIVE — TABLET
+           ============================================ */
         @media (max-width: 1023px) {
-            .gt-overview__grid { grid-template-columns: 1fr; }
-            .gt-overview__item { border-right: none; border-bottom: 1px solid var(--sand); }
-            .gt-overview__item:last-child { border-bottom: none; }
-
-            .gt-timeline {
-                grid-template-columns: repeat(2, 1fr);
-                gap: var(--space-md);
+            .overview__grid {
+                grid-template-columns: 1fr;
             }
-
-            .gt-timeline::before { display: none; }
-
-            .gt-destinations {
+            
+            .overview__item {
+                border-right: none;
+                border-bottom: 1px solid var(--sand);
+            }
+            
+            .overview__item:last-child {
+                border-bottom: none;
+            }
+            
+            .timeline {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .timeline::before {
+                display: none;
+            }
+            
+            .dest-grid {
                 grid-template-columns: repeat(6, 1fr);
                 grid-auto-rows: 220px;
             }
-
-            .gt-dest--large { grid-column: span 6; grid-row: span 2; }
-            .gt-dest--tall { grid-column: span 3; grid-row: span 2; }
-            .gt-dest--medium { grid-column: span 3; grid-row: span 2; }
-            .gt-dest--wide { grid-column: span 6; grid-row: span 2; }
-
-            .gt-features { grid-template-columns: 1fr; }
-
-            .gt-footer__grid { grid-template-columns: 1fr 1fr; }
-        }
-
-        /* =========================================================
-           14. RESPONSIVE — Mobile
-           ========================================================= */
-        @media (max-width: 767px) {
-            :root {
-                --space-3xl: 5rem;
-                --space-2xl: 4rem;
+            
+            .dest--large {
+                grid-column: span 6;
+                grid-row: span 2;
             }
-
-            .gt-menu-btn { display: flex; }
-
-            .gt-nav {
+            
+            .dest--tall,
+            .dest--medium {
+                grid-column: span 3;
+                grid-row: span 2;
+            }
+            
+            .dest--wide {
+                grid-column: span 6;
+                grid-row: span 2;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer__grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        /* ============================================
+           RESPONSIVE — MOBILE
+           ============================================ */
+        @media (max-width: 767px) {
+            .menu-btn {
+                display: flex;
+            }
+            
+            .nav {
                 position: fixed;
-                top: 0; right: 0;
+                top: 0;
+                right: 0;
                 width: min(85%, 340px);
                 height: 100vh;
                 background: var(--navy);
                 flex-direction: column;
                 align-items: flex-start;
                 padding: 6rem 2rem 2rem;
-                gap: var(--space-lg);
+                gap: 2rem;
                 transform: translateX(100%);
-                transition: transform var(--dur) var(--ease);
+                transition: transform var(--dur) var(--transition);
                 box-shadow: -20px 0 60px rgba(0, 0, 0, 0.4);
             }
-
-            .gt-nav__list {
+            
+            .nav__list {
                 flex-direction: column;
-                gap: var(--space-md);
+                gap: 1.5rem;
                 width: 100%;
             }
-
-            .gt-nav__link { font-size: 1rem; display: block; padding: 0.5rem 0; }
-            .gt-nav__cta { width: 100%; text-align: center; margin-top: var(--space-sm); }
-
-            .gt-menu-toggle:checked ~ .gt-nav { transform: translateX(0); }
-
-            .gt-hero__content { padding-top: 7rem; padding-bottom: 5rem; }
-            .gt-hero__scroll { display: none; }
-
-            .gt-hero__actions { flex-direction: column; width: 100%; }
-            .gt-hero__actions .gt-btn { width: 100%; justify-content: center; }
-
-            .gt-timeline {
+            
+            .nav__link {
+                font-size: 1rem;
+                display: block;
+                padding: 0.5rem 0;
+            }
+            
+            .nav__cta {
+                width: 100%;
+                text-align: center;
+                margin-top: 1rem;
+            }
+            
+            .menu-toggle:checked ~ .nav {
+                transform: translateX(0);
+            }
+            
+            .hero__content {
+                padding-top: 7rem;
+                padding-bottom: 5rem;
+            }
+            
+            .hero__scroll {
+                display: none;
+            }
+            
+            .hero__actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .hero__actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .overview,
+            .itinerary,
+            .destinations,
+            .onboard,
+            .contact {
+                padding: 5rem 0;
+            }
+            
+            .timeline {
                 grid-template-columns: 1fr;
                 padding-left: 2rem;
             }
-
-            .gt-timeline::before {
+            
+            .timeline::before {
                 display: block;
-                top: 0; bottom: 0;
-                left: 0; right: auto;
-                width: 1px; height: 100%;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: auto;
+                width: 1px;
+                height: 100%;
                 background: linear-gradient(180deg, transparent, var(--gold) 10%, var(--gold) 90%, transparent);
             }
-
-            .gt-stop {
+            
+            .stop {
                 padding-top: 0;
                 padding-left: 1.5rem;
-                padding-bottom: var(--space-lg);
-                border-left: none;
+                padding-bottom: 2rem;
             }
-
-            .gt-stop__image {
+            
+            .stop__image {
                 position: relative;
                 height: 180px;
-                margin-bottom: var(--space-sm);
+                margin-bottom: 1rem;
             }
-
-            .gt-stop__marker {
+            
+            .stop__marker {
                 position: absolute;
                 top: 50%;
                 left: -2.35rem;
                 transform: translateY(-50%);
             }
-
-            .gt-destinations {
+            
+            .dest-grid {
                 grid-template-columns: 1fr;
                 grid-auto-rows: 280px;
             }
-
-            .gt-dest--large,
-            .gt-dest--tall,
-            .gt-dest--medium,
-            .gt-dest--wide {
+            
+            .dest--large,
+            .dest--tall,
+            .dest--medium,
+            .dest--wide {
                 grid-column: span 1;
                 grid-row: span 1;
             }
-
-            .gt-contact__grid { grid-template-columns: 1fr; }
-            .gt-form-row { grid-template-columns: 1fr; }
-
-            .gt-footer__grid { grid-template-columns: 1fr; gap: var(--space-xl); }
-            .gt-footer__bottom { flex-direction: column; text-align: center; }
-
-            .gt-banner { min-height: 60vh; }
-
-            .gt-route { padding: 1.25rem 1rem; }
-            .gt-route__path { font-size: 0.78rem; letter-spacing: 0.04em; }
-            .gt-route__path .gt-route__arrow { margin: 0 0.3rem; }
+            
+            .contact__grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer__grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            
+            .footer__bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .banner {
+                min-height: 60vh;
+            }
+            
+            .route {
+                padding: 1.25rem 1rem;
+            }
+            
+            .route__path {
+                font-size: 0.78rem;
+                letter-spacing: 0.04em;
+            }
+            
+            .route__arrow {
+                margin: 0 0.3rem;
+            }
         }
-
+        
         @media (max-width: 480px) {
-            .gt-dest__content { padding: var(--space-md); }
-            .gt-dest__desc { font-size: 0.85rem; }
-            .gt-feature__content { padding: var(--space-md); }
+            .dest__content {
+                padding: 1.5rem;
+            }
+            
+            .dest__desc {
+                font-size: 0.85rem;
+            }
+            
+            .feature__content {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- =========================================================
-         HEADER
-         ========================================================= -->
-    <header class="gt-header">
-        <div class="gt-container gt-header__inner">
-            <a href="#top" class="gt-logo" aria-label="GT CRUISE home">
-                <span class="gt-logo__mark">GT</span>
-                <span class="gt-logo__word">Cruise</span>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header__inner">
+            <a href="#top" class="logo" aria-label="GT CRUISE home">
+                <span class="logo__mark">GT</span>
+                <span class="logo__word">Cruise</span>
             </a>
-
-            <input type="checkbox" id="gt-menu" class="gt-menu-toggle" aria-label="Toggle navigation menu">
-            <label for="gt-menu" class="gt-menu-btn" aria-hidden="true">
-                <span class="gt-menu-btn__lines"></span>
+            
+            <input type="checkbox" id="menu" class="menu-toggle" aria-label="Toggle navigation">
+            <label for="menu" class="menu-btn" aria-hidden="true">
+                <span class="menu-btn__lines"></span>
             </label>
-
-            <nav class="gt-nav" aria-label="Primary navigation">
-                <ul class="gt-nav__list">
-                    <li><a href="#top" class="gt-nav__link">Home</a></li>
-                    <li><a href="#voyage" class="gt-nav__link">The Voyage</a></li>
-                    <li><a href="#destinations" class="gt-nav__link">Destinations</a></li>
-                    <li><a href="#onboard" class="gt-nav__link">Life Onboard</a></li>
-                    <li><a href="#gallery" class="gt-nav__link">Gallery</a></li>
-                    <li><a href="#contact" class="gt-nav__link">Contact</a></li>
+            
+            <nav class="nav" aria-label="Primary">
+                <ul class="nav__list">
+                    <li><a href="#top" class="nav__link">Home</a></li>
+                    <li><a href="#voyage" class="nav__link">The Voyage</a></li>
+                    <li><a href="#destinations" class="nav__link">Destinations</a></li>
+                    <li><a href="#onboard" class="nav__link">Life Onboard</a></li>
+                    <li><a href="#gallery" class="nav__link">Gallery</a></li>
+                    <li><a href="#contact" class="nav__link">Contact</a></li>
                 </ul>
-                <a href="#voyage" class="gt-nav__cta">Explore the Voyage</a>
+                <a href="#voyage" class="nav__cta">Explore the Voyage</a>
             </nav>
         </div>
     </header>
 
-    <!-- =========================================================
-         HERO
-         ========================================================= -->
-    <section class="gt-hero" id="top">
-        <div class="gt-hero__bg" role="img" aria-label="Luxury white cruise ship sailing across the deep blue Mediterranean Sea with a distant coastline"></div>
-
-        <div class="gt-container gt-hero__content">
-            <div class="gt-hero__logo" aria-hidden="true">
-                <span class="gt-hero__logo-mark">GT</span>
-                <span class="gt-hero__logo-word">Cruise</span>
+    <!-- HERO -->
+    <section class="hero" id="top">
+        <div class="hero__bg" role="img" aria-label="Luxury cruise ship sailing across the Mediterranean Sea"></div>
+        
+        <div class="container hero__content">
+            <div class="hero__logo" aria-hidden="true">
+                <span class="hero__logo-mark">GT</span>
+                <span class="hero__logo-word">Cruise</span>
             </div>
-
-            <p class="gt-eyebrow gt-hero__eyebrow">Discover the Mediterranean</p>
-
-            <h1 class="gt-display gt-hero__title">
+            
+            <p class="eyebrow hero__eyebrow">Discover the Mediterranean</p>
+            
+            <h1 class="hero__title">
                 Your Journey.<br>
                 <em>Your World.</em>
             </h1>
-
-            <p class="gt-hero__subtitle">
+            
+            <p class="hero__subtitle">
                 Discover extraordinary coastlines, historic cities, sunlit islands, and unforgettable moments at sea on one remarkable Mediterranean voyage.
             </p>
-
-            <div class="gt-hero__actions">
-                <a href="#voyage" class="gt-btn gt-btn--primary">
+            
+            <div class="hero__actions">
+                <a href="#voyage" class="btn btn--primary">
                     Explore the Voyage
-                    <svg class="gt-btn__arrow" width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
+                    <svg class="btn__arrow" width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
                         <path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
                     </svg>
                 </a>
-                <a href="#destinations" class="gt-btn gt-btn--ghost">Discover Destinations</a>
+                <a href="#destinations" class="btn btn--ghost">Discover Destinations</a>
             </div>
         </div>
-
-        <div class="gt-hero__scroll" aria-hidden="true">
+        
+        <div class="hero__scroll" aria-hidden="true">
             <span>Scroll</span>
-            <span class="gt-hero__scroll-line"></span>
+            <span class="hero__scroll-line"></span>
         </div>
     </section>
 
-    <!-- =========================================================
-         CRUISE OVERVIEW
-         ========================================================= -->
-    <section class="gt-overview" id="voyage">
-        <div class="gt-container">
-            <div class="gt-overview__header">
-                <p class="gt-eyebrow">The Voyage</p>
-                <h2 class="gt-display gt-overview__title">One Voyage. <em>Endless Discoveries.</em></h2>
-                <p class="gt-overview__lead">
+    <!-- OVERVIEW -->
+    <section class="overview" id="voyage">
+        <div class="container">
+            <div class="overview__header">
+                <p class="eyebrow">The Voyage</p>
+                <h2 class="overview__title">One Voyage. <em>Endless Discoveries.</em></h2>
+                <p class="overview__lead">
                     From the vibrant waterfront of Barcelona to the legendary history of Athens, GT CRUISE invites you to discover the Mediterranean through its most captivating destinations.
                 </p>
             </div>
-
-            <div class="gt-overview__grid">
-                <div class="gt-overview__item">
-                    <div class="gt-overview__num">01</div>
-                    <h3 class="gt-overview__item-title">A Mediterranean Journey</h3>
-                    <p class="gt-overview__item-text">Explore remarkable destinations across Spain, France, Italy, Malta, and Greece — seven unforgettable ports of call.</p>
+            
+            <div class="overview__grid">
+                <div class="overview__item">
+                    <div class="overview__num">01</div>
+                    <h3 class="overview__item-title">A Mediterranean Journey</h3>
+                    <p class="overview__item-text">Explore remarkable destinations across Spain, France, Italy, Malta, and Greece — seven unforgettable ports of call.</p>
                 </div>
-                <div class="gt-overview__item">
-                    <div class="gt-overview__num">02</div>
-                    <h3 class="gt-overview__item-title">A Round-Trip Experience</h3>
-                    <p class="gt-overview__item-text">Begin and end your journey in Barcelona, the vibrant heart of the Catalan coast and gateway to the Mediterranean.</p>
+                <div class="overview__item">
+                    <div class="overview__num">02</div>
+                    <h3 class="overview__item-title">A Round-Trip Experience</h3>
+                    <p class="overview__item-text">Begin and end your journey in Barcelona, the vibrant heart of the Catalan coast and gateway to the Mediterranean.</p>
                 </div>
-                <div class="gt-overview__item">
-                    <div class="gt-overview__num">03</div>
-                    <h3 class="gt-overview__item-title">Unforgettable Moments</h3>
-                    <p class="gt-overview__item-text">Enjoy coastal scenery, local culture, historic architecture, and the beauty of life at sea — every day a new discovery.</p>
+                <div class="overview__item">
+                    <div class="overview__num">03</div>
+                    <h3 class="overview__item-title">Unforgettable Moments</h3>
+                    <p class="overview__item-text">Enjoy coastal scenery, local culture, historic architecture, and the beauty of life at sea — every day a new discovery.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- =========================================================
-         ITINERARY
-         ========================================================= -->
-    <section class="gt-itinerary">
-        <div class="gt-container">
-            <div class="gt-itinerary__header">
-                <p class="gt-eyebrow">The Complete Route</p>
-                <h2 class="gt-display gt-itinerary__title">Seven Ports. <em>One Unforgettable Voyage.</em></h2>
-                <p class="gt-itinerary__lead">
+    <!-- ITINERARY -->
+    <section class="itinerary">
+        <div class="container">
+            <div class="itinerary__header">
+                <p class="eyebrow">The Complete Route</p>
+                <h2 class="itinerary__title">Seven Ports. <em>One Unforgettable Voyage.</em></h2>
+                <p class="itinerary__lead">
                     A carefully curated journey through the most celebrated cities and islands of the Mediterranean Sea.
                 </p>
             </div>
-
-            <!-- Route banner -->
-            <div class="gt-route">
-                <span class="gt-route__label">The Mediterranean Route</span>
-                <div class="gt-route__path">
-                    Barcelona <span class="gt-route__arrow">→</span>
-                    Marseille <span class="gt-route__arrow">→</span>
-                    Genoa <span class="gt-route__arrow">→</span>
-                    Naples <span class="gt-route__arrow">→</span>
-                    Valletta <span class="gt-route__arrow">→</span>
-                    Santorini <span class="gt-route__arrow">→</span>
-                    Athens <span class="gt-route__arrow">→</span>
+            
+            <div class="route">
+                <span class="route__label">The Mediterranean Route</span>
+                <div class="route__path">
+                    Barcelona <span class="route__arrow">→</span>
+                    Marseille <span class="route__arrow">→</span>
+                    Genoa <span class="route__arrow">→</span>
+                    Naples <span class="route__arrow">→</span>
+                    Valletta <span class="route__arrow">→</span>
+                    Santorini <span class="route__arrow">→</span>
+                    Athens <span class="route__arrow">→</span>
                     Barcelona
                 </div>
             </div>
-
-            <!-- Timeline -->
-            <div class="gt-timeline">
-                <article class="gt-stop">
-                    <div class="gt-stop__image">
-                        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=80" alt="Barcelona skyline with Sagrada Familia and Mediterranean waterfront">
+            
+            <div class="timeline">
+                <article class="stop">
+                    <div class="stop__image">
+                        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=600&q=70" alt="Barcelona skyline" loading="lazy">
                     </div>
-                    <div class="gt-stop__marker"></div>
-                    <div class="gt-stop__num">Stop 01</div>
-                    <h3 class="gt-stop__city">Barcelona</h3>
-                    <div class="gt-stop__country">Spain · Departure &amp; Return</div>
-                    <p class="gt-stop__desc">Begin in Barcelona, a vibrant Mediterranean city famous for its architecture, lively boulevards, coastal atmosphere, and exceptional cuisine.</p>
+                    <div class="stop__marker"></div>
+                    <div class="stop__num">Stop 01</div>
+                    <h3 class="stop__city">Barcelona</h3>
+                    <div class="stop__country">Spain · Departure &amp; Return</div>
+                    <p class="stop__desc">Begin in Barcelona, a vibrant Mediterranean city famous for its architecture, lively boulevards, coastal atmosphere, and exceptional cuisine.</p>
                 </article>
-
-                <article class="gt-stop">
-                    <div class="gt-stop__image">
-                        <img src="https://images.unsplash.com/photo-1531575278845-595c3f20d3b4?auto=format&fit=crop&w=800&q=80" alt="Marseille Old Port with colorful waterfront buildings">
+                
+                <article class="stop">
+                    <div class="stop__image">
+                        <img src="https://images.unsplash.com/photo-1531575278845-595c3f20d3b4?auto=format&fit=crop&w=600&q=70" alt="Marseille Old Port" loading="lazy">
                     </div>
-                    <div class="gt-stop__marker"></div>
-                    <div class="gt-stop__num">Stop 02</div>
-                    <h3 class="gt-stop__city">Marseille</h3>
-                    <div class="gt-stop__country">France</div>
-                    <p class="gt-stop__desc">Discover the historic Old Port, the beauty of Provence, colorful waterfront streets, and the charm of southern France.</p>
+                    <div class="stop__marker"></div>
+                    <div class="stop__num">Stop 02</div>
+                    <h3 class="stop__city">Marseille</h3>
+                    <div class="stop__country">France</div>
+                    <p class="stop__desc">Discover the historic Old Port, the beauty of Provence, colorful waterfront streets, and the charm of southern France.</p>
                 </article>
-
-                <article class="gt-stop">
-                    <div class="gt-stop__image">
-                        <img src="https://images.unsplash.com/photo-1538332576228-eb5b1b00f5d3?auto=format&fit=crop&w=800&q=80" alt="Genoa historic harbor with colorful Italian buildings">
+                
+                <article class="stop">
+                    <div class="stop__image">
+                        <img src="https://images.unsplash.com/photo-1538332576228-eb5b1b00f5d3?auto=format&fit=crop&w=600&q=70" alt="Genoa harbor" loading="lazy">
                     </div>
-                    <div class="gt-stop__marker"></div>
-                    <div class="gt-stop__num">Stop 03</div>
-                    <h3 class="gt-stop__city">Genoa</h3>
-                    <div class="gt-stop__country">Italy</div>
-                    <p class="gt-stop__desc">Explore the historic Italian maritime city, its narrow old streets, grand architecture, palaces, and authentic Ligurian cuisine.</p>
+                    <div class="stop__marker"></div>
+                    <div class="stop__num">Stop 03</div>
+                    <h3 class="stop__city">Genoa</h3>
+                    <div class="stop__country">Italy</div>
+                    <p class="stop__desc">Explore the historic Italian maritime city, its narrow old streets, grand architecture, palaces, and authentic Ligurian cuisine.</p>
                 </article>
-
-                <article class="gt-stop">
-                    <div class="gt-stop__image">
-                        <img src="https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?auto=format&fit=crop&w=800&q=80" alt="Naples bay with Mount Vesuvius in the background">
+                
+                <article class="stop">
+                    <div class="stop__image">
+                        <img src="https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?auto=format&fit=crop&w=600&q=70" alt="Naples bay with Vesuvius" loading="lazy">
                     </div>
-                    <div class="gt-stop__marker"></div>
-                    <div class="gt-stop__num">Stop 04</div>
-                    <h3 class="gt-stop__city">Naples</h3>
-                    <div class="gt-stop__country">Italy</div>
-                    <p class="gt-stop__desc">Experience the vibrant character of southern Italy, its celebrated pizza, historic neighborhoods, and rich cultural heritage.</p>
+                    <div class="stop__marker"></div>
+                    <div class="stop__num">Stop 04</div>
+                    <h3 class="stop__city">Naples</h3>
+                    <div class="stop__country">Italy</div>
+                    <p class="stop__desc">Experience the vibrant character of southern Italy, its celebrated pizza, historic neighborhoods, and rich cultural heritage.</p>
                 </article>
-
-                <article class="gt-stop">
-                    <div class="gt-stop__image">
-                        <img src="https://images.unsplash.com/photo-1593214624335-5546 something?auto=format&fit=crop&w=800&q=80"
-                             onerror="this.src='https://images.unsplash.com/photo-1593214624335-5546c7b8c2a4?auto=format&fit=crop&w=800&q=80'"
-                             alt="Valletta Malta golden limestone harbor architecture">
+                
+                <article class="stop">
+                    <div class="stop__image">
+                        <img src="https://images.unsplash.com/photo-1588401317945-1074c2c9d3d3?auto=format&fit=crop&w=600&q=70" alt="Valletta Malta" loading="lazy">
                     </div>
-                    <div class="gt-stop__marker"></div>
-                    <div class="gt-stop__num">Stop 05</div>
-                    <h3 class="gt-stop__city">Valletta</h3>
-                    <div class="gt-stop__country">Malta</div>
-                    <p class="gt-stop__desc">Discover golden limestone architecture, historic fortifications, charming streets, and beautiful harbor views.</p>
+                    <div class="stop__marker"></div>
+                    <div class="stop__num">Stop 05</div>
+                    <h3 class="stop__city">Valletta</h3>
+                    <div class="stop__country">Malta</div>
+                    <p class="stop__desc">Discover golden limestone architecture, historic fortifications, charming streets, and beautiful harbor views.</p>
                 </article>
-
-                <article class="gt-stop">
-                    <div class="gt-stop__image">
-                        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=80" alt="Santorini whitewashed buildings with blue domes overlooking the Aegean Sea">
+                
+                <article class="stop">
+                    <div class="stop__image">
+                        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=600&q=70" alt="Santorini blue domes" loading="lazy">
                     </div>
-                    <div class="gt-stop__marker"></div>
-                    <div class="gt-stop__num">Stop 06</div>
-                    <h3 class="gt-stop__city">Santorini</h3>
-                    <div class="gt-stop__country">Greece</div>
-                    <p class="gt-stop__desc">Admire whitewashed villages, blue-domed churches, dramatic volcanic cliffs, and breathtaking Aegean sunsets.</p>
+                    <div class="stop__marker"></div>
+                    <div class="stop__num">Stop 06</div>
+                    <h3 class="stop__city">Santorini</h3>
+                    <div class="stop__country">Greece</div>
+                    <p class="stop__desc">Admire whitewashed villages, blue-domed churches, dramatic volcanic cliffs, and breathtaking Aegean sunsets.</p>
                 </article>
-
-                <article class="gt-stop">
-                    <div class="gt-stop__image">
-                        <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&fit=crop&w=800&q=80" alt="Athens Acropolis at golden hour">
+                
+                <article class="stop">
+                    <div class="stop__image">
+                        <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&fit=crop&w=600&q=70" alt="Athens Acropolis" loading="lazy">
                     </div>
-                    <div class="gt-stop__marker"></div>
-                    <div class="gt-stop__num">Stop 07</div>
-                    <h3 class="gt-stop__city">Athens</h3>
-                    <div class="gt-stop__country">Greece · Piraeus Port</div>
-                    <p class="gt-stop__desc">Explore the historic birthplace of democracy, the Acropolis, ancient Greek landmarks, and the culture of modern Athens.</p>
+                    <div class="stop__marker"></div>
+                    <div class="stop__num">Stop 07</div>
+                    <h3 class="stop__city">Athens</h3>
+                    <div class="stop__country">Greece · Piraeus Port</div>
+                    <p class="stop__desc">Explore the historic birthplace of democracy, the Acropolis, ancient Greek landmarks, and the culture of modern Athens.</p>
                 </article>
-
-                <article class="gt-stop gt-stop--return">
-                    <div class="gt-stop__image">
-                        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=80" alt="Barcelona return port at sunset">
+                
+                <article class="stop stop--return">
+                    <div class="stop__image">
+                        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=600&q=70" alt="Barcelona return" loading="lazy">
                     </div>
-                    <div class="gt-stop__marker"></div>
-                    <div class="gt-stop__num">Final Stop</div>
-                    <h3 class="gt-stop__city">Barcelona</h3>
-                    <div class="gt-stop__country">Spain · Homecoming</div>
-                    <p class="gt-stop__desc">Return to Barcelona and complete the Mediterranean round-trip journey, carrying memories that will last a lifetime.</p>
+                    <div class="stop__marker"></div>
+                    <div class="stop__num">Final Stop</div>
+                    <h3 class="stop__city">Barcelona</h3>
+                    <div class="stop__country">Spain · Homecoming</div>
+                    <p class="stop__desc">Return to Barcelona and complete the Mediterranean round-trip journey, carrying memories that will last a lifetime.</p>
                 </article>
             </div>
         </div>
     </section>
 
-    <!-- =========================================================
-         DESTINATION GALLERY
-         ========================================================= -->
-    <section class="gt-gallery" id="destinations">
-        <div class="gt-container">
-            <div class="gt-gallery__header">
-                <p class="gt-eyebrow">Destinations</p>
-                <h2 class="gt-display gt-gallery__title">Discover the <em>Mediterranean.</em></h2>
-                <p class="gt-gallery__lead">
+    <!-- DESTINATIONS -->
+    <section class="destinations" id="destinations">
+        <div class="container">
+            <div class="destinations__header">
+                <p class="eyebrow">Destinations</p>
+                <h2 class="destinations__title">Discover the <em>Mediterranean.</em></h2>
+                <p class="destinations__lead">
                     Seven remarkable ports, each with its own story, flavor, and atmosphere — waiting to be explored.
                 </p>
             </div>
-
-            <div class="gt-destinations" id="gallery">
-                <!-- Barcelona — Large feature -->
-                <article class="gt-dest gt-dest--large">
-                    <div class="gt-dest__image">
-                        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1400&q=80" alt="Barcelona Mediterranean architecture and coastal energy">
+            
+            <div class="dest-grid" id="gallery">
+                <article class="dest dest--large">
+                    <div class="dest__image">
+                        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1200&q=75" alt="Barcelona" loading="lazy">
                     </div>
-                    <div class="gt-dest__overlay"></div>
-                    <div class="gt-dest__content">
-                        <span class="gt-dest__country">Spain</span>
-                        <h3 class="gt-dest__name">Barcelona</h3>
-                        <p class="gt-dest__desc">Mediterranean energy and architecture — where Gaudí's imagination meets the sea, and every boulevard tells a story.</p>
-                        <a href="#contact" class="gt-dest__link">
+                    <div class="dest__overlay"></div>
+                    <div class="dest__content">
+                        <span class="dest__country">Spain</span>
+                        <h3 class="dest__name">Barcelona</h3>
+                        <p class="dest__desc">Mediterranean energy and architecture — where Gaudí's imagination meets the sea, and every boulevard tells a story.</p>
+                        <a href="#contact" class="dest__link">
                             Explore Destination
                             <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
                         </a>
                     </div>
                 </article>
-
-                <!-- Marseille — Tall -->
-                <article class="gt-dest gt-dest--tall">
-                    <div class="gt-dest__image">
-                        <img src="https://images.unsplash.com/photo-1531575278845-595c3f20d3b4?auto=format&fit=crop&w=1000&q=80" alt="Marseille Old Port with colorful Provençal buildings">
+                
+                <article class="dest dest--tall">
+                    <div class="dest__image">
+                        <img src="https://images.unsplash.com/photo-1531575278845-595c3f20d3b4?auto=format&fit=crop&w=900&q=75" alt="Marseille" loading="lazy">
                     </div>
-                    <div class="gt-dest__overlay"></div>
-                    <div class="gt-dest__content">
-                        <span class="gt-dest__country">France</span>
-                        <h3 class="gt-dest__name">Marseille</h3>
-                        <p class="gt-dest__desc">The spirit of Provence — sunlit harbors, lavender-scented hills, and the timeless charm of southern France.</p>
-                        <a href="#contact" class="gt-dest__link">
+                    <div class="dest__overlay"></div>
+                    <div class="dest__content">
+                        <span class="dest__country">France</span>
+                        <h3 class="dest__name">Marseille</h3>
+                        <p class="dest__desc">The spirit of Provence — sunlit harbors, lavender-scented hills, and the timeless charm of southern France.</p>
+                        <a href="#contact" class="dest__link">
                             Explore
                             <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
                         </a>
                     </div>
                 </article>
-
-                <!-- Genoa — Medium -->
-                <article class="gt-dest gt-dest--medium">
-                    <div class="gt-dest__image">
-                        <img src="https://images.unsplash.com/photo-1538332576228-eb5b1b00f5d3?auto=format&fit=crop&w=1000&q=80" alt="Genoa historic Italian maritime harbor">
+                
+                <article class="dest dest--medium">
+                    <div class="dest__image">
+                        <img src="https://images.unsplash.com/photo-1538332576228-eb5b1b00f5d3?auto=format&fit=crop&w=900&q=75" alt="Genoa" loading="lazy">
                     </div>
-                    <div class="gt-dest__overlay"></div>
-                    <div class="gt-dest__content">
-                        <span class="gt-dest__country">Italy</span>
-                        <h3 class="gt-dest__name">Genoa</h3>
-                        <p class="gt-dest__desc">Italy's maritime heritage — narrow caruggi, grand palaces, and the soul of Liguria.</p>
-                        <a href="#contact" class="gt-dest__link">
+                    <div class="dest__overlay"></div>
+                    <div class="dest__content">
+                        <span class="dest__country">Italy</span>
+                        <h3 class="dest__name">Genoa</h3>
+                        <p class="dest__desc">Italy's maritime heritage — narrow caruggi, grand palaces, and the soul of Liguria.</p>
+                        <a href="#contact" class="dest__link">
                             Explore
                             <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
                         </a>
                     </div>
                 </article>
-
-                <!-- Naples — Wide -->
-                <article class="gt-dest gt-dest--wide">
-                    <div class="gt-dest__image">
-                        <img src="https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?auto=format&fit=crop&w=1400&q=80" alt="Naples bay with Mount Vesuvius and colorful waterfront">
+                
+                <article class="dest dest--wide">
+                    <div class="dest__image">
+                        <img src="https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?auto=format&fit=crop&w=1200&q=75" alt="Naples" loading="lazy">
                     </div>
-                    <div class="gt-dest__overlay"></div>
-                    <div class="gt-dest__content">
-                        <span class="gt-dest__country">Italy</span>
-                        <h3 class="gt-dest__name">Naples</h3>
-                        <p class="gt-dest__desc">The soul of southern Italy — where Vesuvius watches over ancient streets, legendary pizza, and a vibrant cultural heritage.</p>
-                        <a href="#contact" class="gt-dest__link">
+                    <div class="dest__overlay"></div>
+                    <div class="dest__content">
+                        <span class="dest__country">Italy</span>
+                        <h3 class="dest__name">Naples</h3>
+                        <p class="dest__desc">The soul of southern Italy — where Vesuvius watches over ancient streets, legendary pizza, and a vibrant cultural heritage.</p>
+                        <a href="#contact" class="dest__link">
                             Explore Destination
                             <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
                         </a>
                     </div>
                 </article>
-
-                <!-- Valletta — Tall -->
-                <article class="gt-dest gt-dest--tall">
-                    <div class="gt-dest__image">
-                        <img src="https://images.unsplash.com/photo-1588401317945-10 something?auto=format&fit=crop&w=1000&q=80"
-                             onerror="this.src='https://images.unsplash.com/photo-1588401317945-1074c2c9d3d3?auto=format&fit=crop&w=1000&q=80'"
-                             alt="Valletta Malta golden limestone fortifications and harbor">
+                
+                <article class="dest dest--tall">
+                    <div class="dest__image">
+                        <img src="https://images.unsplash.com/photo-1588401317945-1074c2c9d3d3?auto=format&fit=crop&w=900&q=75" alt="Valletta" loading="lazy">
                     </div>
-                    <div class="gt-dest__overlay"></div>
-                    <div class="gt-dest__content">
-                        <span class="gt-dest__country">Malta</span>
-                        <h3 class="gt-dest__name">Valletta</h3>
-                        <p class="gt-dest__desc">Malta's golden history — honey-colored stone, ancient fortifications, and a harbor steeped in legend.</p>
-                        <a href="#contact" class="gt-dest__link">
+                    <div class="dest__overlay"></div>
+                    <div class="dest__content">
+                        <span class="dest__country">Malta</span>
+                        <h3 class="dest__name">Valletta</h3>
+                        <p class="dest__desc">Malta's golden history — honey-colored stone, ancient fortifications, and a harbor steeped in legend.</p>
+                        <a href="#contact" class="dest__link">
                             Explore
                             <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
                         </a>
                     </div>
                 </article>
-
-                <!-- Santorini — Medium -->
-                <article class="gt-dest gt-dest--medium">
-                    <div class="gt-dest__image">
-                        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1000&q=80" alt="Santorini whitewashed village with blue domes at sunset">
+                
+                <article class="dest dest--medium">
+                    <div class="dest__image">
+                        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=900&q=75" alt="Santorini" loading="lazy">
                     </div>
-                    <div class="gt-dest__overlay"></div>
-                    <div class="gt-dest__content">
-                        <span class="gt-dest__country">Greece</span>
-                        <h3 class="gt-dest__name">Santorini</h3>
-                        <p class="gt-dest__desc">Aegean beauty and sunsets — whitewashed villages perched on volcanic cliffs above the deep blue sea.</p>
-                        <a href="#contact" class="gt-dest__link">
+                    <div class="dest__overlay"></div>
+                    <div class="dest__content">
+                        <span class="dest__country">Greece</span>
+                        <h3 class="dest__name">Santorini</h3>
+                        <p class="dest__desc">Aegean beauty and sunsets — whitewashed villages perched on volcanic cliffs above the deep blue sea.</p>
+                        <a href="#contact" class="dest__link">
                             Explore
                             <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
                         </a>
                     </div>
                 </article>
-
-                <!-- Athens — Wide -->
-                <article class="gt-dest gt-dest--wide">
-                    <div class="gt-dest__image">
-                        <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&fit=crop&w=1400&q=80" alt="Athens Acropolis at golden hour with modern city below">
+                
+                <article class="dest dest--wide">
+                    <div class="dest__image">
+                        <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&fit=crop&w=1200&q=75" alt="Athens" loading="lazy">
                     </div>
-                    <div class="gt-dest__overlay"></div>
-                    <div class="gt-dest__content">
-                        <span class="gt-dest__country">Greece</span>
-                        <h3 class="gt-dest__name">Athens</h3>
-                        <p class="gt-dest__desc">Ancient wonders and modern culture — where the Acropolis watches over a city alive with history, philosophy, and Mediterranean light.</p>
-                        <a href="#contact" class="gt-dest__link">
+                    <div class="dest__overlay"></div>
+                    <div class="dest__content">
+                        <span class="dest__country">Greece</span>
+                        <h3 class="dest__name">Athens</h3>
+                        <p class="dest__desc">Ancient wonders and modern culture — where the Acropolis watches over a city alive with history, philosophy, and Mediterranean light.</p>
+                        <a href="#contact" class="dest__link">
                             Explore Destination
                             <svg width="14" height="10" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
                         </a>
@@ -1749,236 +1903,225 @@
         </div>
     </section>
 
-    <!-- =========================================================
-         LIFE ONBOARD
-         ========================================================= -->
-    <section class="gt-onboard" id="onboard">
-        <div class="gt-container">
-            <div class="gt-onboard__header">
-                <p class="gt-eyebrow">Life Onboard</p>
-                <h2 class="gt-display gt-onboard__title">The Journey Is <em>Just as Beautiful.</em></h2>
-                <p class="gt-onboard__lead">
+    <!-- LIFE ONBOARD -->
+    <section class="onboard" id="onboard">
+        <div class="container">
+            <div class="onboard__header">
+                <p class="eyebrow">Life Onboard</p>
+                <h2 class="onboard__title">The Journey Is <em>Just as Beautiful.</em></h2>
+                <p class="onboard__lead">
                     Beyond every destination lies another opportunity to relax, indulge, and enjoy the extraordinary atmosphere of the Mediterranean.
                 </p>
             </div>
-
-            <div class="gt-features">
-                <article class="gt-feature">
-                    <div class="gt-feature__image">
-                        <img src="https://images.unsplash.com/photo-1566024287286-457247b70310?auto=format&fit=crop&w=1200&q=80" alt="Luxury oceanview suite with panoramic sea view">
+            
+            <div class="features">
+                <article class="feature">
+                    <div class="feature__image">
+                        <img src="https://images.unsplash.com/photo-1566024287286-457247b70310?auto=format&fit=crop&w=1000&q=75" alt="Oceanview suite" loading="lazy">
                     </div>
-                    <div class="gt-feature__overlay"></div>
-                    <div class="gt-feature__content">
-                        <svg class="gt-feature__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                    <div class="feature__overlay"></div>
+                    <div class="feature__content">
+                        <svg class="feature__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
                             <path d="M6 32V20a4 4 0 014-4h28a4 4 0 014 4v12" stroke="currentColor" stroke-width="1.5"/>
                             <path d="M4 32h40v6H4z" stroke="currentColor" stroke-width="1.5"/>
                             <path d="M12 16v-4a4 4 0 014-4h16a4 4 0 014 4v4" stroke="currentColor" stroke-width="1.5"/>
                         </svg>
-                        <h3 class="gt-feature__title">Oceanview Suites</h3>
-                        <p class="gt-feature__text">Relax in beautifully designed spaces inspired by comfort, light, and the endless blue horizon.</p>
+                        <h3 class="feature__title">Oceanview Suites</h3>
+                        <p class="feature__text">Relax in beautifully designed spaces inspired by comfort, light, and the endless blue horizon.</p>
                     </div>
                 </article>
-
-                <article class="gt-feature">
-                    <div class="gt-feature__image">
-                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80" alt="Elegant Mediterranean dining table with fresh ingredients">
+                
+                <article class="feature">
+                    <div class="feature__image">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1000&q=75" alt="Mediterranean dining" loading="lazy">
                     </div>
-                    <div class="gt-feature__overlay"></div>
-                    <div class="gt-feature__content">
-                        <svg class="gt-feature__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                    <div class="feature__overlay"></div>
+                    <div class="feature__content">
+                        <svg class="feature__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
                             <path d="M14 6v10a4 4 0 004 4v22" stroke="currentColor" stroke-width="1.5"/>
                             <path d="M10 6v8a4 4 0 004 4" stroke="currentColor" stroke-width="1.5"/>
                             <path d="M18 6v8a4 4 0 01-4 4" stroke="currentColor" stroke-width="1.5"/>
                             <path d="M34 6c0 6-4 10-4 16v20" stroke="currentColor" stroke-width="1.5"/>
                             <path d="M34 6c4 4 4 10 0 16" stroke="currentColor" stroke-width="1.5"/>
                         </svg>
-                        <h3 class="gt-feature__title">Mediterranean Dining</h3>
-                        <p class="gt-feature__text">Discover a culinary atmosphere inspired by Mediterranean ingredients, regional flavors, and leisurely dining.</p>
+                        <h3 class="feature__title">Mediterranean Dining</h3>
+                        <p class="feature__text">Discover a culinary atmosphere inspired by Mediterranean ingredients, regional flavors, and leisurely dining.</p>
                     </div>
                 </article>
-
-                <article class="gt-feature">
-                    <div class="gt-feature__image">
-                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80" alt="Sunset deck on cruise ship with panoramic ocean view">
+                
+                <article class="feature">
+                    <div class="feature__image">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1000&q=75" alt="Sunset deck" loading="lazy">
                     </div>
-                    <div class="gt-feature__overlay"></div>
-                    <div class="gt-feature__content">
-                        <svg class="gt-feature__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                    <div class="feature__overlay"></div>
+                    <div class="feature__content">
+                        <svg class="feature__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
                             <circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="1.5"/>
                             <path d="M24 6v4M24 38v4M6 24h4M38 24h4M11 11l3 3M34 34l3 3M37 11l-3 3M14 34l-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                         </svg>
-                        <h3 class="gt-feature__title">Sunset Deck</h3>
-                        <p class="gt-feature__text">Enjoy panoramic ocean views, golden evenings, and peaceful moments beneath the Mediterranean sky.</p>
+                        <h3 class="feature__title">Sunset Deck</h3>
+                        <p class="feature__text">Enjoy panoramic ocean views, golden evenings, and peaceful moments beneath the Mediterranean sky.</p>
                     </div>
                 </article>
-
-                <article class="gt-feature">
-                    <div class="gt-feature__image">
-                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80" alt="Serene wellness spa with calming atmosphere">
+                
+                <article class="feature">
+                    <div class="feature__image">
+                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=75" alt="Wellness spa" loading="lazy">
                     </div>
-                    <div class="gt-feature__overlay"></div>
-                    <div class="gt-feature__content">
-                        <svg class="gt-feature__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                    <div class="feature__overlay"></div>
+                    <div class="feature__content">
+                        <svg class="feature__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
                             <path d="M24 42s-14-8-14-20a10 10 0 0120-4 10 10 0 0120 4c0 12-14 20-14 20" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
                             <path d="M24 18v12M18 24h12" stroke="currentColor" stroke-width="1.5"/>
                         </svg>
-                        <h3 class="gt-feature__title">Wellness &amp; Relaxation</h3>
-                        <p class="gt-feature__text">Find your balance with a calm atmosphere dedicated to unwinding and enjoying life at sea.</p>
+                        <h3 class="feature__title">Wellness &amp; Relaxation</h3>
+                        <p class="feature__text">Find your balance with a calm atmosphere dedicated to unwinding and enjoying life at sea.</p>
                     </div>
                 </article>
             </div>
         </div>
     </section>
 
-    <!-- =========================================================
-         CINEMATIC BRAND BANNER
-         ========================================================= -->
-    <section class="gt-banner">
-        <div class="gt-banner__bg" role="img" aria-label="Cruise ship sailing past the Italian coastline at golden hour"></div>
-
-        <div class="gt-container gt-banner__content">
-            <p class="gt-eyebrow gt-banner__eyebrow">A New Way to Travel</p>
-            <h2 class="gt-display gt-banner__title">
+    <!-- BRAND BANNER -->
+    <section class="banner">
+        <div class="banner__bg" role="img" aria-label="Cruise ship sailing past the Italian coastline at golden hour"></div>
+        
+        <div class="container banner__content">
+            <p class="eyebrow banner__eyebrow">A New Way to Travel</p>
+            <h2 class="banner__title">
                 The Sea Remembers<br>
                 <em>Every Journey.</em>
             </h2>
-            <p class="gt-banner__text">
+            <p class="banner__text">
                 Some voyages change the way you see the world. GT CRUISE invites you to discover a slower rhythm, a warmer horizon, and the timeless beauty of the Mediterranean.
             </p>
-            <a href="#contact" class="gt-btn gt-btn--primary">
+            <a href="#contact" class="btn btn--primary">
                 Begin Your Story
-                <svg class="gt-btn__arrow" width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
+                <svg class="btn__arrow" width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
                     <path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
                 </svg>
             </a>
         </div>
     </section>
 
-    <!-- =========================================================
-         CONTACT
-         NOTE: This form requires a backend or form service
-         (Formspree, Netlify Forms, custom API) to submit inquiries.
-         Update the action attribute before using commercially.
-         ========================================================= -->
-    <section class="gt-contact" id="contact">
-        <div class="gt-container gt-contact__grid">
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="container contact__grid">
             <div>
-                <p class="gt-eyebrow">Contact</p>
-                <h2 class="gt-display gt-contact__title">Let the Sea <em>Inspire</em> Your Next Journey.</h2>
-                <p class="gt-contact__text">
+                <p class="eyebrow">Contact</p>
+                <h2 class="contact__title">Let the Sea <em>Inspire</em> Your Next Journey.</h2>
+                <p class="contact__text">
                     Our travel specialists are here to help you find a voyage that feels uniquely yours. Reach out and begin the conversation.
                 </p>
-
-                <div class="gt-contact__details">
-                    <div class="gt-contact__detail">
-                        <span class="gt-contact__detail-icon" aria-hidden="true">
+                
+                <div class="contact__details">
+                    <div class="contact__detail">
+                        <span class="contact__detail-icon" aria-hidden="true">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                                 <path d="M4 6l8 7 8-7M4 6h16v12H4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
                             </svg>
                         </span>
                         <div>
-                            <div class="gt-contact__detail-label">Email</div>
-                            <a href="mailto:hello@gtcruise.example" class="gt-contact__detail-value">hello@gtcruise.example</a>
+                            <div class="contact__detail-label">Email</div>
+                            <a href="mailto:hello@gtcruise.example" class="contact__detail-value">hello@gtcruise.example</a>
                         </div>
                     </div>
-                    <div class="gt-contact__detail">
-                        <span class="gt-contact__detail-icon" aria-hidden="true">
+                    <div class="contact__detail">
+                        <span class="contact__detail-icon" aria-hidden="true">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                                 <path d="M5 4h4l2 5-3 2a11 11 0 006 6l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
                             </svg>
                         </span>
                         <div>
-                            <div class="gt-contact__detail-label">Phone</div>
-                            <a href="tel:+18005550148" class="gt-contact__detail-value">+1 (800) 555-0148</a>
+                            <div class="contact__detail-label">Phone</div>
+                            <a href="tel:+18005550148" class="contact__detail-value">+1 (800) 555-0148</a>
                         </div>
                     </div>
-                    <div class="gt-contact__detail">
-                        <span class="gt-contact__detail-icon" aria-hidden="true">
+                    <div class="contact__detail">
+                        <span class="contact__detail-icon" aria-hidden="true">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                                 <path d="M12 22s8-7 8-13a8 8 0 10-16 0c0 6 8 13 8 13z" stroke="currentColor" stroke-width="1.5"/>
                                 <circle cx="12" cy="9" r="3" stroke="currentColor" stroke-width="1.5"/>
                             </svg>
                         </span>
                         <div>
-                            <div class="gt-contact__detail-label">Headquarters</div>
-                            <span class="gt-contact__detail-value">Port Vell, Barcelona</span>
+                            <div class="contact__detail-label">Headquarters</div>
+                            <span class="contact__detail-value">Port Vell, Barcelona</span>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- NOTE: Replace action with your form endpoint -->
-            <form class="gt-form" action="#" method="POST">
-                <div class="gt-form-row">
-                    <div class="gt-form-group">
-                        <label for="gt-name" class="gt-form-label">Your Name</label>
-                        <input type="text" id="gt-name" name="name" class="gt-form-input" required autocomplete="name">
+            
+            <!-- NOTE: Replace action with your form endpoint (Formspree, Netlify Forms, etc.) -->
+            <form class="form" action="#" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" id="name" name="name" class="form-input" required autocomplete="name">
                     </div>
-                    <div class="gt-form-group">
-                        <label for="gt-email" class="gt-form-label">Email Address</label>
-                        <input type="email" id="gt-email" name="email" class="gt-form-input" required autocomplete="email">
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-input" required autocomplete="email">
                     </div>
                 </div>
-                <div class="gt-form-group">
-                    <label for="gt-message" class="gt-form-label">Your Message</label>
-                    <textarea id="gt-message" name="message" class="gt-form-textarea" required placeholder="Tell us about the voyage you're dreaming of..."></textarea>
+                <div class="form-group">
+                    <label for="message" class="form-label">Your Message</label>
+                    <textarea id="message" name="message" class="form-textarea" required placeholder="Tell us about the voyage you're dreaming of..."></textarea>
                 </div>
-                <button type="submit" class="gt-form-submit">Send an Inquiry</button>
+                <button type="submit" class="form-submit">Send an Inquiry</button>
             </form>
         </div>
     </section>
 
-    <!-- =========================================================
-         FOOTER
-         ========================================================= -->
-    <footer class="gt-footer">
-        <div class="gt-container">
-            <div class="gt-footer__grid">
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
                 <div>
-                    <div class="gt-footer__logo">
-                        <span class="gt-footer__logo-mark">GT</span>
-                        <span class="gt-footer__logo-word">Cruise</span>
+                    <div class="footer__logo">
+                        <span class="footer__logo-mark">GT</span>
+                        <span class="footer__logo-word">Cruise</span>
                     </div>
-                    <p class="gt-footer__tagline">Your Journey. Your World.</p>
-                    <p class="gt-footer__desc">
+                    <p class="footer__tagline">Your Journey. Your World.</p>
+                    <p class="footer__desc">
                         A premium Mediterranean cruise experience — crafted for travelers who seek beauty, discovery, and the timeless rhythm of the sea.
                     </p>
                 </div>
-
+                
                 <div>
-                    <h4 class="gt-footer__heading">The Voyage</h4>
-                    <ul class="gt-footer__list">
-                        <li><a href="#voyage" class="gt-footer__link">Overview</a></li>
-                        <li><a href="#voyage" class="gt-footer__link">Itinerary</a></li>
-                        <li><a href="#destinations" class="gt-footer__link">Destinations</a></li>
-                        <li><a href="#onboard" class="gt-footer__link">Life Onboard</a></li>
+                    <h4 class="footer__heading">The Voyage</h4>
+                    <ul class="footer__list">
+                        <li><a href="#voyage" class="footer__link">Overview</a></li>
+                        <li><a href="#voyage" class="footer__link">Itinerary</a></li>
+                        <li><a href="#destinations" class="footer__link">Destinations</a></li>
+                        <li><a href="#onboard" class="footer__link">Life Onboard</a></li>
                     </ul>
                 </div>
-
+                
                 <div>
-                    <h4 class="gt-footer__heading">Discover</h4>
-                    <ul class="gt-footer__list">
-                        <li><a href="#gallery" class="gt-footer__link">Gallery</a></li>
-                        <li><a href="#onboard" class="gt-footer__link">Suites</a></li>
-                        <li><a href="#onboard" class="gt-footer__link">Dining</a></li>
-                        <li><a href="#onboard" class="gt-footer__link">Wellness</a></li>
+                    <h4 class="footer__heading">Discover</h4>
+                    <ul class="footer__list">
+                        <li><a href="#gallery" class="footer__link">Gallery</a></li>
+                        <li><a href="#onboard" class="footer__link">Suites</a></li>
+                        <li><a href="#onboard" class="footer__link">Dining</a></li>
+                        <li><a href="#onboard" class="footer__link">Wellness</a></li>
                     </ul>
                 </div>
-
+                
                 <div>
-                    <h4 class="gt-footer__heading">Contact</h4>
-                    <ul class="gt-footer__list">
-                        <li><a href="mailto:hello@gtcruise.example" class="gt-footer__link">hello@gtcruise.example</a></li>
-                        <li><a href="tel:+18005550148" class="gt-footer__link">+1 (800) 555-0148</a></li>
-                        <li><span class="gt-footer__link">Port Vell, Barcelona</span></li>
-                        <li><a href="#contact" class="gt-footer__link">Send an Inquiry</a></li>
+                    <h4 class="footer__heading">Contact</h4>
+                    <ul class="footer__list">
+                        <li><a href="mailto:hello@gtcruise.example" class="footer__link">hello@gtcruise.example</a></li>
+                        <li><a href="tel:+18005550148" class="footer__link">+1 (800) 555-0148</a></li>
+                        <li><span class="footer__link">Port Vell, Barcelona</span></li>
+                        <li><a href="#contact" class="footer__link">Send an Inquiry</a></li>
                     </ul>
                 </div>
             </div>
-
-            <div class="gt-footer__bottom">
+            
+            <div class="footer__bottom">
                 <p>© 2026 GT CRUISE. All rights reserved. A fictional cruise liner concept.</p>
-                <p class="gt-footer__closing">The sea, once it casts its spell, holds one in its net of wonder forever.</p>
+                <p class="footer__closing">The sea, once it casts its spell, holds one in its net of wonder forever.</p>
             </div>
         </div>
     </footer>
