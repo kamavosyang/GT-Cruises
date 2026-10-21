@@ -19,6 +19,7 @@
             --navy-deep: #0a1d2c;
             --med-blue: #2D6478;
             --ivory: #F8F5EF;
+            --cream: #EFE8DB;
             --gold: #D6B879;
             --gold-soft: #e4cc94;
             --sand: #DCCDB8;
@@ -761,7 +762,6 @@
             padding: 6rem 0;
         }
         
-        /* Marquee carousel — two rows scrolling in opposite directions */
         .marquee {
             position: absolute;
             inset: 0;
@@ -839,7 +839,6 @@
             pointer-events: none;
         }
         
-        /* Fade edges for elegant blend into background */
         .marquee__row::before,
         .marquee__row::after {
             content: '';
@@ -861,7 +860,6 @@
             background: linear-gradient(to left, var(--navy-deep) 0%, transparent 100%);
         }
         
-        /* Central overlay for text readability */
         .onboard-intro__veil {
             position: absolute;
             inset: 0;
@@ -919,7 +917,6 @@
             margin-top: 0.5rem;
         }
         
-        /* Decorative gold divider below content */
         .onboard-intro__divider {
             width: 60px;
             height: 1px;
@@ -936,17 +933,45 @@
         }
         
         /* ============================================
-           LIFE ONBOARD — EXPERIENCES GALLERY
+           LIFE ONBOARD — EXPERIENCES GALLERY (REDESIGNED)
            ============================================ */
         .experiences {
             padding: 8rem 0;
-            background: var(--ivory);
+            background: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .experiences::before {
+            content: '';
+            position: absolute;
+            top: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(214, 184, 121, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        .experiences::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            right: -150px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(45, 100, 120, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
         }
         
         .experiences__header {
             text-align: center;
             max-width: 760px;
             margin: 0 auto 5rem;
+            position: relative;
+            z-index: 1;
         }
         
         .experiences__title {
@@ -967,9 +992,10 @@
         
         .exp-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: auto;
-            gap: 1.5rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.75rem;
+            position: relative;
+            z-index: 1;
         }
         
         .exp {
@@ -977,26 +1003,24 @@
             overflow: hidden;
             border-radius: 4px;
             background: var(--navy);
-            min-height: 380px;
+            aspect-ratio: 4 / 5;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.8s var(--transition), transform 0.8s var(--transition);
+            transition: opacity 0.8s var(--transition), transform 0.8s var(--transition), box-shadow 0.6s var(--transition);
+            box-shadow: 0 10px 30px -15px rgba(10, 29, 44, 0.3);
+        }
+        
+        .exp:hover {
+            box-shadow: 0 20px 50px -20px rgba(10, 29, 44, 0.5);
+            transform: translateY(-4px);
         }
         
         .exp.is-visible {
             opacity: 1;
             transform: translateY(0);
-        }
-        
-        .exp--large {
-            grid-column: span 2;
-            grid-row: span 2;
-            min-height: 780px;
-        }
-        
-        .exp--wide {
-            grid-column: span 2;
         }
         
         .exp__image {
@@ -1008,6 +1032,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
             transition: transform 1.4s var(--transition);
         }
         
@@ -1019,8 +1044,8 @@
             position: absolute;
             inset: 0;
             background: linear-gradient(to top, 
-                rgba(10, 29, 44, 0.95) 0%, 
-                rgba(10, 29, 44, 0.4) 55%, 
+                rgba(10, 29, 44, 0.94) 0%, 
+                rgba(10, 29, 44, 0.45) 55%, 
                 rgba(10, 29, 44, 0.1) 100%);
             z-index: 1;
             transition: background var(--dur) var(--transition);
@@ -1028,69 +1053,54 @@
         
         .exp:hover .exp__overlay {
             background: linear-gradient(to top, 
-                rgba(10, 29, 44, 0.98) 0%, 
-                rgba(10, 29, 44, 0.5) 60%, 
+                rgba(10, 29, 44, 0.97) 0%, 
+                rgba(10, 29, 44, 0.55) 60%, 
                 rgba(10, 29, 44, 0.15) 100%);
         }
         
         .exp__content {
             position: relative;
             z-index: 2;
-            padding: 2.5rem;
+            padding: 2rem;
             color: var(--white);
-            height: 100%;
+            margin-top: auto;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
         }
         
         .exp__icon {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             color: var(--gold);
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-        }
-        
-        .exp--large .exp__icon {
-            width: 56px;
-            height: 56px;
+            margin-bottom: 1.25rem;
+            opacity: 0.95;
+            flex-shrink: 0;
         }
         
         .exp__title {
             font-family: var(--font-display);
-            font-size: clamp(1.5rem, 2.2vw, 2rem);
+            font-size: clamp(1.4rem, 1.8vw, 1.85rem);
             font-weight: 500;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             line-height: 1.15;
             color: var(--white);
         }
         
-        .exp--large .exp__title {
-            font-size: clamp(2rem, 3vw, 2.75rem);
-        }
-        
         .exp__text {
-            font-size: 0.95rem;
-            line-height: 1.7;
+            font-size: 0.92rem;
+            line-height: 1.65;
             opacity: 0.9;
-            max-width: 480px;
         }
         
-        .exp--large .exp__text {
-            font-size: 1.05rem;
-            max-width: 560px;
-        }
-        
-        /* Decorative glow effect for White Party */
         .exp--glow::before {
             content: '';
             position: absolute;
-            top: 20%;
-            right: 20%;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(214, 184, 121, 0.15) 0%, transparent 70%);
+            top: 15%;
+            right: 15%;
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, rgba(214, 184, 121, 0.25) 0%, transparent 70%);
             border-radius: 50%;
             z-index: 1;
             animation: glowPulse 4s ease-in-out infinite;
@@ -1099,7 +1109,7 @@
         
         @keyframes glowPulse {
             0%, 100% { opacity: 0.6; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.1); }
+            50% { opacity: 1; transform: scale(1.15); }
         }
         
         /* ============================================
@@ -1602,20 +1612,9 @@
                 gap: 1.5rem;
             }
             
-            /* Experiences: 2 columns on tablet */
             .exp-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 1.25rem;
-            }
-            
-            .exp--large {
-                grid-column: span 2;
-                grid-row: span 1;
-                min-height: 500px;
-            }
-            
-            .exp--wide {
-                grid-column: span 2;
+                gap: 1.5rem;
             }
             
             .footer__grid {
@@ -1749,21 +1748,13 @@
                 aspect-ratio: 4 / 5;
             }
             
-            /* Experiences: 1 column on mobile */
             .exp-grid {
                 grid-template-columns: 1fr;
                 gap: 1.25rem;
             }
             
-            .exp--large,
-            .exp--wide {
-                grid-column: span 1;
-                grid-row: span 1;
-                min-height: 400px;
-            }
-            
-            .exp--large {
-                min-height: 480px;
+            .exp {
+                aspect-ratio: 4 / 5;
             }
             
             .exp__content {
@@ -1805,7 +1796,6 @@
                 margin: 0 0.3rem;
             }
             
-            /* Marquee mobile adjustments */
             .onboard-intro {
                 min-height: 90vh;
                 padding: 5rem 0;
@@ -2080,82 +2070,10 @@
         </div>
     </section>
 
-    <!-- LIFE ONBOARD — MARQUEE IMAGE CAROUSEL -->
+    <!-- LIFE ONBOARD -->
     <section class="onboard" id="onboard">
-        <div class="onboard-intro">
-            <!-- Marquee Carousel Background -->
-            <div class="marquee" aria-hidden="true">
-                <!-- Top row — scrolls left -->
-                <div class="marquee__row marquee__row--top">
-                    <div class="marquee__track">
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1548572314-9817ae1f0666?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1566024287286-457247b70310?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <!-- Duplicate set for seamless loop -->
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1548572314-9817ae1f0666?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1566024287286-457247b70310?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                    </div>
-                </div>
-                
-                <!-- Bottom row — scrolls right -->
-                <div class="marquee__row marquee__row--bottom">
-                    <div class="marquee__track">
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1599640842225-85d111c60e6b?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <!-- Duplicate set for seamless loop -->
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1599640842225-85d111c60e6b?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Central veil for text readability -->
-            <div class="onboard-intro__veil"></div>
-            
-            <!-- Content overlay -->
-            <div class="container onboard-intro__content">
-                <p class="eyebrow onboard-intro__eyebrow">Life On Board</p>
-                <h2 class="onboard-intro__title">
-                    The Journey Is<br>
-                    <em>Just as Beautiful.</em>
-                </h2>
-                <p class="onboard-intro__text">
-                    More than a destination, a world of experiences awaits. Discover extraordinary dining, endless entertainment, moments of relaxation, and unforgettable nights at sea.
-                </p>
-                <a href="#experiences" class="btn btn--primary onboard-intro__btn">
-                    Discover Life On Board
-                    <svg class="btn__arrow" width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
-                        <path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
-                    </svg>
-                </a>
-                <div class="onboard-intro__divider"></div>
-            </div>
-        </div>
         
-        <!-- Experiences Gallery -->
+        <!-- FIRST: On Board Experiences — A World of Extraordinary Moments -->
         <div class="experiences" id="experiences">
             <div class="container">
                 <div class="experiences__header">
@@ -2167,10 +2085,9 @@
                 </div>
                 
                 <div class="exp-grid">
-                    <!-- Swimming Pools & Sun Decks -->
-                    <article class="exp exp--large">
+                    <article class="exp">
                         <div class="exp__image">
-                            <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80" alt="Infinity pool on cruise ship deck" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=900&q=80" alt="Infinity pool on cruise ship deck" loading="lazy">
                         </div>
                         <div class="exp__overlay"></div>
                         <div class="exp__content">
@@ -2185,7 +2102,6 @@
                         </div>
                     </article>
                     
-                    <!-- Theatre & Live Shows -->
                     <article class="exp">
                         <div class="exp__image">
                             <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=900&q=80" alt="Grand cruise theatre with stage lighting" loading="lazy">
@@ -2202,7 +2118,6 @@
                         </div>
                     </article>
                     
-                    <!-- Restaurants & Fine Dining -->
                     <article class="exp">
                         <div class="exp__image">
                             <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80" alt="Mediterranean fine dining" loading="lazy">
@@ -2221,7 +2136,6 @@
                         </div>
                     </article>
                     
-                    <!-- Bars, Lounges & Cocktails -->
                     <article class="exp">
                         <div class="exp__image">
                             <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80" alt="Sophisticated cocktail bar with ocean view" loading="lazy">
@@ -2239,10 +2153,9 @@
                         </div>
                     </article>
                     
-                    <!-- White Party & Nights Under the Stars -->
-                    <article class="exp exp--wide exp--glow">
+                    <article class="exp exp--glow">
                         <div class="exp__image">
-                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80" alt="Glamorous white party on cruise ship deck at night" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80" alt="Glamorous white party on cruise ship deck at night" loading="lazy">
                         </div>
                         <div class="exp__overlay"></div>
                         <div class="exp__content">
@@ -2257,7 +2170,6 @@
                         </div>
                     </article>
                     
-                    <!-- Shopping & Onboard Boutiques -->
                     <article class="exp">
                         <div class="exp__image">
                             <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80" alt="Luxury shopping boutique on cruise ship" loading="lazy">
@@ -2273,23 +2185,74 @@
                             <p class="exp__text">Explore stylish boutiques, discover special finds, and enjoy a world of shopping between your favourite destinations.</p>
                         </div>
                     </article>
-                    
-                    <!-- Spa, Wellness & Relaxation -->
-                    <article class="exp exp--wide">
-                        <div class="exp__image">
-                            <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=1200&q=80" alt="Luxurious cruise ship spa with ocean view" loading="lazy">
-                        </div>
-                        <div class="exp__overlay"></div>
-                        <div class="exp__content">
-                            <svg class="exp__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                                <path d="M24 42s-14-8-14-20a10 10 0 0120-4 10 10 0 0120 4c0 12-14 20-14 20" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                                <path d="M24 18v12M18 24h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            </svg>
-                            <h3 class="exp__title">A Sanctuary of Serenity</h3>
-                            <p class="exp__text">Surrender to tranquility with restorative treatments, ocean-view relaxation spaces, and wellness rituals designed to renew body and mind.</p>
-                        </div>
-                    </article>
                 </div>
+            </div>
+        </div>
+        
+        <!-- SECOND: Life On Board — The Journey Is Just as Beautiful -->
+        <div class="onboard-intro">
+            <div class="marquee" aria-hidden="true">
+                <div class="marquee__row marquee__row--top">
+                    <div class="marquee__track">
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1548572314-9817ae1f0666?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1566024287286-457247b70310?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1548572314-9817ae1f0666?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1566024287286-457247b70310?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                    </div>
+                </div>
+                
+                <div class="marquee__row marquee__row--bottom">
+                    <div class="marquee__track">
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1599640842225-85d111c60e6b?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1599640842225-85d111c60e6b?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                        <div class="marquee__item"><img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=75" alt="" loading="lazy"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="onboard-intro__veil"></div>
+            
+            <div class="container onboard-intro__content">
+                <p class="eyebrow onboard-intro__eyebrow">Life On Board</p>
+                <h2 class="onboard-intro__title">
+                    The Journey Is<br>
+                    <em>Just as Beautiful.</em>
+                </h2>
+                <p class="onboard-intro__text">
+                    More than a destination, a world of experiences awaits. Discover extraordinary dining, endless entertainment, moments of relaxation, and unforgettable nights at sea.
+                </p>
+                <a href="#experiences" class="btn btn--primary onboard-intro__btn">
+                    Discover Life On Board
+                    <svg class="btn__arrow" width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
+                        <path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+                    </svg>
+                </a>
+                <div class="onboard-intro__divider"></div>
             </div>
         </div>
     </section>
@@ -2565,26 +2528,27 @@
     </footer>
 
     <script>
-        // Intersection Observer for scroll-triggered animations on experiences
         const observerOptions = {
             threshold: 0.15,
             rootMargin: '0px 0px -50px 0px'
         };
         
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('is-visible');
-                    }, index * 100);
+                    const cards = entry.target.querySelectorAll('.exp');
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('is-visible');
+                        }, index * 120);
+                    });
                     observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
         
-        document.querySelectorAll('.exp').forEach(exp => {
-            observer.observe(exp);
-        });
+        const expGrid = document.querySelector('.exp-grid');
+        if (expGrid) observer.observe(expGrid);
     </script>
 
 </body>
